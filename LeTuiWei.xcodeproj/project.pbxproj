@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24ED927D6C1D96C27C0043D1 /* libPods-LeTuiWeiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB9B98468B87E84A72212FE /* libPods-LeTuiWeiTests.a */; };
 		73FC94521E8A4B9D0006722E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94511E8A4B9D0006722E /* main.m */; };
 		73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94541E8A4B9D0006722E /* AppDelegate.m */; };
 		73FC94581E8A4B9D0006722E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94571E8A4B9D0006722E /* ViewController.m */; };
@@ -15,6 +16,8 @@
 		73FC94601E8A4B9D0006722E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FC945E1E8A4B9D0006722E /* LaunchScreen.storyboard */; };
 		73FC946B1E8A4B9D0006722E /* LeTuiWeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC946A1E8A4B9D0006722E /* LeTuiWeiTests.m */; };
 		73FC94761E8A4B9D0006722E /* LeTuiWeiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94751E8A4B9D0006722E /* LeTuiWeiUITests.m */; };
+		A2D6B09219BA0DC61694D4AD /* libPods-LeTuiWei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC25C99F9B6E7961064C3A4A /* libPods-LeTuiWei.a */; };
+		FE00329B44D5E14FF29746B3 /* libPods-LeTuiWeiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0237D19275220CCBD6CDB595 /* libPods-LeTuiWeiUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0237D19275220CCBD6CDB595 /* libPods-LeTuiWeiUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LeTuiWeiUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E59A5C8E459768E8FF9C2D2 /* Pods-LeTuiWeiTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWeiTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWeiTests/Pods-LeTuiWeiTests.debug.xcconfig"; sourceTree = "<group>"; };
+		68CC2A218F4F63B52A0B14AC /* Pods-LeTuiWei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWei.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWei/Pods-LeTuiWei.release.xcconfig"; sourceTree = "<group>"; };
 		73FC944D1E8A4B9D0006722E /* LeTuiWei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeTuiWei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FC94511E8A4B9D0006722E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		73FC94531E8A4B9D0006722E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +57,12 @@
 		73FC94711E8A4B9D0006722E /* LeTuiWeiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeTuiWeiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FC94751E8A4B9D0006722E /* LeTuiWeiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeTuiWeiUITests.m; sourceTree = "<group>"; };
 		73FC94771E8A4B9D0006722E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWei.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWei/Pods-LeTuiWei.debug.xcconfig"; sourceTree = "<group>"; };
+		9EB9B98468B87E84A72212FE /* libPods-LeTuiWeiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LeTuiWeiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0B80ECA33571CE541BF37D2 /* Pods-LeTuiWeiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWeiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWeiUITests/Pods-LeTuiWeiUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DC25C99F9B6E7961064C3A4A /* libPods-LeTuiWei.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LeTuiWei.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC078117BF67CFE0E2AA05B7 /* Pods-LeTuiWeiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWeiUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWeiUITests/Pods-LeTuiWeiUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F11359A9AA119A0C89C105A2 /* Pods-LeTuiWeiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWeiTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWeiTests/Pods-LeTuiWeiTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2D6B09219BA0DC61694D4AD /* libPods-LeTuiWei.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24ED927D6C1D96C27C0043D1 /* libPods-LeTuiWeiTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE00329B44D5E14FF29746B3 /* libPods-LeTuiWeiUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0673D5BD0BA0DED780C47705 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC25C99F9B6E7961064C3A4A /* libPods-LeTuiWei.a */,
+				9EB9B98468B87E84A72212FE /* libPods-LeTuiWeiTests.a */,
+				0237D19275220CCBD6CDB595 /* libPods-LeTuiWeiUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		73FC94441E8A4B9D0006722E = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +110,8 @@
 				73FC94691E8A4B9D0006722E /* LeTuiWeiTests */,
 				73FC94741E8A4B9D0006722E /* LeTuiWeiUITests */,
 				73FC944E1E8A4B9D0006722E /* Products */,
+				AFD282C8C1CE949E8316BB54 /* Pods */,
+				0673D5BD0BA0DED780C47705 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +167,19 @@
 			path = LeTuiWeiUITests;
 			sourceTree = "<group>";
 		};
+		AFD282C8C1CE949E8316BB54 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */,
+				68CC2A218F4F63B52A0B14AC /* Pods-LeTuiWei.release.xcconfig */,
+				4E59A5C8E459768E8FF9C2D2 /* Pods-LeTuiWeiTests.debug.xcconfig */,
+				F11359A9AA119A0C89C105A2 /* Pods-LeTuiWeiTests.release.xcconfig */,
+				EC078117BF67CFE0E2AA05B7 /* Pods-LeTuiWeiUITests.debug.xcconfig */,
+				D0B80ECA33571CE541BF37D2 /* Pods-LeTuiWeiUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73FC947A1E8A4B9D0006722E /* Build configuration list for PBXNativeTarget "LeTuiWei" */;
 			buildPhases = (
+				48F3662CD20C485BC1117E17 /* [CP] Check Pods Manifest.lock */,
 				73FC94491E8A4B9D0006722E /* Sources */,
 				73FC944A1E8A4B9D0006722E /* Frameworks */,
 				73FC944B1E8A4B9D0006722E /* Resources */,
+				62F28DA3EB7658D6F3D5A4F6 /* [CP] Embed Pods Frameworks */,
+				5089FBDDD9C182E30C6BBB17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73FC947D1E8A4B9D0006722E /* Build configuration list for PBXNativeTarget "LeTuiWeiTests" */;
 			buildPhases = (
+				60E45FEB964C90F4DEFA2FEA /* [CP] Check Pods Manifest.lock */,
 				73FC94621E8A4B9D0006722E /* Sources */,
 				73FC94631E8A4B9D0006722E /* Frameworks */,
 				73FC94641E8A4B9D0006722E /* Resources */,
+				CD557E08D2B98A4B959BCFDB /* [CP] Embed Pods Frameworks */,
+				48EBA92EBABBA3C4E47E246D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 73FC94801E8A4B9D0006722E /* Build configuration list for PBXNativeTarget "LeTuiWeiUITests" */;
 			buildPhases = (
+				BC120479AFA78DA9B871D299 /* [CP] Check Pods Manifest.lock */,
 				73FC946D1E8A4B9D0006722E /* Sources */,
 				73FC946E1E8A4B9D0006722E /* Frameworks */,
 				73FC946F1E8A4B9D0006722E /* Resources */,
+				6805D9DE682ABE1B90A164B4 /* [CP] Embed Pods Frameworks */,
+				58F1BD8176B47EFE9A951D93 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,6 +316,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48EBA92EBABBA3C4E47E246D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeTuiWeiTests/Pods-LeTuiWeiTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48F3662CD20C485BC1117E17 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5089FBDDD9C182E30C6BBB17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeTuiWei/Pods-LeTuiWei-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58F1BD8176B47EFE9A951D93 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeTuiWeiUITests/Pods-LeTuiWeiUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60E45FEB964C90F4DEFA2FEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		62F28DA3EB7658D6F3D5A4F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeTuiWei/Pods-LeTuiWei-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6805D9DE682ABE1B90A164B4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeTuiWeiUITests/Pods-LeTuiWeiUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BC120479AFA78DA9B871D299 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CD557E08D2B98A4B959BCFDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LeTuiWeiTests/Pods-LeTuiWeiTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		73FC94491E8A4B9D0006722E /* Sources */ = {
@@ -424,6 +611,7 @@
 		};
 		73FC947B1E8A4B9D0006722E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
@@ -435,6 +623,7 @@
 		};
 		73FC947C1E8A4B9D0006722E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68CC2A218F4F63B52A0B14AC /* Pods-LeTuiWei.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
@@ -446,6 +635,7 @@
 		};
 		73FC947E1E8A4B9D0006722E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E59A5C8E459768E8FF9C2D2 /* Pods-LeTuiWeiTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LeTuiWeiTests/Info.plist;
@@ -458,6 +648,7 @@
 		};
 		73FC947F1E8A4B9D0006722E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F11359A9AA119A0C89C105A2 /* Pods-LeTuiWeiTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = LeTuiWeiTests/Info.plist;
@@ -470,6 +661,7 @@
 		};
 		73FC94811E8A4B9D0006722E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC078117BF67CFE0E2AA05B7 /* Pods-LeTuiWeiUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = LeTuiWeiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -481,6 +673,7 @@
 		};
 		73FC94821E8A4B9D0006722E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0B80ECA33571CE541BF37D2 /* Pods-LeTuiWeiUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = LeTuiWeiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
