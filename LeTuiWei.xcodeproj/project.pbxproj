@@ -16,6 +16,19 @@
 		73FC94601E8A4B9D0006722E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FC945E1E8A4B9D0006722E /* LaunchScreen.storyboard */; };
 		73FC946B1E8A4B9D0006722E /* LeTuiWeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC946A1E8A4B9D0006722E /* LeTuiWeiTests.m */; };
 		73FC94761E8A4B9D0006722E /* LeTuiWeiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94751E8A4B9D0006722E /* LeTuiWeiUITests.m */; };
+		73FC949C1E8A509E0006722E /* AllocDeallocViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC949B1E8A509E0006722E /* AllocDeallocViewController.m */; };
+		73FC949F1E8A51200006722E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC949E1E8A51200006722E /* BaseViewController.m */; };
+		73FC94A21E8A51820006722E /* OIAppTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94A11E8A51820006722E /* OIAppTheme.m */; };
+		73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94A61E8A53740006722E /* BaseNavigationController.m */; };
+		73FC94AA1E8A53930006722E /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94A91E8A53930006722E /* BaseTabBarController.m */; };
+		73FC94AD1E8A53BC0006722E /* NetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94AB1E8A53BC0006722E /* NetworkingManager.m */; };
+		73FC94B01E8A547A0006722E /* AdministrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94AF1E8A547A0006722E /* AdministrationViewController.m */; };
+		73FC94B31E8A548C0006722E /* IncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94B21E8A548C0006722E /* IncomeViewController.m */; };
+		73FC94B91E8A54BB0006722E /* OverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94B81E8A54BB0006722E /* OverviewViewController.m */; };
+		73FC94BC1E8A56840006722E /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94BB1E8A56840006722E /* UserLoginViewController.m */; };
+		73FC94C31E8A5D630006722E /* ConfirmButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94C21E8A5D630006722E /* ConfirmButtonView.m */; };
+		73FC94C61E8A5EDF0006722E /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94C51E8A5EDF0006722E /* LoginBaseViewController.m */; };
+		73FC94C91E8A5FC90006722E /* LoginInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94C81E8A5FC90006722E /* LoginInputView.m */; };
 		A2D6B09219BA0DC61694D4AD /* libPods-LeTuiWei.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC25C99F9B6E7961064C3A4A /* libPods-LeTuiWei.a */; };
 		FE00329B44D5E14FF29746B3 /* libPods-LeTuiWeiUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0237D19275220CCBD6CDB595 /* libPods-LeTuiWeiUITests.a */; };
 /* End PBXBuildFile section */
@@ -57,6 +70,34 @@
 		73FC94711E8A4B9D0006722E /* LeTuiWeiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeTuiWeiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FC94751E8A4B9D0006722E /* LeTuiWeiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeTuiWeiUITests.m; sourceTree = "<group>"; };
 		73FC94771E8A4B9D0006722E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73FC949A1E8A509E0006722E /* AllocDeallocViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllocDeallocViewController.h; sourceTree = "<group>"; };
+		73FC949B1E8A509E0006722E /* AllocDeallocViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllocDeallocViewController.m; sourceTree = "<group>"; };
+		73FC949D1E8A51200006722E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		73FC949E1E8A51200006722E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		73FC94A01E8A51820006722E /* OIAppTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OIAppTheme.h; sourceTree = "<group>"; };
+		73FC94A11E8A51820006722E /* OIAppTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OIAppTheme.m; sourceTree = "<group>"; };
+		73FC94A31E8A51C30006722E /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
+		73FC94A41E8A51F40006722E /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		73FC94A51E8A53740006722E /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
+		73FC94A61E8A53740006722E /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		73FC94A81E8A53930006722E /* BaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarController.h; sourceTree = "<group>"; };
+		73FC94A91E8A53930006722E /* BaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarController.m; sourceTree = "<group>"; };
+		73FC94AB1E8A53BC0006722E /* NetworkingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkingManager.m; sourceTree = "<group>"; };
+		73FC94AC1E8A53BC0006722E /* NetworkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkingManager.h; sourceTree = "<group>"; };
+		73FC94AE1E8A547A0006722E /* AdministrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdministrationViewController.h; sourceTree = "<group>"; };
+		73FC94AF1E8A547A0006722E /* AdministrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdministrationViewController.m; sourceTree = "<group>"; };
+		73FC94B11E8A548C0006722E /* IncomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeViewController.h; sourceTree = "<group>"; };
+		73FC94B21E8A548C0006722E /* IncomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeViewController.m; sourceTree = "<group>"; };
+		73FC94B71E8A54BB0006722E /* OverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewViewController.h; sourceTree = "<group>"; };
+		73FC94B81E8A54BB0006722E /* OverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewViewController.m; sourceTree = "<group>"; };
+		73FC94BA1E8A56840006722E /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
+		73FC94BB1E8A56840006722E /* UserLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLoginViewController.m; sourceTree = "<group>"; };
+		73FC94C11E8A5D630006722E /* ConfirmButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmButtonView.h; sourceTree = "<group>"; };
+		73FC94C21E8A5D630006722E /* ConfirmButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmButtonView.m; sourceTree = "<group>"; };
+		73FC94C41E8A5EDF0006722E /* LoginBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBaseViewController.h; sourceTree = "<group>"; };
+		73FC94C51E8A5EDF0006722E /* LoginBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBaseViewController.m; sourceTree = "<group>"; };
+		73FC94C71E8A5FC90006722E /* LoginInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginInputView.h; sourceTree = "<group>"; };
+		73FC94C81E8A5FC90006722E /* LoginInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginInputView.m; sourceTree = "<group>"; };
 		94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWei.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWei/Pods-LeTuiWei.debug.xcconfig"; sourceTree = "<group>"; };
 		9EB9B98468B87E84A72212FE /* libPods-LeTuiWeiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LeTuiWeiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B80ECA33571CE541BF37D2 /* Pods-LeTuiWeiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeTuiWeiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LeTuiWeiUITests/Pods-LeTuiWeiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +169,13 @@
 		73FC944F1E8A4B9D0006722E /* LeTuiWei */ = {
 			isa = PBXGroup;
 			children = (
+				73FC94991E8A50570006722E /* Macro */,
+				73FC94981E8A501E0006722E /* Common */,
+				73FC94971E8A4FB20006722E /* Helper */,
+				73FC948A1E8A4E9F0006722E /* Administration */,
+				73FC94891E8A4E590006722E /* Income */,
+				73FC94881E8A4E3E0006722E /* Overview */,
+				73FC94871E8A4DD30006722E /* Login */,
 				73FC94531E8A4B9D0006722E /* AppDelegate.h */,
 				73FC94541E8A4B9D0006722E /* AppDelegate.m */,
 				73FC94561E8A4B9D0006722E /* ViewController.h */,
@@ -165,6 +213,211 @@
 				73FC94771E8A4B9D0006722E /* Info.plist */,
 			);
 			path = LeTuiWeiUITests;
+			sourceTree = "<group>";
+		};
+		73FC94871E8A4DD30006722E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				73FC948B1E8A4F060006722E /* Controllers */,
+				73FC948C1E8A4F060006722E /* Models */,
+				73FC948D1E8A4F060006722E /* Views */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		73FC94881E8A4E3E0006722E /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94941E8A4F4C0006722E /* Controllers */,
+				73FC94951E8A4F4C0006722E /* Models */,
+				73FC94961E8A4F4C0006722E /* Views */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		73FC94891E8A4E590006722E /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94911E8A4F370006722E /* Controllers */,
+				73FC94921E8A4F370006722E /* Models */,
+				73FC94931E8A4F370006722E /* Views */,
+			);
+			path = Income;
+			sourceTree = "<group>";
+		};
+		73FC948A1E8A4E9F0006722E /* Administration */ = {
+			isa = PBXGroup;
+			children = (
+				73FC948E1E8A4F2C0006722E /* Controllers */,
+				73FC948F1E8A4F2C0006722E /* Models */,
+				73FC94901E8A4F2C0006722E /* Views */,
+			);
+			path = Administration;
+			sourceTree = "<group>";
+		};
+		73FC948B1E8A4F060006722E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94BA1E8A56840006722E /* UserLoginViewController.h */,
+				73FC94BB1E8A56840006722E /* UserLoginViewController.m */,
+				73FC94C41E8A5EDF0006722E /* LoginBaseViewController.h */,
+				73FC94C51E8A5EDF0006722E /* LoginBaseViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		73FC948C1E8A4F060006722E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		73FC948D1E8A4F060006722E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94C71E8A5FC90006722E /* LoginInputView.h */,
+				73FC94C81E8A5FC90006722E /* LoginInputView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73FC948E1E8A4F2C0006722E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94AE1E8A547A0006722E /* AdministrationViewController.h */,
+				73FC94AF1E8A547A0006722E /* AdministrationViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		73FC948F1E8A4F2C0006722E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		73FC94901E8A4F2C0006722E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73FC94911E8A4F370006722E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94B11E8A548C0006722E /* IncomeViewController.h */,
+				73FC94B21E8A548C0006722E /* IncomeViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		73FC94921E8A4F370006722E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		73FC94931E8A4F370006722E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73FC94941E8A4F4C0006722E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94B71E8A54BB0006722E /* OverviewViewController.h */,
+				73FC94B81E8A54BB0006722E /* OverviewViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		73FC94951E8A4F4C0006722E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		73FC94961E8A4F4C0006722E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73FC94971E8A4FB20006722E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94AB1E8A53BC0006722E /* NetworkingManager.m */,
+				73FC94AC1E8A53BC0006722E /* NetworkingManager.h */,
+				73FC94A41E8A51F40006722E /* PrefixHeader.pch */,
+				73FC94A01E8A51820006722E /* OIAppTheme.h */,
+				73FC94A11E8A51820006722E /* OIAppTheme.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		73FC94981E8A501E0006722E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94BD1E8A590B0006722E /* Categories */,
+				73FC94BE1E8A590B0006722E /* Models */,
+				73FC94BF1E8A590B0006722E /* TabViewCells */,
+				73FC94C01E8A590B0006722E /* Views */,
+				73FC949A1E8A509E0006722E /* AllocDeallocViewController.h */,
+				73FC949B1E8A509E0006722E /* AllocDeallocViewController.m */,
+				73FC949D1E8A51200006722E /* BaseViewController.h */,
+				73FC949E1E8A51200006722E /* BaseViewController.m */,
+				73FC94A51E8A53740006722E /* BaseNavigationController.h */,
+				73FC94A61E8A53740006722E /* BaseNavigationController.m */,
+				73FC94A81E8A53930006722E /* BaseTabBarController.h */,
+				73FC94A91E8A53930006722E /* BaseTabBarController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		73FC94991E8A50570006722E /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94A31E8A51C30006722E /* Macro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		73FC94BD1E8A590B0006722E /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		73FC94BE1E8A590B0006722E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		73FC94BF1E8A590B0006722E /* TabViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabViewCells;
+			sourceTree = "<group>";
+		};
+		73FC94C01E8A590B0006722E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73FC94C11E8A5D630006722E /* ConfirmButtonView.h */,
+				73FC94C21E8A5D630006722E /* ConfirmButtonView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		AFD282C8C1CE949E8316BB54 /* Pods */ = {
@@ -461,8 +714,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				73FC94581E8A4B9D0006722E /* ViewController.m in Sources */,
+				73FC94B91E8A54BB0006722E /* OverviewViewController.m in Sources */,
+				73FC94C61E8A5EDF0006722E /* LoginBaseViewController.m in Sources */,
+				73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */,
+				73FC94B01E8A547A0006722E /* AdministrationViewController.m in Sources */,
+				73FC94B31E8A548C0006722E /* IncomeViewController.m in Sources */,
+				73FC94C31E8A5D630006722E /* ConfirmButtonView.m in Sources */,
+				73FC94BC1E8A56840006722E /* UserLoginViewController.m in Sources */,
+				73FC94AD1E8A53BC0006722E /* NetworkingManager.m in Sources */,
+				73FC949F1E8A51200006722E /* BaseViewController.m in Sources */,
+				73FC949C1E8A509E0006722E /* AllocDeallocViewController.m in Sources */,
+				73FC94AA1E8A53930006722E /* BaseTabBarController.m in Sources */,
+				73FC94A21E8A51820006722E /* OIAppTheme.m in Sources */,
 				73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */,
 				73FC94521E8A4B9D0006722E /* main.m in Sources */,
+				73FC94C91E8A5FC90006722E /* LoginInputView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +880,8 @@
 			baseConfigurationReference = 94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
@@ -626,6 +894,8 @@
 			baseConfigurationReference = 68CC2A218F4F63B52A0B14AC /* Pods-LeTuiWei.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
@@ -702,6 +972,7 @@
 				73FC947C1E8A4B9D0006722E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73FC947D1E8A4B9D0006722E /* Build configuration list for PBXNativeTarget "LeTuiWeiTests" */ = {
 			isa = XCConfigurationList;
@@ -710,6 +981,7 @@
 				73FC947F1E8A4B9D0006722E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73FC94801E8A4B9D0006722E /* Build configuration list for PBXNativeTarget "LeTuiWeiUITests" */ = {
 			isa = XCConfigurationList;
@@ -718,6 +990,7 @@
 				73FC94821E8A4B9D0006722E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
