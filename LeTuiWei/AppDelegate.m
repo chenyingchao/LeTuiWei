@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BaseTabBarController.h"
 #import "UserLoginViewController.h"
+#import "BaseNavigationController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,10 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
    // self.window.rootViewController = [[BaseTabBarController alloc] init];
-    self.window.rootViewController = [[UserLoginViewController alloc] init];
+    
+    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:[[UserLoginViewController alloc] init]];
+    self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     return YES;
 }

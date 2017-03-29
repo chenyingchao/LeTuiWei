@@ -119,6 +119,8 @@
 
 + (UIColor *)colorForSearchBarBgColor;
 
++ (UIColor *)colorForAppearance;
+
 /**
  Font settings
  */

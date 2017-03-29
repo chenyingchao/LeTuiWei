@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol inputViewDelegate<NSObject>
+
+- (void) inputViewTextFieldDidEndEditing:(UITextField *)textField;
+
+@end
 
 typedef NS_ENUM(NSUInteger, TextFieldType) {
     TextFieldTypeCommon,
@@ -31,6 +36,8 @@ typedef NS_ENUM(NSUInteger, TextFieldType) {
 @property (nonatomic, strong) UIButton *verifyButton;
 
 @property (nonatomic,copy) void (^verifyButtonClickedBlock)();
+
+@property (nonatomic, weak) id <inputViewDelegate> delegate;
 
 - (instancetype)initWithTitle:(NSString *)title placeHolder:(NSString *)placeHolder;
 

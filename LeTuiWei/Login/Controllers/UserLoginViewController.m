@@ -9,8 +9,10 @@
 #import "UserLoginViewController.h"
 #import "ConfirmButtonView.h"
 #import "UIButton+text.h"
-@interface UserLoginViewController ()<UIScrollViewDelegate>
-
+#import "UserRegisterViewController.h"
+#import "BaseNavigationController.h"
+#import "ReplaceCodeViewController.h"
+@interface UserLoginViewController ()
 @end
 
 @implementation UserLoginViewController
@@ -18,7 +20,6 @@
 - (void)loadView {
     [super loadView];
     [self setupView];
-    
 }
 
 
@@ -35,25 +36,26 @@
 
 #pragma mark 登录
 - (void)userLgoin {
-    
     OIDevLog(@"%@", self.accountView.textField.text);
     OIDevLog(@"%@", self.passwordView.textField.text);
-    
     
     if ( self.accountView.textField.text.length != 11) {
         [self showErrorMessage:@"请输入11位手机号"];
     }
     
-    
 }
 
 #pragma mark 忘记密码
 - (void)forgetCode {
-
+    ReplaceCodeViewController *replaceCodeVC =[[ ReplaceCodeViewController alloc] init];
+    [self.navigationController pushViewController:replaceCodeVC animated:YES];
 }
 
 #pragma mark 注册账号
 - (void)registerAccount {
+
+    UserRegisterViewController *registerVC =[[ UserRegisterViewController alloc] init];
+    [self.navigationController pushViewController:registerVC animated:YES];
 
 }
 
@@ -128,7 +130,7 @@
         make.top.equalTo(loginView.mas_bottom).offset([Theme paddingWithSize:30]);
     }];
     
-    UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectZero withTitle:@"还没有账号，点此注册" withTitleColor:UIColorFromRGB(0x3f88cd) withFont: [Theme fontWithSize28] andButtonClickedBlock:^(UIButton *button) {
+    UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectZero withTitle:@"还没有账号，点此注册" withTitleColor:[Theme colorForAppearance] withFont: [Theme fontWithSize28] andButtonClickedBlock:^(UIButton *button) {
         [weakSelf registerAccount];
 
     }];
@@ -141,7 +143,7 @@
     
     
     UILabel * seperatorLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    seperatorLabel.backgroundColor = UIColorFromRGB(0x3f88cd);
+    seperatorLabel.backgroundColor = [Theme colorForAppearance];
     [bgImageView addSubview:seperatorLabel];
    
     [seperatorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -153,7 +155,7 @@
     
     
     UILabel * seperatorLabel1 = [[UILabel alloc] initWithFrame:CGRectZero];
-    seperatorLabel1.backgroundColor = UIColorFromRGB(0x3f88cd);
+    seperatorLabel1.backgroundColor = [Theme colorForAppearance];
     [bgImageView addSubview:seperatorLabel1];
     
     [seperatorLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {

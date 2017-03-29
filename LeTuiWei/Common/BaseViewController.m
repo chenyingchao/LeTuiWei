@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "MBProgressHUD+AT.h"
 #import "SVProgressHUD.h"
-
+#import "UIImage+AT.h"
 @interface BaseViewController ()
 
 @end
@@ -32,25 +32,32 @@
 
 
 - (void)setupNavigationBar:(UINavigationController *)naviController {
-    naviController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[Theme colorForNavigationBarText], NSFontAttributeName:[Theme fontWithSize36]};
-    self.navigationController.navigationBar.barTintColor = [Theme colorForNavigationBarBackgroundWithAlpha:0.7];
+    naviController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[Theme colorWhite], NSFontAttributeName:[Theme fontWithSize40]};
+    self.navigationController.navigationBar.barTintColor = [Theme colorForAppearance];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 
 - (void)setUpNavigationBarLeftBack {
     UIView *leftContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, kNavigationBarHeight)];
+   
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftContainerView addSubview:backBtn];
-    [backBtn setImage:[UIImage imageNamed:@"goBack"] forState:UIControlStateNormal];
-    //   [backBtn setImage:[UIImage imageByApplyingAlpha:0.7 image:[UIImage imageNamed:@"goBack"]] forState:UIControlStateHighlighted];
-    
-    
+   
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
+   
     backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    backBtn.frame = CGRectMake(0, 0, kNavigationBarHeight, kNavigationBarHeight);
+      
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(leftContainerView);
+        make.centerY.equalTo(leftContainerView);
+    }];
+    
     WS(weakSelf);
     [backBtn bk_whenTapped:^{
         [weakSelf leftbarbuttonAction];
     }];
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftContainerView];
 }
 

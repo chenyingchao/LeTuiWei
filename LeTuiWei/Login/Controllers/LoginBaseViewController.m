@@ -79,8 +79,8 @@
 - (LoginInputView *)captchaView {
     if (!_captchaView) {
         
-        LoginInputView *captchaView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"message_logo"] placeHolder:@"请输入短信验证码" textFieldType:TextFieldTypeCaptcha];
-        captchaView.textField.secureTextEntry = YES;
+        LoginInputView *captchaView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"code"] placeHolder:@"请输入短信验证码" textFieldType:TextFieldTypeCaptcha];
+
         _captchaView = captchaView;
     }
     return _captchaView;

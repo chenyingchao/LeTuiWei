@@ -25,6 +25,8 @@
 #define kColorDimGray                           0x999999
 #define kColorLightGray                         0xd1d1d1
 
+#define kColorAppearance                           0x3f88cd
+
 #define kColorBgGray                         0xf0f0f0
 
 #ifdef ATThemeOrange
@@ -143,6 +145,10 @@
 
 + (UIColor *)colorDarkGray {
     return UIColorFromRGB(kColorDarkGray);
+}
+
++ (UIColor *)colorForAppearance {
+    return UIColorFromRGB(kColorAppearance);
 }
 
 + (UIColor *)colorDarkGrayWithAlpha:(CGFloat)alpha {

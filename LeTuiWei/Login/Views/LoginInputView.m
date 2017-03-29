@@ -101,11 +101,11 @@
             
             UIButton *verifyButton = [UIButton buttonWithType:UIButtonTypeCustom];
             [verifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-            [verifyButton setBackgroundImage:[UIImage imageNamed:@"verifyBg"]  forState:UIControlStateNormal];
+     
             
-            [verifyButton  setTitleColor:[Theme colorWhite] forState:UIControlStateNormal];
+            [verifyButton  setTitleColor:[Theme colorForAppearance] forState:UIControlStateNormal];
             
-            verifyButton.titleLabel.font = [Theme fontWithSize24];
+            verifyButton.titleLabel.font = [Theme fontWithSize30];
             
             [self addSubview:verifyButton];
             _verifyButton = verifyButton;
@@ -120,17 +120,30 @@
                     weakSelf.verifyButtonClickedBlock();
                 }
             }];
+            
+            UILabel * seperatorLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+            seperatorLabel.backgroundColor = [Theme colorBlackWithAlpha:0.3];
+            [self addSubview:seperatorLabel];
+     
+            [seperatorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(self);
+                make.right.equalTo(verifyButton.mas_left).offset(-[Theme paddingWithSize:46]);
+                make.height.equalTo(@([Theme paddingWithSize:68]));
+                make.width.equalTo(@(kSeparatorHeight));
+            }];
 
+            
             
         }
         
         
     }
     return self;
-
-
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
 
+    [self.delegate  inputViewTextFieldDidEndEditing:textField];
+}
 
 @end

@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef NS_ENUM(NSUInteger, SelectStatus) {
+    SelectStatusNormal,
+    SelectStatusNot,
+ 
+    
+};
+
 @interface ConfirmButtonView : UIView
 
 + (instancetype)confirmButtonViewWithTitle:(NSString *)title andButtonClickedBlock:(void(^)(UIButton * button))block;
 
-@property(nonatomic, strong) UIFont *titleFont;
 
-@property(nonatomic, strong) UIColor *bgColor;
+- (instancetype)initWithTitle:(NSString *)title selectSatus:(SelectStatus)status andButtonClickedBlock:(void(^)(UIButton * button))block;
 
+
+@property(nonatomic, strong) UIButton *clickButton;
 
 @end

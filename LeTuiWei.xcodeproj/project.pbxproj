@@ -14,9 +14,11 @@
 		7331D4431E8B4DD300FF1156 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D43D1E8B4DD300FF1156 /* SVProgressHUD.m */; };
 		7331D4441E8B4DD300FF1156 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D43F1E8B4DD300FF1156 /* SVRadialGradientLayer.m */; };
 		7331D4471E8B4DF900FF1156 /* MBProgressHUD+AT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4461E8B4DF900FF1156 /* MBProgressHUD+AT.m */; };
+		7331D44A1E8B544500FF1156 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4491E8B544500FF1156 /* UserRegisterViewController.m */; };
+		7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D44C1E8B93C300FF1156 /* ReplaceCodeViewController.m */; };
+		7331D4501E8B964300FF1156 /* ReplaceCodeLastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D44F1E8B964300FF1156 /* ReplaceCodeLastViewController.m */; };
 		73FC94521E8A4B9D0006722E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94511E8A4B9D0006722E /* main.m */; };
 		73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94541E8A4B9D0006722E /* AppDelegate.m */; };
-		73FC94581E8A4B9D0006722E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94571E8A4B9D0006722E /* ViewController.m */; };
 		73FC945B1E8A4B9D0006722E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FC94591E8A4B9D0006722E /* Main.storyboard */; };
 		73FC945D1E8A4B9D0006722E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73FC945C1E8A4B9D0006722E /* Assets.xcassets */; };
 		73FC94601E8A4B9D0006722E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73FC945E1E8A4B9D0006722E /* LaunchScreen.storyboard */; };
@@ -75,12 +77,16 @@
 		7331D43F1E8B4DD300FF1156 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		7331D4451E8B4DF900FF1156 /* MBProgressHUD+AT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+AT.h"; sourceTree = "<group>"; };
 		7331D4461E8B4DF900FF1156 /* MBProgressHUD+AT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+AT.m"; sourceTree = "<group>"; };
+		7331D4481E8B544500FF1156 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
+		7331D4491E8B544500FF1156 /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterViewController.m; sourceTree = "<group>"; };
+		7331D44B1E8B93C300FF1156 /* ReplaceCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplaceCodeViewController.h; sourceTree = "<group>"; };
+		7331D44C1E8B93C300FF1156 /* ReplaceCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceCodeViewController.m; sourceTree = "<group>"; };
+		7331D44E1E8B964300FF1156 /* ReplaceCodeLastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplaceCodeLastViewController.h; sourceTree = "<group>"; };
+		7331D44F1E8B964300FF1156 /* ReplaceCodeLastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceCodeLastViewController.m; sourceTree = "<group>"; };
 		73FC944D1E8A4B9D0006722E /* LeTuiWei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeTuiWei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73FC94511E8A4B9D0006722E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		73FC94531E8A4B9D0006722E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		73FC94541E8A4B9D0006722E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		73FC94561E8A4B9D0006722E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		73FC94571E8A4B9D0006722E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		73FC945A1E8A4B9D0006722E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		73FC945C1E8A4B9D0006722E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73FC945F1E8A4B9D0006722E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -222,8 +228,6 @@
 				73FC94871E8A4DD30006722E /* Login */,
 				73FC94531E8A4B9D0006722E /* AppDelegate.h */,
 				73FC94541E8A4B9D0006722E /* AppDelegate.m */,
-				73FC94561E8A4B9D0006722E /* ViewController.h */,
-				73FC94571E8A4B9D0006722E /* ViewController.m */,
 				73FC94591E8A4B9D0006722E /* Main.storyboard */,
 				73FC945C1E8A4B9D0006722E /* Assets.xcassets */,
 				73FC945E1E8A4B9D0006722E /* LaunchScreen.storyboard */,
@@ -302,10 +306,16 @@
 		73FC948B1E8A4F060006722E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				73FC94BA1E8A56840006722E /* UserLoginViewController.h */,
-				73FC94BB1E8A56840006722E /* UserLoginViewController.m */,
 				73FC94C41E8A5EDF0006722E /* LoginBaseViewController.h */,
 				73FC94C51E8A5EDF0006722E /* LoginBaseViewController.m */,
+				73FC94BA1E8A56840006722E /* UserLoginViewController.h */,
+				73FC94BB1E8A56840006722E /* UserLoginViewController.m */,
+				7331D4481E8B544500FF1156 /* UserRegisterViewController.h */,
+				7331D4491E8B544500FF1156 /* UserRegisterViewController.m */,
+				7331D44B1E8B93C300FF1156 /* ReplaceCodeViewController.h */,
+				7331D44C1E8B93C300FF1156 /* ReplaceCodeViewController.m */,
+				7331D44E1E8B964300FF1156 /* ReplaceCodeLastViewController.h */,
+				7331D44F1E8B964300FF1156 /* ReplaceCodeLastViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -767,11 +777,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73FC94581E8A4B9D0006722E /* ViewController.m in Sources */,
 				73FC94B91E8A54BB0006722E /* OverviewViewController.m in Sources */,
+				7331D44A1E8B544500FF1156 /* UserRegisterViewController.m in Sources */,
 				7331D4471E8B4DF900FF1156 /* MBProgressHUD+AT.m in Sources */,
 				73FC94C61E8A5EDF0006722E /* LoginBaseViewController.m in Sources */,
+				7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */,
 				73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */,
+				7331D4501E8B964300FF1156 /* ReplaceCodeLastViewController.m in Sources */,
 				73FC94B01E8A547A0006722E /* AdministrationViewController.m in Sources */,
 				73FC94B31E8A548C0006722E /* IncomeViewController.m in Sources */,
 				73FC94C31E8A5D630006722E /* ConfirmButtonView.m in Sources */,
@@ -945,6 +957,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -959,6 +972,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
