@@ -58,7 +58,7 @@
 - (LoginInputView *)accountView {
     if (!_accountView) {
         
-        LoginInputView *accountView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"phone_logo"] placeHolder:@"请输入手机号" ShowVerifyButton:NO];
+        LoginInputView *accountView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"mobile"] placeHolder:@"请输入手机号" textFieldType:TextFieldTypeAccount];
         accountView.textField.keyboardType = UIKeyboardTypeNumberPad;
         _accountView = accountView;
         
@@ -69,7 +69,7 @@
 - (LoginInputView *)passwordView {
     if (!_passwordView) {
         
-        LoginInputView *passwordView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"code_logo"] placeHolder:@"请输入登录密码" ShowVerifyButton:NO];
+        LoginInputView *passwordView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"password"] placeHolder:@"请输入登录密码" textFieldType:TextFieldTypePassWord];
         passwordView.textField.secureTextEntry = YES;
         _passwordView = passwordView;
     }
@@ -79,7 +79,7 @@
 - (LoginInputView *)captchaView {
     if (!_captchaView) {
         
-        LoginInputView *captchaView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"message_logo"] placeHolder:@"请输入短信验证码" ShowVerifyButton:YES];
+        LoginInputView *captchaView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"message_logo"] placeHolder:@"请输入短信验证码" textFieldType:TextFieldTypeCaptcha];
         captchaView.textField.secureTextEntry = YES;
         _captchaView = captchaView;
     }
@@ -87,15 +87,6 @@
     
 }
 
-- (LoginInputView *)invitationView {
-    if (!_invitationView) {
-        
-        LoginInputView *invitationView = [[LoginInputView alloc] initWithImageIcon:[UIImage imageNamed:@"person_logo"] placeHolder:@"请输入邀请人" ShowVerifyButton:NO];
-        invitationView.textField.secureTextEntry = YES;
-        _invitationView = invitationView;
-    }
-    return _invitationView;
-}
 
 - (void)addLineToView:(UIView *)view separatorStyle:(ATCommonCellSeparatorStyle)separatorStyle {
     
@@ -127,6 +118,11 @@
     UILabel *find_label = (UILabel *)[view viewWithTag:999];
     [find_label removeFromSuperview];
     
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self.view endEditing:YES];
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "ConfirmButtonView.h"
-
+#import "UIImage+AT.h"
 @implementation ConfirmButtonView
 
 + (instancetype)confirmButtonViewWithTitle:(NSString *)title andButtonClickedBlock:(void(^)(UIButton * button))block {
@@ -21,11 +21,15 @@
     [clickButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.top.equalTo(bgView);
     }];
-    [clickButton setBackgroundImage:[UIImage imageNamed:@"enterButton"] forState:UIControlStateNormal];
+
+    [clickButton setBackgroundImage:[UIImage imageWithColor:UIColorFromRGB(0x3f88cd)] forState:UIControlStateNormal];
+    [clickButton setBackgroundImage:[UIImage imageWithColor:UIColorFromRGB(0x2c6ca7)] forState:UIControlStateHighlighted];
+
     [clickButton  setTitleColor:[Theme colorWhite] forState:UIControlStateNormal];
     [clickButton setTitle:title forState:UIControlStateNormal];
     
     [clickButton  bk_whenTapped:^{
+        
         if (block) {
             block(clickButton);
         }

@@ -29,8 +29,6 @@ typedef NS_ENUM(NSUInteger, ATCommonCellSeparatorStyle) {
 @property (nonatomic, strong) LoginInputView *captchaView;
 
 
-@property (nonatomic, strong) LoginInputView *invitationView;
-
 - (void)countDown;
 
 - (void)addLineToView:(UIView *)view separatorStyle:(ATCommonCellSeparatorStyle)separatorStyle;

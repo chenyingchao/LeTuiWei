@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "MBProgressHUD+AT.h"
+#import "SVProgressHUD.h"
 
 @interface BaseViewController ()
 
@@ -107,5 +109,111 @@
 - (BOOL)isHiddenNavigationBarShadowImage {
     return NO;
 }
+
+
+- (void)showErrorMessage:(NSString *)message {
+    if (!message.length) {
+        return;
+    }
+    [MBProgressHUD showError:message];
+}
+
+- (void)showSuccessMessage:(NSString *)message {
+    if (!message.length) {
+        return;
+    }
+    [MBProgressHUD showSuccess:message];
+}
+
+- (void)showPlainMessage:(NSString *)message {
+    if (!message.length) {
+        return;
+    }
+    [MBProgressHUD showMessage:message];
+}
+
+- (void)showErrorMessage:(NSString *)message toView:(UIView *)view {
+    if (!message.length) {
+        return;
+    }
+    [MBProgressHUD showError:message toView:view];
+}
+
+- (void)showSuccessMessage:(NSString *)message toView:(UIView *)view {
+    if (!message.length) {
+        return;
+    }
+    [MBProgressHUD showSuccess:message toView:view];
+}
+
+- (void)showPlainMessage:(NSString *)message toView:(UIView *)view {
+    if (!message.length) {
+        return;
+    }
+    [MBProgressHUD showMessage:message toView:view];
+}
+
+- (void)dismissHudView {
+    [MBProgressHUD hideHUD];
+}
+
+- (void)showModalLoading {
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+    [SVProgressHUD setForegroundColor:[Theme colorThemeColor]];
+    [SVProgressHUD show];
+    
+    //TODO::
+    //    NSString *loadingImg = [self getLoadingImageName];
+    //    if (loadingImg.length) {
+    //        [ATHudView setGifWithImageName:loadingImg];
+    //        [ATHudView showWithOverlay];
+    //    } else {
+    //        // show default loading
+    //        // TODO, we use MBProgressHud to display the 'default' loading view,
+    //        //  ---lack of UX resources for this kind of loading.
+    //        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:ATKeyWindow animated:YES];
+    //        hud.mode = MBProgressHUDAnimationFade;
+    //        hud.removeFromSuperViewOnHide = YES;
+    //    }
+}
+
+- (void)showModalLoadingWithMessage:(NSString *)message {
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.9]];
+    [SVProgressHUD setForegroundColor:[Theme colorThemeColor]];
+    [SVProgressHUD showWithStatus:message];
+    
+    //TODO::
+    //    NSString *loadingImg = [self getLoadingImageName];
+    //    if (loadingImg.length) {
+    //        [ATHudView setGifWithImageName:loadingImg andLaodingMessage:message];
+    //        [ATHudView showWithOverlay];
+    //    } else {
+    //        // show default loading
+    //        // TODO, we use MBProgressHud to display the 'default' loading view,
+    //        //  ---lack of UX resources for this kind of loading.
+    //        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:ATKeyWindow animated:YES];
+    //        hud.mode = MBProgressHUDAnimationFade;
+    //        hud.removeFromSuperViewOnHide = YES;
+    //    }
+}
+
+- (void)dismissModalLoadingView {
+    [SVProgressHUD dismiss];
+    //    NSString *loadingImg = [self getLoadingImageName];
+    //    if (loadingImg.length) {
+    //        [ATHudView dismiss];
+    //    } else {
+    //        [MBProgressHUD hideHUDForView:ATKeyWindow animated:YES];
+    //    }
+}
+
+
+
+
+
+
 
 @end

@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 
 
+typedef NS_ENUM(NSUInteger, TextFieldType) {
+    TextFieldTypeCommon,
+    TextFieldTypeAccount,
+    TextFieldTypePassWord,
+    TextFieldTypeCaptcha,
+    
+
+};
+
 @interface LoginInputView : UIView
 
 @property (nonatomic, weak) UIImageView *iconImageView;
@@ -23,8 +32,8 @@
 
 @property (nonatomic,copy) void (^verifyButtonClickedBlock)();
 
-- (instancetype)initWithImageIcon:(UIImage *)icon placeHolder:(NSString *)placeHolder ShowVerifyButton:(BOOL)isShowVerifyButton;
-
 - (instancetype)initWithTitle:(NSString *)title placeHolder:(NSString *)placeHolder;
+
+- (instancetype)initWithImageIcon:(UIImage *)icon placeHolder:(NSString *)placeHolder textFieldType:(TextFieldType)type;
 
 @end

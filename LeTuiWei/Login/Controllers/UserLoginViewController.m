@@ -8,6 +8,7 @@
 
 #import "UserLoginViewController.h"
 #import "ConfirmButtonView.h"
+#import "UIButton+text.h"
 @interface UserLoginViewController ()<UIScrollViewDelegate>
 
 @end
@@ -16,6 +17,7 @@
 
 - (void)loadView {
     [super loadView];
+    [self setupView];
     
 }
 
@@ -31,59 +33,82 @@
     
 }
 
+#pragma mark 登录
+- (void)userLgoin {
+    
+    OIDevLog(@"%@", self.accountView.textField.text);
+    OIDevLog(@"%@", self.passwordView.textField.text);
+    
+    
+    if ( self.accountView.textField.text.length != 11) {
+        [self showErrorMessage:@"请输入11位手机号"];
+    }
+    
+    
+}
+
+#pragma mark 忘记密码
+- (void)forgetCode {
+
+}
+
+#pragma mark 注册账号
+- (void)registerAccount {
+
+}
 
 - (void)setupView {
     WS(weakSelf);
-    UIScrollView *bgScrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
-    [bgScrollView setContentSize:CGSizeMake(0, (kScreenHeight + 10))];
-    bgScrollView.delegate = self;
-    bgScrollView.showsHorizontalScrollIndicator=NO;
-    bgScrollView.showsVerticalScrollIndicator=NO;
-    bgScrollView.userInteractionEnabled=YES;
-    [self.view addSubview:bgScrollView];
-    [bgScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf.view);
+
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:bgImageView];
+    bgImageView.image = [UIImage imageNamed:@"loginbg"];
+    [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+         make.edges.equalTo(weakSelf.view);
     }];
+    bgImageView.userInteractionEnabled = YES;
     
     UIImageView *titleImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [bgScrollView addSubview:titleImageView];
-    titleImageView.image = [UIImage imageNamed:@"oilinstalments_icon"];
+    [bgImageView addSubview:titleImageView];
+    titleImageView.image = [UIImage imageNamed:@"companyLogo"];
     [titleImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(bgScrollView);
-        make.top.equalTo(bgScrollView.mas_top).offset([Theme paddingWithSize:124]);
+        make.centerX.equalTo(bgImageView);
+        make.top.equalTo(bgImageView.mas_top).offset([Theme paddingWithSize:216]);
     }];
     
     UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLable.text = @"欢迎来到乐推微";
-    titleLable.font = [Theme fontWithSize36];
-    titleLable.tintColor = [Theme colorDarkGray];
-    [bgScrollView addSubview:titleLable];
+    titleLable.font = [Theme fontWithSize32];
+    titleLable.textColor = [Theme colorWhite];
+    [bgImageView addSubview:titleLable];
     [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(bgScrollView);
-        make.top.equalTo(titleImageView.mas_bottom).offset([Theme paddingWithSize24]);
+        make.centerX.equalTo(weakSelf.view);
+        make.top.equalTo(titleImageView.mas_bottom).offset([Theme paddingWithSize:30]);
     }];
     
-    [bgScrollView addSubview:self.accountView];
+    [bgImageView addSubview:self.accountView];
     [self.accountView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(titleLable.mas_bottom).offset([Theme paddingWithSize:58]);
-        make.left.equalTo(weakSelf.view);
-        make.right.equalTo(weakSelf.view);
+        make.left.equalTo(weakSelf.view).offset([Theme paddingWithSize40]);
+        make.right.equalTo(weakSelf.view).offset(-[Theme paddingWithSize40]);
         make.height.equalTo(@([Theme paddingWithSize:104]));
     }];
     
-    [bgScrollView addSubview:self.passwordView];
+    [self addLineToView:self.accountView separatorStyle:ATCommonCellSeparatorStyleFullLength];
+    
+    [bgImageView addSubview:self.passwordView];
     [self.passwordView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.accountView.mas_bottom);
-        make.left.equalTo(weakSelf.view);
-        make.right.equalTo(weakSelf.view);
+        make.left.equalTo(weakSelf.view).offset([Theme paddingWithSize40]);
+        make.right.equalTo(weakSelf.view).offset(-[Theme paddingWithSize40]);
         make.height.equalTo(@([Theme paddingWithSize:104]));
     }];
     
     ConfirmButtonView *loginView = [ConfirmButtonView confirmButtonViewWithTitle:@"登录" andButtonClickedBlock:^(UIButton *button) {
-        //[weakSelf userLgoin];
+        [weakSelf userLgoin];
     }];
     
-    [bgScrollView addSubview:loginView];
+    [bgImageView addSubview:loginView];
     
     [loginView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view.mas_left).offset([Theme paddingWithSize36]);
@@ -92,8 +117,57 @@
         make.height.equalTo(@([Theme paddingWithSize:88]));
     }];
     
+    
+    UIButton *forgetCodeButton = [[UIButton alloc] initWithFrame:CGRectZero withTitle:@"忘记密码？" withTitleColor:UIColorFromRGB(0x5f6c92)  withFont: [Theme fontWithSize28] andButtonClickedBlock:^(UIButton *button) {
+        [weakSelf forgetCode];
+  
+    }];
+    [bgImageView addSubview:forgetCodeButton];
+    [forgetCodeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.view);
+        make.top.equalTo(loginView.mas_bottom).offset([Theme paddingWithSize:30]);
+    }];
+    
+    UIButton *registerButton = [[UIButton alloc] initWithFrame:CGRectZero withTitle:@"还没有账号，点此注册" withTitleColor:UIColorFromRGB(0x3f88cd) withFont: [Theme fontWithSize28] andButtonClickedBlock:^(UIButton *button) {
+        [weakSelf registerAccount];
+
+    }];
+    
+    [bgImageView addSubview:registerButton];
+    [registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.view);
+        make.bottom.equalTo(weakSelf.view.mas_bottom).offset(-[Theme paddingWithSize:138]);
+    }];
+    
+    
+    UILabel * seperatorLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    seperatorLabel.backgroundColor = UIColorFromRGB(0x3f88cd);
+    [bgImageView addSubview:seperatorLabel];
+   
+    [seperatorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bgImageView).offset([Theme paddingWithSize32]);
+        make.right.equalTo(registerButton.mas_left).offset(-[Theme paddingWithSize32]);
+        make.height.equalTo(@(kSeparatorHeight));
+        make.centerY.equalTo(registerButton);
+    }];
+    
+    
+    UILabel * seperatorLabel1 = [[UILabel alloc] initWithFrame:CGRectZero];
+    seperatorLabel1.backgroundColor = UIColorFromRGB(0x3f88cd);
+    [bgImageView addSubview:seperatorLabel1];
+    
+    [seperatorLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(registerButton.mas_right).offset([Theme paddingWithSize32]);
+        make.right.equalTo(bgImageView).offset(-[Theme paddingWithSize32]);
+        make.height.equalTo(@(kSeparatorHeight));
+        make.centerY.equalTo(registerButton);
+    }];
+
+
 
 }
+
+
 
 
 
