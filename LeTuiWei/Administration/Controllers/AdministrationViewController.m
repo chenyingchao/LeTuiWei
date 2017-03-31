@@ -14,6 +14,7 @@
 #import "UserLoginViewController.h"
 #import "BaseNavigationController.h"
 #import "AddStoresViewController.h"
+#import "StoresListViewController.h"
 @interface AdministrationViewController ()<UITableViewDataSource, UITableViewDelegate, AlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) NSMutableArray *footerSectionArray;
 
 @property (nonatomic, strong) CustomAlertView *versionAlertView;
+
+@property (nonatomic, assign) BOOL isStore;
 
 @end
 
@@ -69,10 +72,8 @@
         model.headerImage = footerImageArray[i];
         model.headerTitle = footerTitleArray[i];
         if ([footerTitleArray[i] isEqualToString:@"检测更新"]) {
-            NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-            NSString *app_Version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-
-             model.rightLabel = [NSString stringWithFormat:@"v%@",app_Version];
+     
+             model.rightLabel = [NSString stringWithFormat:@"v%@",APP_Version];
         } else {
              model.rightLabel = @"";
         }
@@ -128,16 +129,27 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if (indexPath.section == 0) {
+  
         ModifyCodeViewController *modifyCodeVC = [[ModifyCodeViewController alloc] init];
         [self.navigationController pushViewController:modifyCodeVC animated:YES];
     }
-    
+
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
-            AddStoresViewController *addStoresVC = [[AddStoresViewController alloc] init];
-            [self.navigationController pushViewController:addStoresVC animated:YES];
+            //判断是否有门店
+            _isStore = YES;
+            if (_isStore) {
+                StoresListViewController *storelistVC = [[StoresListViewController alloc] init];
+                [self.navigationController pushViewController:storelistVC animated:YES];
+                
+            } else {
+                
+                AddStoresViewController *addStoresVC = [[AddStoresViewController alloc] init];
+                [self.navigationController pushViewController:addStoresVC animated:YES];
+            }
+           
         } else if (indexPath.row == 1) {
-        
+          
           [self.versionAlertView showAlertView:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机" withType:AlertViewTypeAddAccount];
         }
         
@@ -146,7 +158,13 @@
     
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
+            
+            if ([APP_Version floatValue] < 1) {
             [self.versionAlertView showAlertView:@"确定要升级吗" withType:AlertViewTypeIKnow];
+            } else {
+            [self.versionAlertView showAlertView:@"已是最新版本" withType:AlertViewTypeCommon];
+            }
+    
         }
         
         if (indexPath.row == 1) {
@@ -169,6 +187,16 @@
         [self presentViewController:nav animated:YES completion:nil];
         
     }
+    
+    if ([title isEqualToString:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机"]) {
+        if ([button.titleLabel.text isEqualToString:@"知道了，我已购买"]) {
+            NSLog(@"知道了，我已购买");
+        } else if ([button.titleLabel.text isEqualToString:@"未购买，点击了解门派店收银机"]) {
+            NSLog(@"未购买，点击了解门派店收银机");
+        }
+    }
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

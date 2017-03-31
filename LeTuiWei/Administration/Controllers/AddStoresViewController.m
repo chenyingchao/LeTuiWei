@@ -10,6 +10,7 @@
 #import "AddStoresViewCell.h"
 #import "ConfirmButtonView.h"
 #import "CustomPickerView.h"
+#import "AddStoresViewModel.h"
 @interface AddStoresViewController ()<UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -17,6 +18,8 @@
 @property (nonatomic, strong) NSArray *titleArray;
 
 @property (nonatomic, strong) CustomPickerView *pickerView;
+
+@property (nonatomic, strong) AddStoresViewModel *storeModel;
 
 
 @end
@@ -34,8 +37,12 @@
     tap.delegate = self;
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
+    
+    self.storeModel = [[AddStoresViewModel   alloc] init];
+    
 }
 
+#pragma mark 提交门店信息
 - (void)submitStoreInfo {
 
 
@@ -71,7 +78,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSLog(@"点击");
     if (indexPath.row == 5) {
         [self.pickerView show];
         WS(weakSelf);
@@ -85,11 +91,14 @@
 
 - (void)provinceName:(NSString *)province city:(NSString *)city county:(NSString *)county {
     NSLog(@"%@   %@   %@", province, city, county);
+    
+    self.storeModel.storeArea = [NSString stringWithFormat:@"%@ %@ %@", province, city, county];
+    [self.tableView reloadData];
 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(weakSelf);
     AddStoresViewCell *cell = nil;
 
     switch (indexPath.row) {
@@ -97,7 +106,10 @@
             cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"如国美、麦当劳";
-            
+            cell.cellTextField.text = self.storeModel.MerchantName;
+            cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+                weakSelf.storeModel.MerchantName = textField.text;
+            };
         
         }
             
@@ -106,7 +118,10 @@
             cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"如西单店，将与商户名合并展示";
-            
+            cell.cellTextField.text = self.storeModel.storeName;
+            cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+                weakSelf.storeModel.storeName = textField.text;
+            };
             
         }
             
@@ -116,7 +131,10 @@
             cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextFieldMoney.placeholder = @"请填写";
-            
+            cell.cellTextField.text = self.storeModel.personCapita;
+            cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+                weakSelf.storeModel.personCapita = textField.text;
+            };
             
         }
             
@@ -126,6 +144,10 @@
             cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"区号-电话，如010-67085435";
+            cell.cellTextField.text = self.storeModel.phoneNum;
+            cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+                weakSelf.storeModel.phoneNum = textField.text;
+            };
             
             
         }
@@ -145,7 +167,8 @@
         case 5: {
             cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
-            cell.cellContentLabel.text = @"选择";
+            cell.cellContentLabel.text = self.storeModel.storeArea.length > 0 ? self.storeModel.storeArea : @"选择";
+            cell.cellContentLabel.textColor = self.storeModel.storeArea.length > 0 ? [Theme colorDarkGray] : [Theme colorForTextPlaceHolder];
             
             
         }
@@ -156,7 +179,10 @@
             cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"请填写";
-            
+            cell.cellTextField.text = self.storeModel.detailAddress;
+            cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+                weakSelf.storeModel.detailAddress = textField.text;
+            };
             
         }
             

@@ -10,17 +10,21 @@
 
 @interface AddStoresViewModel : BaseModel
 
-@property (nonatomic, copy) NSString *termDepart;
+@property (nonatomic, copy) NSString *MerchantName;
 
 @property (nonatomic, copy) NSString *storeName;
 
-@property (nonatomic, copy) NSString *airportCodeFrom;
+@property (nonatomic, copy) NSString *personCapita;
 
-@property (nonatomic, copy) NSString *airportCodeTo;
+@property (nonatomic, copy) NSString *phoneNum;
 
-@property (nonatomic, copy) NSString *cityCodeFrom;
+@property (nonatomic, copy) NSString *operateCategories;
 
-@property (nonatomic, copy) NSString *cityCodeTo;
+@property (nonatomic, copy) NSString *storeArea;
+
+@property (nonatomic, copy) NSString *detailAddress;
+
+@property (nonatomic, copy) NSString *storeCoordinate;
 
 
 @end

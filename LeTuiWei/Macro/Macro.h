@@ -77,4 +77,6 @@ CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].siz
 
 #define kSeparatorHeight  0.5f
 
+#define APP_Version  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
 

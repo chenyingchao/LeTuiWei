@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, AlertViewType) {
 
 - (void)requestEventAction:(UIButton *)button withAlertTitle:(NSString *)title;
 
-- (void)otherRequestEventAction:(UIButton *)button withAlertTitle:(NSString *)title;
+- (void)spaceRequestEventAction:(UIButton *)button withAlertTitle:(NSString *)title;
 
 @end
 

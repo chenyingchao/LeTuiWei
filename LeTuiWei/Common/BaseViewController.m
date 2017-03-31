@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [Theme colorWhite];
+    
     [self setupNavigationBar:self.navigationController];
     if (self.navigationController.viewControllers.count > 1) {
         [self setUpNavigationBarLeftBack];
@@ -28,6 +29,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
+    self.tabBarController.tabBar.hidden = NO;
+    if (self.navigationController.viewControllers.count > 1) {
+        [self setUpNavigationBarLeftBack];
+        self.tabBarController.tabBar.hidden = YES;
+    }
 }
 
 

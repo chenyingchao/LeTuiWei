@@ -16,6 +16,8 @@
 		73060F6B1E8E023A0087A9B5 /* sheng.json in Resources */ = {isa = PBXBuildFile; fileRef = 73060F681E8E023A0087A9B5 /* sheng.json */; };
 		73060F6C1E8E023A0087A9B5 /* shi.json in Resources */ = {isa = PBXBuildFile; fileRef = 73060F691E8E023A0087A9B5 /* shi.json */; };
 		73060F6D1E8E023A0087A9B5 /* xian.json in Resources */ = {isa = PBXBuildFile; fileRef = 73060F6A1E8E023A0087A9B5 /* xian.json */; };
+		73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */; };
+		73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F721E8E441E0087A9B5 /* StoresListViewCell.m */; };
 		7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */; };
 		7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4391E8B4DD300FF1156 /* SVProgressAnimatedView.m */; };
 		7331D4421E8B4DD300FF1156 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7331D43B1E8B4DD300FF1156 /* SVProgressHUD.bundle */; };
@@ -96,6 +98,10 @@
 		73060F681E8E023A0087A9B5 /* sheng.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sheng.json; sourceTree = "<group>"; };
 		73060F691E8E023A0087A9B5 /* shi.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shi.json; sourceTree = "<group>"; };
 		73060F6A1E8E023A0087A9B5 /* xian.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = xian.json; sourceTree = "<group>"; };
+		73060F6E1E8E367A0087A9B5 /* StoresListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoresListViewController.h; sourceTree = "<group>"; };
+		73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewController.m; sourceTree = "<group>"; };
+		73060F711E8E441E0087A9B5 /* StoresListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoresListViewCell.h; sourceTree = "<group>"; };
+		73060F721E8E441E0087A9B5 /* StoresListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewCell.m; sourceTree = "<group>"; };
 		7331D4361E8B4DD300FF1156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		7331D4381E8B4DD300FF1156 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -424,6 +430,8 @@
 				73F51F1A1E8CF52D00A075A8 /* StoresAdminViewController.m */,
 				73F51F1C1E8CF55800A075A8 /* AddStoresViewController.h */,
 				73F51F1D1E8CF55800A075A8 /* AddStoresViewController.m */,
+				73060F6E1E8E367A0087A9B5 /* StoresListViewController.h */,
+				73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -446,6 +454,8 @@
 				735927E51E8C9394001AB915 /* AdministrationViewCell.m */,
 				73F51F1F1E8D024100A075A8 /* AddStoresViewCell.h */,
 				73F51F201E8D024100A075A8 /* AddStoresViewCell.m */,
+				73060F711E8E441E0087A9B5 /* StoresListViewCell.h */,
+				73060F721E8E441E0087A9B5 /* StoresListViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -912,10 +922,12 @@
 				73F51F0F1E8CA0CF00A075A8 /* AdministrationViewModel.m in Sources */,
 				73F51F211E8D024100A075A8 /* AddStoresViewCell.m in Sources */,
 				73F51F0C1E8CA0A100A075A8 /* BaseModel.m in Sources */,
+				73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */,
 				7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */,
 				73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */,
 				73F51F151E8CD63B00A075A8 /* CustomAlertView.m in Sources */,
 				7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */,
+				73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */,
 				73F51F121E8CADAB00A075A8 /* ModifyCodeViewController.m in Sources */,
 				73FC94521E8A4B9D0006722E /* main.m in Sources */,
 				73FC94D11E8A6A010006722E /* NSString+AT.m in Sources */,
