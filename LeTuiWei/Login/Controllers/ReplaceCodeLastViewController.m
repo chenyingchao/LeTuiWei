@@ -63,7 +63,7 @@
         make.height.equalTo(@([Theme paddingWithSize:90]));
     }];
     
-    [self addLineToView:self.captchaView separatorStyle:ATCommonCellSeparatorStyleFullLength];
+    [self addLineToView:self.captchaView separatorStyle:SeparatorStyleFullLength];
     
     self.captchaView.verifyButtonClickedBlock = ^(UIButton *button) {
         

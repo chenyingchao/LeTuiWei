@@ -19,13 +19,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
+    NSString *didLogin = @"2";
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-   // self.window.rootViewController = [[BaseTabBarController alloc] init];
+
+    if ([didLogin isEqualToString:@"1"]) {
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:[[UserLoginViewController alloc] init]];
+        self.window.rootViewController = nav;
+    } else {
     
-    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:[[UserLoginViewController alloc] init]];
-    self.window.rootViewController = nav;
+        self.window.rootViewController = [[BaseTabBarController alloc] init];
+    }
+
+ 
     [self.window makeKeyAndVisible];
     return YES;
 }

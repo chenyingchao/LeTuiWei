@@ -88,7 +88,7 @@
 }
 
 
-- (void)addLineToView:(UIView *)view separatorStyle:(ATCommonCellSeparatorStyle)separatorStyle {
+- (void)addLineToView:(UIView *)view separatorStyle:(SeparatorStyle)separatorStyle {
     
     [self removeLine:view];
     
@@ -96,13 +96,21 @@
     seperatorLabel.backgroundColor = [Theme colorBlackWithAlpha:0.3];
     [view addSubview:seperatorLabel];
     seperatorLabel.tag = 999;
-    if (separatorStyle == ATCommonCellSeparatorStyleDefault) {
+    if (separatorStyle == SeparatorStyleDefault) {
         [seperatorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(view).offset([Theme paddingWithSize36]);
             make.right.equalTo(view);
             make.height.equalTo(@(kSeparatorHeight));
             make.bottom.equalTo(view);
         }];
+    } else if (separatorStyle == SeparatorStyleHalfWithRight) {
+        [seperatorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(view).offset([Theme paddingWithSize36]);
+            make.right.equalTo(view).offset(-[Theme paddingWithSize36]);
+            make.height.equalTo(@(kSeparatorHeight));
+            make.bottom.equalTo(view);
+        }];
+    
     } else {
         [seperatorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(view);

@@ -96,7 +96,7 @@
         make.height.equalTo(@([Theme paddingWithSize:104]));
     }];
     
-    [self addLineToView:self.accountView separatorStyle:ATCommonCellSeparatorStyleFullLength];
+    [self addLineToView:self.accountView separatorStyle:SeparatorStyleFullLength];
     
     [bgImageView addSubview:self.passwordView];
     [self.passwordView mas_makeConstraints:^(MASConstraintMaker *make) {

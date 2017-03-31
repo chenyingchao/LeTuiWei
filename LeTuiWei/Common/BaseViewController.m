@@ -32,7 +32,7 @@
 
 
 - (void)setupNavigationBar:(UINavigationController *)naviController {
-    naviController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[Theme colorWhite], NSFontAttributeName:[Theme fontWithSize40]};
+    naviController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[Theme colorWhite], NSFontAttributeName:[Theme fontWithSize36]};
     self.navigationController.navigationBar.barTintColor = [Theme colorForAppearance];
     self.navigationController.navigationBar.translucent = NO;
 }

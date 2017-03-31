@@ -9,13 +9,13 @@
 #import "BaseViewController.h"
 #import "LoginInputView.h"
 
-typedef NS_ENUM(NSUInteger, ATCommonCellSeparatorStyle) {
-    ATCommonCellSeparatorStyleDefault,
-    ATCommonCellSeparatorStyleFullLength,
-    ATCommonCellSeparatorStyleHalfLength,
-    ATCommonCellSeparatorStyleSymmetricalDefault,
-    ATCommonCellSeparatorStyleHalfWithRight,
-    ATCommonCellSeparatorStyleNone,
+typedef NS_ENUM(NSUInteger, SeparatorStyle) {
+    SeparatorStyleDefault,
+    SeparatorStyleFullLength,
+    SeparatorStyleHalfLength,
+    SeparatorStyleSymmetricalDefault,
+    SeparatorStyleHalfWithRight,
+    SeparatorStyleNone,
 };
 
 
@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, ATCommonCellSeparatorStyle) {
 
 - (void)countDown;
 
-- (void)addLineToView:(UIView *)view separatorStyle:(ATCommonCellSeparatorStyle)separatorStyle;
+- (void)addLineToView:(UIView *)view separatorStyle:(SeparatorStyle)separatorStyle;
 
 - (void)removeLine:(UIView *)view;
 

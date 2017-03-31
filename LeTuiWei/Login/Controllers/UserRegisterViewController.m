@@ -75,7 +75,7 @@
         make.right.equalTo(bgView);
         make.height.equalTo(@([Theme paddingWithSize:90]));
     }];
-    [self addLineToView:self.accountView separatorStyle:ATCommonCellSeparatorStyleFullLength];
+    [self addLineToView:self.accountView separatorStyle:SeparatorStyleFullLength];
     
     [bgView addSubview:self.captchaView];
     self.captchaView.delegate = self;
@@ -86,7 +86,7 @@
         make.height.equalTo(@([Theme paddingWithSize:90]));
     }];
     
-    [self addLineToView:self.captchaView separatorStyle:ATCommonCellSeparatorStyleFullLength];
+    [self addLineToView:self.captchaView separatorStyle:SeparatorStyleFullLength];
     
     self.captchaView.verifyButtonClickedBlock = ^(UIButton *button) {
         

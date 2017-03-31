@@ -16,7 +16,8 @@
 @implementation LoginInputView
 
 - (instancetype)initWithTitle:(NSString *)title placeHolder:(NSString *)placeHolder {
-    self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:104])];
+    
+    self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:90])];
     if (self) {
         
         WS(weakSelf);
@@ -28,12 +29,14 @@
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(weakSelf).offset([Theme paddingWithSize:46]);
             make.centerY.equalTo(weakSelf.mas_centerY);
+            
+        
 
         }];
 
         //textField
         _textField = [[UITextField alloc] initWithFrame:CGRectZero];
-        _textField.autocorrectionType = UITextAutocorrectionTypeNo;
+        _textField.clearButtonMode=UITextFieldViewModeWhileEditing;
         _textField.font = [Theme fontWithSize30];
         _textField.delegate = self;
         UIColor *textFieldColor = Color(204, 204, 204);
@@ -43,7 +46,13 @@
             make.left.equalTo(titleLabel.mas_right).offset([Theme paddingWithSize20]);
             make.centerY.equalTo(weakSelf.mas_centerY);
             make.height.equalTo(@(weakSelf.frame.size.height));
+            make.right.equalTo(weakSelf).offset(-[Theme paddingWithSize40]);
         }];
+       
+        [titleLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+
+
+
     }
     return self;
     
@@ -145,5 +154,12 @@
 
     [self.delegate  inputViewTextFieldDidEndEditing:textField];
 }
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end

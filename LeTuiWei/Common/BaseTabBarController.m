@@ -26,8 +26,8 @@
 - (void)setupAllChildViewControllers {
     
     NSArray *titleArray = @[@"概况", @"收入", @"管理"];
-    NSArray *normalImageArray =@[@"", @"", @"", @""];
-    NSArray *selectedImageArray =@[@"", @"", @"", @""];
+    NSArray *normalImageArray =@[@"overview", @"income", @"set"];
+    NSArray *selectedImageArray =@[@"overview_fill", @"income_fill", @"set_fill"];
     
     for (int i = 0; i < titleArray.count; i++) {
         if (i == 0) {
@@ -48,7 +48,7 @@
     childVc.title = title;
     
     [childVc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[Theme colorDimGray],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-    [childVc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[Theme colorForTextButtonHilighted],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
+    [childVc.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[Theme colorForAppearance],NSForegroundColorAttributeName, nil] forState:UIControlStateSelected];
     [childVc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3 )];
     
     
