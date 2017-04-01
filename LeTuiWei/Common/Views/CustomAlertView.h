@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class  CustomAlertView;
 typedef NS_ENUM(NSUInteger, AlertViewType) {
     AlertViewTypeCommon = 0,
     AlertViewTypeIKnow,
@@ -19,7 +19,8 @@ typedef NS_ENUM(NSUInteger, AlertViewType) {
 
 - (void)requestEventAction:(UIButton *)button withAlertTitle:(NSString *)title;
 
-- (void)spaceRequestEventAction:(UIButton *)button withAlertTitle:(NSString *)title;
+
+- (void)alertView:(CustomAlertView *)alertView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -31,5 +32,8 @@ typedef NS_ENUM(NSUInteger, AlertViewType) {
 - (void)showAlertView:(NSString *)title withType:(AlertViewType)type;
 
 - (void)closeView;
+
+
+- (void)showAlertView:(NSString *)title withDataScoure:(id)dataScoure;
 
 @end

@@ -27,7 +27,21 @@
     return self;
 }
 
-
+- (id)initWithFrame:(CGRect)frame withAttributedTitle:(NSAttributedString *)AttributedTitle withTitleColor:(UIColor *)color withFont:(UIFont *)font andButtonClickedBlock:(void(^)(UIButton * button))block {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        [self setAttributedTitle:AttributedTitle forState:UIControlStateNormal];
+        self.titleLabel.font = font;
+        [self bk_whenTapped:^{
+            if (block) {
+                block(self);
+            }
+            
+        }];
+    }
+    return self;
+}
 
 
 @end

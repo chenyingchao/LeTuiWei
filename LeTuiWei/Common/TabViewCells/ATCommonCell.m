@@ -76,9 +76,11 @@ static const CGFloat kDefautlIconRightMargin = 6;
             self.subTitleLabel.textColor = self.defaultTextColor;
             [self.contentView addSubview:self.subTitleLabel];
             [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(weakSelf).offset(kSubViewLeftMargin * kDeviceScaleFactor);
+               // make.left.equalTo(weakSelf).offset(kSubViewLeftMargin * kDeviceScaleFactor);
+                make.centerX.equalTo(weakSelf);
                 make.centerY.height.equalTo(weakSelf);
             }];
+            
         }
         if (components & ATCommonCellComponentInputTextField) {
             self.inputTextField = [[UITextField alloc] initWithFrame:CGRectZero];

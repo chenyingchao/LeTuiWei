@@ -12,4 +12,7 @@
 
 - (id)initWithFrame:(CGRect)frame withTitle:(NSString *)title withTitleColor:(UIColor *)color withFont:(UIFont *)font andButtonClickedBlock:(void(^)(UIButton * button))block;
 
+
+- (id)initWithFrame:(CGRect)frame withAttributedTitle:(NSAttributedString *)AttributedTitle withTitleColor:(UIColor *)color withFont:(UIFont *)font andButtonClickedBlock:(void(^)(UIButton * button))block;
+
 @end

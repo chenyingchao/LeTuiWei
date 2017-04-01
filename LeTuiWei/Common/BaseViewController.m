@@ -46,18 +46,18 @@
 
 
 - (void)setUpNavigationBarLeftBack {
-    UIView *leftContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, kNavigationBarHeight)];
+    UIView *leftContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kNavigationBarHeight, kNavigationBarHeight)];
    
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftContainerView addSubview:backBtn];
-   
-    [backBtn setBackgroundImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
-   
+
+    [backBtn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
+     [backBtn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateHighlighted];
+      [backBtn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateSelected];
     backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
       
     [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(leftContainerView);
-        make.centerY.equalTo(leftContainerView);
+        make.left.top.right.bottom.equalTo(leftContainerView);
     }];
     
     WS(weakSelf);

@@ -8,6 +8,7 @@
 
 #import "LoginInputView.h"
 
+
 @interface LoginInputView ()<UITextFieldDelegate>
 
 
@@ -33,7 +34,8 @@
         
 
         }];
-
+      CGFloat width =  [@"这是五个字" boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [Theme fontWithSize30]} context:nil].size.width;
+      
         //textField
         _textField = [[UITextField alloc] initWithFrame:CGRectZero];
         _textField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -43,7 +45,7 @@
         _textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeHolder attributes:@{NSForegroundColorAttributeName: textFieldColor}];
         [self addSubview:_textField];
         [_textField mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(titleLabel.mas_right).offset([Theme paddingWithSize20]);
+            make.left.equalTo(weakSelf).offset([Theme paddingWithSize:46]  + width + [Theme paddingWithSize32]);
             make.centerY.equalTo(weakSelf.mas_centerY);
             make.height.equalTo(@(weakSelf.frame.size.height));
             make.right.equalTo(weakSelf).offset(-[Theme paddingWithSize40]);
@@ -149,6 +151,8 @@
     }
     return self;
 }
+
+
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
 

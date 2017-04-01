@@ -15,6 +15,8 @@
 #import "BaseNavigationController.h"
 #import "AddStoresViewController.h"
 #import "StoresListViewController.h"
+#import "addStoreAccountViewController.h"
+#import "StoreAccountManagerViewController.h"
 @interface AdministrationViewController ()<UITableViewDataSource, UITableViewDelegate, AlertViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -25,9 +27,11 @@
 
 @property (nonatomic, strong) NSMutableArray *footerSectionArray;
 
-@property (nonatomic, strong) CustomAlertView *versionAlertView;
+@property (nonatomic, strong) CustomAlertView *customAlertView;
 
 @property (nonatomic, assign) BOOL isStore;
+
+@property (nonatomic, assign) BOOL isStoreAccount;
 
 @end
 
@@ -149,8 +153,27 @@
             }
            
         } else if (indexPath.row == 1) {
+          _isStore = YES;
+            _isStoreAccount = YES;
+            if (_isStore) {
+                
+                if (_isStoreAccount) {
+                    //如果有账号  取选择门店
+                    [self.customAlertView showAlertView:@"请选择添加账号的门店" withDataScoure:@[@"常营三兄弟店", @"金老三店", @"海天一色店", @"xxxxx店", @"阿斯达所店"]];
+                    
+                    
+                } else {
+                
+                  [self.customAlertView showAlertView:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机" withType:AlertViewTypeAddAccount];
+                }
+       
+            } else {
+            
+                AddStoresViewController *addStoresVC = [[AddStoresViewController alloc] init];
+                [self.navigationController pushViewController:addStoresVC animated:YES];
+            }
+            
           
-          [self.versionAlertView showAlertView:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机" withType:AlertViewTypeAddAccount];
         }
         
 
@@ -160,43 +183,17 @@
         if (indexPath.row == 0) {
             
             if ([APP_Version floatValue] < 1) {
-            [self.versionAlertView showAlertView:@"确定要升级吗" withType:AlertViewTypeIKnow];
+            [self.customAlertView showAlertView:@"确定要升级吗" withType:AlertViewTypeCommon];
             } else {
-            [self.versionAlertView showAlertView:@"已是最新版本" withType:AlertViewTypeCommon];
+            [self.customAlertView showAlertView:@"已是最新版本" withType:AlertViewTypeIKnow];
             }
     
         }
         
         if (indexPath.row == 1) {
-            [self.versionAlertView showAlertView:@"您确定要退出账号吗？" withType:AlertViewTypeCommon];
+            [self.customAlertView showAlertView:@"您确定要退出账号吗？" withType:AlertViewTypeCommon];
         }
     }
-}
-
-
-#pragma mark 弹窗确定按钮 协议
-- (void)requestEventAction:(UIButton *)button withAlertTitle:(NSString *)title {
-    if ([title isEqualToString:@"确定要升级吗"]) {
-        //跳转去升级
-    }
-    
-    if ([title isEqualToString:@"您确定要退出账号吗？"]) {
-        [self.versionAlertView closeView];
-        UserLoginViewController *loginVC = [[UserLoginViewController alloc] init];
-        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
-        [self presentViewController:nav animated:YES completion:nil];
-        
-    }
-    
-    if ([title isEqualToString:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机"]) {
-        if ([button.titleLabel.text isEqualToString:@"知道了，我已购买"]) {
-            NSLog(@"知道了，我已购买");
-        } else if ([button.titleLabel.text isEqualToString:@"未购买，点击了解门派店收银机"]) {
-            NSLog(@"未购买，点击了解门派店收银机");
-        }
-    }
-    
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -217,6 +214,38 @@
     return cell;;
     
 }
+
+#pragma mark 弹窗确定按钮 协议
+- (void)requestEventAction:(UIButton *)button withAlertTitle:(NSString *)title {
+    if ([title isEqualToString:@"确定要升级吗"]) {
+        //跳转去升级
+    }
+    
+    if ([title isEqualToString:@"您确定要退出账号吗？"]) {
+        
+        UserLoginViewController *loginVC = [[UserLoginViewController alloc] init];
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:nil];
+        
+    }
+    
+    if ([title isEqualToString:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机"]) {
+        if ([button.titleLabel.text isEqualToString:@"知道了，我已购买"]) {
+            addStoreAccountViewController *addStoreAccountVC = [[addStoreAccountViewController alloc] init];
+            [self.navigationController pushViewController:addStoreAccountVC animated:YES];
+        } else if ([button.titleLabel.text isEqualToString:@"未购买，点击了解门派店收银机"]) {
+            NSLog(@"未购买，点击了解门派店收银机");
+        }
+    }
+}
+
+- (void)alertView:(CustomAlertView *)alertView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSLog(@"%ld", (long)indexPath.row);
+    StoreAccountManagerViewController *accountManagerVC = [[StoreAccountManagerViewController    alloc] init];
+    [self.navigationController pushViewController:accountManagerVC animated:YES];
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 
@@ -257,16 +286,16 @@
     return _footerSectionArray;
 }
 
-- (CustomAlertView *)versionAlertView {
-    if (!_versionAlertView) {
-        _versionAlertView = [[CustomAlertView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
+- (CustomAlertView *)customAlertView {
+    if (!_customAlertView) {
+        _customAlertView = [[CustomAlertView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
         
         
-        _versionAlertView.backgroundColor = [UIColor whiteColor];
-        _versionAlertView.delegate = self;
+        _customAlertView.backgroundColor = [UIColor whiteColor];
+        _customAlertView.delegate = self;
     }
 
-    return _versionAlertView;
+    return _customAlertView;
 }
 
 @end
