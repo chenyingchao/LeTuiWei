@@ -34,6 +34,7 @@
  *  @return valid phone number return YES，otherwise return NO
  */
 - (BOOL)isValidateMobileNumber;
+
 - (BOOL)validateMobileNumberOfCountryCode:(NSString *)countryCode;
 
 /**
@@ -64,7 +65,7 @@
 /**
  *  Check a string whether a string format number
  *
- *  @param number a string
+ 
  *
  *  @return if string is a number string return YES,otherwise return NO
  */

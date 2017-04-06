@@ -25,6 +25,19 @@
 @property(nonatomic, strong) UILabel *explainLabel;
 
 @property(nonatomic, strong) UIButton *openButton;
+
+@property(nonatomic, strong)  UILabel *expiredLabel;
+
+@property(nonatomic, strong) UILabel *titleLabel;
+
+@property(nonatomic, assign) BOOL isOpenFunction;
+
+@property(nonatomic, assign) BOOL isExpireFunction;
+
+@property(nonatomic, strong) UIButton *renewButton;
+
+@property (nonatomic, strong) UIButton *unfoldButton;
+
 @end
 
 @implementation StoreAccountManagerViewCell
@@ -52,6 +65,7 @@
                 break;
                 
             default:
+                [self BasicFunctionView:type withDataSource:dataSource];
                 break;
         }
     }
@@ -69,7 +83,19 @@
         make.centerX.centerY.equalTo(weakSelf.contentView);
         make.height.equalTo(@([Theme paddingWithSize:84]));
     }];
-
+    self.unfoldButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.unfoldButton setImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
+    [self.unfoldButton setImage:[UIImage imageNamed:@"up"] forState:UIControlStateSelected];
+    [self.contentView addSubview:self.unfoldButton];
+    [self.unfoldButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.storeNameLabel.mas_right).offset([Theme paddingWithSize10]);
+        make.centerY.equalTo(weakSelf.storeNameLabel);
+    }];
+    
+    [self.unfoldButton bk_whenTapped:^{
+        weakSelf.unfoldButton.selected = !weakSelf.unfoldButton.selected;
+    }];
+    
 
 }
 
@@ -111,6 +137,7 @@
     
     self.changeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.changeLabel.text = type == AccountManagerCellTypeAccount ? @"切换账号" : @"修改密码";
+    self.changeLabel.userInteractionEnabled = YES;
     self.changeLabel.font = [Theme fontWithSize24];
     self.changeLabel.textColor = [Theme colorDimGray];
     [self.contentView addSubview:self.changeLabel];
@@ -122,10 +149,22 @@
     
     [self.accountLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     
+    [self.changeLabel bk_whenTapped:^{
+        
+        if (weakSelf.changeButtonClickedBlock) {
+            weakSelf.changeButtonClickedBlock(type);
+        }
+    }];
+    
+    
 }
 
 - (void)paymentFunctionWithCellType:(AccountManagerCellType)type {
     WS(weakSelf);
+    
+    self.isOpenFunction = type == AccountManagerCellTypeMarketing ? YES:YES;
+    self.isExpireFunction = type == AccountManagerCellTypeMarketing ? NO:YES;
+    
     self.marketingLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.marketingLabel.text = type == AccountManagerCellTypeMarketing ? @"会员营销: ":@"外卖多平台接单";
     self.marketingLabel.font = [Theme fontWithSize30];
@@ -146,12 +185,103 @@
     [self.explainLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.marketingLabel.mas_bottom).offset([Theme paddingWithSize20]);
         make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize32]);
-        make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(-[Theme paddingWithSize36]);
+        if (!weakSelf.isOpenFunction) {
+            make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(-[Theme paddingWithSize36]);
+        }
         make.width.equalTo(@([Theme paddingWithSize:350]));
+    }];
+
+    self.openButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.openButton setTitle:@"查看并开通" forState:UIControlStateNormal];
+    [self.openButton setTitleColor:UIColorFromRGB(0x3f88cd) forState:UIControlStateNormal];
+    self.openButton.titleLabel.font = [Theme fontWithSize24];
+    self.openButton.layer.cornerRadius = 5;
+    self.openButton.layer.masksToBounds = YES;
+    self.openButton.layer.borderWidth = 1;
+    self.openButton.layer.borderColor = UIColorFromRGB(0x3f88cd).CGColor;
+    [self.contentView addSubview:self.openButton];
+    [self.openButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(weakSelf.explainLabel);
+        make.right.equalTo(weakSelf.contentView.mas_right).offset(-[Theme paddingWithSize32]);
+        make.width.equalTo(@([Theme paddingWithSize:160]));
+        make.height.equalTo(@([Theme paddingWithSize:54]));
     }];
     
     
+   
+    self.expiredLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.expiredLabel.text = self.isExpireFunction ? @"已经过期 请及时续费" : @"一开通过，有限期到2020-11-11";
+    NSLog(@"%d", self.isExpireFunction);
+    self.expiredLabel.font = [Theme fontWithSize24];
+    self.expiredLabel.textColor = UIColorFromRGB(0x31c07a);
+    self.expiredLabel.numberOfLines = 0;
+    [self.contentView addSubview:self.expiredLabel];
+    [self.expiredLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.explainLabel.mas_bottom).offset([Theme paddingWithSize20]);
+        make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize32]);
+        make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(-[Theme paddingWithSize36]);
+        make.width.equalTo(@([Theme paddingWithSize:350]));
+    }];
+    self.explainLabel.hidden = YES;
+   //如果已经开通
+    if (self.isOpenFunction) {
+      self.explainLabel.hidden = NO;
+
+        //过期
+        if (self.isExpireFunction) {
+            self.expiredLabel.textColor = UIColorFromRGB(0xff6600);
+           [self.openButton setTitle:@"续费开通" forState:UIControlStateNormal];
+        } else {
+        
+            
+            self.renewButton = [[UIButton alloc] initWithFrame:CGRectZero];
+            [self.renewButton setTitle:@"点此续费" forState:UIControlStateNormal];
+            [self.renewButton setTitleColor:UIColorFromRGB(0x3f88cd) forState:UIControlStateNormal];
+            self.renewButton.titleLabel.font = [Theme fontWithSize24];
+            self.renewButton.layer.borderColor = UIColorFromRGB(0x3f88cd).CGColor;
+            [self.contentView addSubview:self.renewButton];
+            [self.renewButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerY.equalTo(weakSelf.expiredLabel);
+                make.left.equalTo(weakSelf.expiredLabel.mas_right).offset([Theme paddingWithSize32]);
+            }];
+            
+        
+        }
+    }
     
+
+    
+    
+    
+    
+}
+
+- (void)BasicFunctionView:(AccountManagerCellType)type withDataSource:(id)dataSource{
+    WS(weakSelf);
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.titleLabel.text = dataSource[@"title"];
+    self.titleLabel.font = [Theme fontWithSize30];
+    self.titleLabel.textColor = [Theme colorDarkGray];
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.contentView).offset([Theme paddingWithSize36]);
+        make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize32]);
+    }];
+    
+    
+    self.explainLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.explainLabel.text = dataSource[@"content"];
+    self.explainLabel.font = [Theme fontWithSize24];
+    self.explainLabel.textColor = [Theme colorDimGray];
+    self.explainLabel.numberOfLines = 0;
+    [self.contentView addSubview:self.explainLabel];
+    [self.explainLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.titleLabel.mas_bottom).offset([Theme paddingWithSize20]);
+        make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize32]);
+        make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(-[Theme paddingWithSize36]);
+        make.width.equalTo(@([Theme paddingWithSize:350]));
+    }];
+
 }
 
 

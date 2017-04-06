@@ -36,7 +36,7 @@
 /**
  *  等比例拉伸视图
  *
- *  @param width 目标高
+ *  @param height 目标高
  *
  *  @return 目标宽
  */

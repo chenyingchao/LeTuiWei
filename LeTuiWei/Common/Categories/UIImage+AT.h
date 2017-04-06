@@ -34,7 +34,7 @@
 /**
  *  aspectFill image to a given size
  *
- *  @param size
+
  *
  *  @return resized image
  */

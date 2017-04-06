@@ -9,10 +9,15 @@
 #import "StoreAccountManagerViewController.h"
 #import "ConfirmButtonView.h"
 #import "StoreAccountManagerViewCell.h"
+#import "SelectAccountViewController.h"
+#import "UnfoldTabView.h"
 
-@interface StoreAccountManagerViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@interface StoreAccountManagerViewController ()<UITableViewDataSource, UITableViewDelegate, UnfoldTableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) UnfoldTabView *unfoldTabView;
 
 @end
 
@@ -85,13 +90,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.section == 0) {
+        _unfoldTabView = [[UnfoldTabView alloc] initWithDataSource:self andHeight:kScreenHeight - 64 - [Theme paddingWithSize:86]];
+        [self.unfoldTabView show];
+    }
     
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WS(weakSelf);
     StoreAccountManagerViewCell *cell = nil;
     switch (indexPath.section) {
         case 0: {
@@ -105,13 +113,26 @@
             switch (indexPath.row) {
                 case 0: {
                  cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"account" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeAccount];
+                    cell.changeButtonClickedBlock = ^(AccountManagerCellType type){
+                        if (type == AccountManagerCellTypeAccount) {
+                            SelectAccountViewController *selectAccountVC = [[SelectAccountViewController alloc] init];
+                            [weakSelf.navigationController pushViewController:selectAccountVC animated:YES];
+                        }
+
                 
+                    };
                 }
-                    
                     break;
                     
                 case 1: {
                     cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"password" withDataSource:@"xxxx店" cellType:AccountManagerCellTypePassword];
+                    cell.changeButtonClickedBlock = ^(AccountManagerCellType type){
+                        if (type == AccountManagerCellTypePassword) {
+                            NSLog(@"修改密码");
+                        }
+                        
+                        
+                    };
                     
                 }
 
@@ -139,8 +160,8 @@
             
             break;
         case 3: {
-            
-            cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeStoreName];
+            NSArray *dataArray = @[@{@"title": @"收银",@"content":@"可在收银端直接收银"}, @{@"title": @"H5服务",@"content":@"可在收银端直接收银"}, @{@"title": @"打印配置",@"content":@"可在收银端直接收银"}, @{@"title": @"订单统计",@"content":@"可在收银端直接收银"}];
+            cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName" withDataSource:dataArray[indexPath.row] cellType:AccountManagerCellTypeBasicFunction];
         }
             
             break;
@@ -155,12 +176,75 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [Theme paddingWithSize20];
+    
+    if (section == 0) {
+        return CGFLOAT_MIN;
+    }
+    
+    return [Theme paddingWithSize:76];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:76])];
+    
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake([Theme paddingWithSize:32], 0, kScreenWidth, [Theme paddingWithSize:76])];
+    [bgView addSubview:titleLable];
+    titleLable.font = [Theme fontWithSize24];
+    titleLable.textColor = [Theme colorDimGray];
+    if (section  == 1) {
+        titleLable.text = @"本门店已经创建三个账号";
+        
+    } else if (section == 2) {
+        titleLable.text = @"该账号的付费功能，需开通后使用";
+    } else if (section == 3) {
+        titleLable.text = @"以下为该账号的基础版功能，免费且永久有效";
+    }
+    
+    return bgView;
+
+}
+
+
+#pragma mark  弹出窗的协议
+
+- (void)dataForRowAtIndexPath:(id)data didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"~~%@",data);
+}
+
+- (NSInteger)numberOfRowsInOrderDetailsView {
+    return 3;
+}
+
+- (id)dataForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *title= nil;
+    switch (indexPath.row) {
+        case 0: {
+            title = @"11111";
+            
+        }
+            break;
+            
+        case 1: {
+            title = @"22222";
+        }
+            break;
+            
+        default: {
+            title = @"33333";
+            
+        }
+            
+            break;
+    }
+    
+    return title;
+}
 
 @end

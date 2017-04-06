@@ -14,11 +14,15 @@ typedef NS_ENUM(NSUInteger,AccountManagerCellType) {
     AccountManagerCellTypePassword,
     AccountManagerCellTypeMarketing,
     AccountManagerCellTypeOrderTaking,
+    AccountManagerCellTypeBasicFunction,
     
 };
 
 @interface StoreAccountManagerViewCell : ATCommonCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withDataSource:(id)dataSource cellType:(AccountManagerCellType)type;
+
+
+@property (nonatomic, copy) void (^changeButtonClickedBlock)(AccountManagerCellType type);
 
 @end
