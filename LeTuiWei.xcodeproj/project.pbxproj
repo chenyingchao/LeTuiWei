@@ -18,6 +18,7 @@
 		73060F6D1E8E023A0087A9B5 /* xian.json in Resources */ = {isa = PBXBuildFile; fileRef = 73060F6A1E8E023A0087A9B5 /* xian.json */; };
 		73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */; };
 		73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F721E8E441E0087A9B5 /* StoresListViewCell.m */; };
+		732D89DE1E973CE900C76488 /* PaymentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 732D89DD1E973CE900C76488 /* PaymentResultViewController.m */; };
 		7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */; };
 		7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4391E8B4DD300FF1156 /* SVProgressAnimatedView.m */; };
 		7331D4421E8B4DD300FF1156 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7331D43B1E8B4DD300FF1156 /* SVProgressHUD.bundle */; };
@@ -27,6 +28,12 @@
 		7331D44A1E8B544500FF1156 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4491E8B544500FF1156 /* UserRegisterViewController.m */; };
 		7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D44C1E8B93C300FF1156 /* ReplaceCodeViewController.m */; };
 		7331D4501E8B964300FF1156 /* ReplaceCodeLastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D44F1E8B964300FF1156 /* ReplaceCodeLastViewController.m */; };
+		733376DF1E95D695002F3DCD /* VipMarketingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733376DE1E95D695002F3DCD /* VipMarketingViewController.m */; };
+		733376E21E95D74D002F3DCD /* PlatformOrderTakingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733376E11E95D74D002F3DCD /* PlatformOrderTakingViewController.m */; };
+		733376E51E95E336002F3DCD /* VipMarketingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733376E41E95E336002F3DCD /* VipMarketingViewCell.m */; };
+		733376EF1E961460002F3DCD /* SelectPaymentTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733376EC1E961460002F3DCD /* SelectPaymentTypeViewController.m */; };
+		733376F21E961487002F3DCD /* SelectPaymentTypeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733376F11E961487002F3DCD /* SelectPaymentTypeViewCell.m */; };
+		733376F51E961A7C002F3DCD /* CustomSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733376F41E961A7C002F3DCD /* CustomSegmentView.m */; };
 		735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E21E8C9044001AB915 /* ATCommonCell.m */; };
 		735927E61E8C9394001AB915 /* AdministrationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E51E8C9394001AB915 /* AdministrationViewCell.m */; };
 		735BE52F1E8F35A500B37C6C /* addStoreAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 735BE52E1E8F35A500B37C6C /* addStoreAccountViewController.m */; };
@@ -39,7 +46,6 @@
 		73F51F121E8CADAB00A075A8 /* ModifyCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F51F111E8CADAB00A075A8 /* ModifyCodeViewController.m */; };
 		73F51F151E8CD63B00A075A8 /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F51F141E8CD63B00A075A8 /* CustomAlertView.m */; };
 		73F51F181E8CD6D700A075A8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F51F171E8CD6D700A075A8 /* UIView+Frame.m */; };
-		73F51F1B1E8CF52D00A075A8 /* StoresAdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F51F1A1E8CF52D00A075A8 /* StoresAdminViewController.m */; };
 		73F51F1E1E8CF55800A075A8 /* AddStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F51F1D1E8CF55800A075A8 /* AddStoresViewController.m */; };
 		73F51F211E8D024100A075A8 /* AddStoresViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F51F201E8D024100A075A8 /* AddStoresViewCell.m */; };
 		73FC94521E8A4B9D0006722E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FC94511E8A4B9D0006722E /* main.m */; };
@@ -107,6 +113,8 @@
 		73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewController.m; sourceTree = "<group>"; };
 		73060F711E8E441E0087A9B5 /* StoresListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoresListViewCell.h; sourceTree = "<group>"; };
 		73060F721E8E441E0087A9B5 /* StoresListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewCell.m; sourceTree = "<group>"; };
+		732D89DC1E973CE900C76488 /* PaymentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentResultViewController.h; sourceTree = "<group>"; };
+		732D89DD1E973CE900C76488 /* PaymentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentResultViewController.m; sourceTree = "<group>"; };
 		7331D4361E8B4DD300FF1156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		7331D4381E8B4DD300FF1156 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -125,6 +133,18 @@
 		7331D44C1E8B93C300FF1156 /* ReplaceCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceCodeViewController.m; sourceTree = "<group>"; };
 		7331D44E1E8B964300FF1156 /* ReplaceCodeLastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplaceCodeLastViewController.h; sourceTree = "<group>"; };
 		7331D44F1E8B964300FF1156 /* ReplaceCodeLastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplaceCodeLastViewController.m; sourceTree = "<group>"; };
+		733376DD1E95D695002F3DCD /* VipMarketingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipMarketingViewController.h; sourceTree = "<group>"; };
+		733376DE1E95D695002F3DCD /* VipMarketingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipMarketingViewController.m; sourceTree = "<group>"; };
+		733376E01E95D74D002F3DCD /* PlatformOrderTakingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformOrderTakingViewController.h; sourceTree = "<group>"; };
+		733376E11E95D74D002F3DCD /* PlatformOrderTakingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlatformOrderTakingViewController.m; sourceTree = "<group>"; };
+		733376E31E95E336002F3DCD /* VipMarketingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VipMarketingViewCell.h; sourceTree = "<group>"; };
+		733376E41E95E336002F3DCD /* VipMarketingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VipMarketingViewCell.m; sourceTree = "<group>"; };
+		733376EB1E961460002F3DCD /* SelectPaymentTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPaymentTypeViewController.h; sourceTree = "<group>"; };
+		733376EC1E961460002F3DCD /* SelectPaymentTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPaymentTypeViewController.m; sourceTree = "<group>"; };
+		733376F01E961487002F3DCD /* SelectPaymentTypeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectPaymentTypeViewCell.h; sourceTree = "<group>"; };
+		733376F11E961487002F3DCD /* SelectPaymentTypeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectPaymentTypeViewCell.m; sourceTree = "<group>"; };
+		733376F31E961A7C002F3DCD /* CustomSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSegmentView.h; sourceTree = "<group>"; };
+		733376F41E961A7C002F3DCD /* CustomSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSegmentView.m; sourceTree = "<group>"; };
 		735927E11E8C9044001AB915 /* ATCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCommonCell.h; sourceTree = "<group>"; };
 		735927E21E8C9044001AB915 /* ATCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCommonCell.m; sourceTree = "<group>"; };
 		735927E41E8C9394001AB915 /* AdministrationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdministrationViewCell.h; sourceTree = "<group>"; };
@@ -149,8 +169,6 @@
 		73F51F141E8CD63B00A075A8 /* CustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertView.m; sourceTree = "<group>"; };
 		73F51F161E8CD6D700A075A8 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		73F51F171E8CD6D700A075A8 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
-		73F51F191E8CF52D00A075A8 /* StoresAdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoresAdminViewController.h; sourceTree = "<group>"; };
-		73F51F1A1E8CF52D00A075A8 /* StoresAdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresAdminViewController.m; sourceTree = "<group>"; };
 		73F51F1C1E8CF55800A075A8 /* AddStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStoresViewController.h; sourceTree = "<group>"; };
 		73F51F1D1E8CF55800A075A8 /* AddStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStoresViewController.m; sourceTree = "<group>"; };
 		73F51F1F1E8D024100A075A8 /* AddStoresViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStoresViewCell.h; sourceTree = "<group>"; };
@@ -291,6 +309,43 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		733376E61E960DB6002F3DCD /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				733376EA1E961460002F3DCD /* Controllers */,
+				733376ED1E961460002F3DCD /* Models */,
+				733376EE1E961460002F3DCD /* Views */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		733376EA1E961460002F3DCD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				733376EB1E961460002F3DCD /* SelectPaymentTypeViewController.h */,
+				733376EC1E961460002F3DCD /* SelectPaymentTypeViewController.m */,
+				732D89DC1E973CE900C76488 /* PaymentResultViewController.h */,
+				732D89DD1E973CE900C76488 /* PaymentResultViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		733376ED1E961460002F3DCD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		733376EE1E961460002F3DCD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				733376F01E961487002F3DCD /* SelectPaymentTypeViewCell.h */,
+				733376F11E961487002F3DCD /* SelectPaymentTypeViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		73FC94441E8A4B9D0006722E = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +371,7 @@
 		73FC944F1E8A4B9D0006722E /* LeTuiWei */ = {
 			isa = PBXGroup;
 			children = (
+				733376E61E960DB6002F3DCD /* Payment */,
 				73060F561E8DEE380087A9B5 /* Resources */,
 				73FC94991E8A50570006722E /* Macro */,
 				73FC94981E8A501E0006722E /* Common */,
@@ -441,8 +497,6 @@
 			children = (
 				73FC94AE1E8A547A0006722E /* AdministrationViewController.h */,
 				73FC94AF1E8A547A0006722E /* AdministrationViewController.m */,
-				73F51F191E8CF52D00A075A8 /* StoresAdminViewController.h */,
-				73F51F1A1E8CF52D00A075A8 /* StoresAdminViewController.m */,
 				73F51F1C1E8CF55800A075A8 /* AddStoresViewController.h */,
 				73F51F1D1E8CF55800A075A8 /* AddStoresViewController.m */,
 				73060F6E1E8E367A0087A9B5 /* StoresListViewController.h */,
@@ -453,6 +507,10 @@
 				735BE5311E8F54AD00B37C6C /* StoreAccountManagerViewController.m */,
 				73859EF71E9493390045C283 /* SelectAccountViewController.h */,
 				73859EF81E9493390045C283 /* SelectAccountViewController.m */,
+				733376DD1E95D695002F3DCD /* VipMarketingViewController.h */,
+				733376DE1E95D695002F3DCD /* VipMarketingViewController.m */,
+				733376E01E95D74D002F3DCD /* PlatformOrderTakingViewController.h */,
+				733376E11E95D74D002F3DCD /* PlatformOrderTakingViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -479,6 +537,8 @@
 				73060F721E8E441E0087A9B5 /* StoresListViewCell.m */,
 				735BE5361E8F8FFC00B37C6C /* StoreAccountManagerViewCell.h */,
 				735BE5371E8F8FFC00B37C6C /* StoreAccountManagerViewCell.m */,
+				733376E31E95E336002F3DCD /* VipMarketingViewCell.h */,
+				733376E41E95E336002F3DCD /* VipMarketingViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -614,6 +674,8 @@
 				73F51F141E8CD63B00A075A8 /* CustomAlertView.m */,
 				73859F001E94CC830045C283 /* UnfoldTabView.h */,
 				73859F011E94CC830045C283 /* UnfoldTabView.m */,
+				733376F31E961A7C002F3DCD /* CustomSegmentView.h */,
+				733376F41E961A7C002F3DCD /* CustomSegmentView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -707,7 +769,8 @@
 				TargetAttributes = {
 					73FC944C1E8A4B9D0006722E = {
 						CreatedOnToolsVersion = 8.3;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = S3RRTLGH34;
+						ProvisioningStyle = Manual;
 					};
 					73FC94651E8A4B9D0006722E = {
 						CreatedOnToolsVersion = 8.3;
@@ -922,6 +985,7 @@
 				73FC94C61E8A5EDF0006722E /* LoginBaseViewController.m in Sources */,
 				73060F671E8DEF340087A9B5 /* CityModel.m in Sources */,
 				735927E61E8C9394001AB915 /* AdministrationViewCell.m in Sources */,
+				733376DF1E95D695002F3DCD /* VipMarketingViewController.m in Sources */,
 				735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */,
 				7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */,
 				73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */,
@@ -930,16 +994,18 @@
 				73FC94B31E8A548C0006722E /* IncomeViewController.m in Sources */,
 				73FC94C31E8A5D630006722E /* ConfirmButtonView.m in Sources */,
 				73060F651E8DEF340087A9B5 /* ProvinceModel.m in Sources */,
-				73F51F1B1E8CF52D00A075A8 /* StoresAdminViewController.m in Sources */,
 				735BE5321E8F54AD00B37C6C /* StoreAccountManagerViewController.m in Sources */,
+				733376E51E95E336002F3DCD /* VipMarketingViewCell.m in Sources */,
 				73FC94BC1E8A56840006722E /* UserLoginViewController.m in Sources */,
 				7331D4441E8B4DD300FF1156 /* SVRadialGradientLayer.m in Sources */,
 				73FC94D21E8A6A010006722E /* UIButton+text.m in Sources */,
 				7331D4431E8B4DD300FF1156 /* SVProgressHUD.m in Sources */,
+				732D89DE1E973CE900C76488 /* PaymentResultViewController.m in Sources */,
 				73060F5E1E8DEEF40087A9B5 /* CustomPickerView.m in Sources */,
 				73FC94D01E8A6A010006722E /* UIImage+AT.m in Sources */,
 				73FC94AD1E8A53BC0006722E /* NetworkingManager.m in Sources */,
 				73859F021E94CC830045C283 /* UnfoldTabView.m in Sources */,
+				733376F51E961A7C002F3DCD /* CustomSegmentView.m in Sources */,
 				73FC949F1E8A51200006722E /* BaseViewController.m in Sources */,
 				73FC949C1E8A509E0006722E /* AllocDeallocViewController.m in Sources */,
 				73FC94AA1E8A53930006722E /* BaseTabBarController.m in Sources */,
@@ -948,6 +1014,7 @@
 				73FC94A21E8A51820006722E /* OIAppTheme.m in Sources */,
 				73F51F0F1E8CA0CF00A075A8 /* AdministrationViewModel.m in Sources */,
 				73F51F211E8D024100A075A8 /* AddStoresViewCell.m in Sources */,
+				733376EF1E961460002F3DCD /* SelectPaymentTypeViewController.m in Sources */,
 				73F51F0C1E8CA0A100A075A8 /* BaseModel.m in Sources */,
 				73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */,
 				735BE5381E8F8FFC00B37C6C /* StoreAccountManagerViewCell.m in Sources */,
@@ -962,7 +1029,9 @@
 				73859EF91E9493390045C283 /* SelectAccountViewController.m in Sources */,
 				73FC94D11E8A6A010006722E /* NSString+AT.m in Sources */,
 				73FC94C91E8A5FC90006722E /* LoginInputView.m in Sources */,
+				733376F21E961487002F3DCD /* SelectPaymentTypeViewCell.m in Sources */,
 				73060F551E8DE3EB0087A9B5 /* AddStoresViewModel.m in Sources */,
+				733376E21E95D74D002F3DCD /* PlatformOrderTakingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1114,6 +1183,8 @@
 			baseConfigurationReference = 94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S3RRTLGH34;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
@@ -1121,6 +1192,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6c45e94e-dc22-48fa-b979-4851e7cda73c";
+				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_dev_profile;
 			};
 			name = Debug;
 		};
@@ -1129,6 +1202,8 @@
 			baseConfigurationReference = 68CC2A218F4F63B52A0B14AC /* Pods-LeTuiWei.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = S3RRTLGH34;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
@@ -1136,6 +1211,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6c45e94e-dc22-48fa-b979-4851e7cda73c";
+				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_dev_profile;
 			};
 			name = Release;
 		};

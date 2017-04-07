@@ -29,10 +29,10 @@ static CGFloat kContentBackgroundHeight = 472;
         
         [ATKeyWindow addSubview:self];
         self.clipsToBounds = YES;
-        self.frame = CGRectMake(0, 64, kScreenWidth, height);
- 
+        self.frame = CGRectMake(0, 64 + [Theme paddingWithSize:86], kScreenWidth, height);
+   
         WS(weakSelf);
-        UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
+        UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
         maskView.backgroundColor = [Theme colorForToolbarBackground];
         [self addSubview:maskView];
         [maskView bk_whenTapped:^{
@@ -44,7 +44,7 @@ static CGFloat kContentBackgroundHeight = 472;
             self.tag = 5001;
           
             
-            UITableView *detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:300])];
+            UITableView *detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0)];
             [self addSubview:detailTableView];
             detailTableView.tag = 1002;
             detailTableView.delegate = self;
@@ -74,10 +74,7 @@ static CGFloat kContentBackgroundHeight = 472;
     UITableView *detailTableView = [self viewWithTag:1002];
     [UIView animateWithDuration:0.25 animations:^{
         
-        CGRect newframe = detailTableView.frame;
-        newframe.origin.y = [Theme paddingWithSize:86];
-        detailTableView.frame = newframe;
-
+        detailTableView.frame = CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:300]);
         
     } completion:^(BOOL finished) {
     }];
@@ -91,9 +88,9 @@ static CGFloat kContentBackgroundHeight = 472;
     WS(weakSelf);
     UITableView *detailTableView = [self viewWithTag:1002];
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect newframe = detailTableView.frame;
-        newframe.origin.y = -1000;
-        detailTableView.frame = newframe;
+
+        detailTableView.frame = CGRectMake(0, 0, kScreenWidth,0);
+
         weakSelf.alpha = 0;
     } completion:^(BOOL finished) {
         [weakSelf removeFromSuperview];
@@ -109,9 +106,8 @@ static CGFloat kContentBackgroundHeight = 472;
     WS(weakSelf);
     UITableView *detailTableView = [self viewWithTag:1002];
     [UIView animateWithDuration:0.25 animations:^{
-        CGRect newframe = detailTableView.frame;
-        newframe.origin.y = -1000;
-        detailTableView.frame = newframe;
+
+        detailTableView.frame = CGRectMake(0, 0, kScreenWidth,0);
         weakSelf.alpha = 0;
     } completion:^(BOOL finished) {
         [weakSelf removeFromSuperview];

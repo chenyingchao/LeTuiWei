@@ -20,9 +20,14 @@ typedef NS_ENUM(NSUInteger,AccountManagerCellType) {
 
 @interface StoreAccountManagerViewCell : ATCommonCell
 
+
+@property (nonatomic, strong) UIButton *unfoldButton;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withDataSource:(id)dataSource cellType:(AccountManagerCellType)type;
 
 
 @property (nonatomic, copy) void (^changeButtonClickedBlock)(AccountManagerCellType type);
+
+@property (nonatomic, copy) void (^openButtonClickedBlock)(AccountManagerCellType type);
 
 @end

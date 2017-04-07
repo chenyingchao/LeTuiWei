@@ -54,14 +54,14 @@
         [view removeFromSuperview];
     }
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    backImageView.image = [UIImage imageNamed:@"password"];
+    backImageView.image = [UIImage imageNamed:@"close"];
     backImageView.userInteractionEnabled = YES;
     [self addSubview:backImageView];
     [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf).offset([Theme paddingWithSize20]);
         make.right.equalTo(weakSelf).offset(-[Theme paddingWithSize20]);
-        make.width.equalTo(@([UIImage imageNamed:@"password"].size.width));
-        make.height.equalTo(@([UIImage imageNamed:@"password"].size.height));
+        make.width.equalTo(@([UIImage imageNamed:@"close"].size.width));
+        make.height.equalTo(@([UIImage imageNamed:@"close"].size.height));
         
     }];
 
@@ -227,6 +227,11 @@
     }
     
     
+    [backImageView bk_whenTapped:^{
+         [weakSelf closeView];
+    }];
+    
+    
     //点击退出
     [backImageView bk_whenTapped:^{
         [weakSelf closeView];
@@ -234,9 +239,6 @@
     //点击取消 点击我知道了
     [_cancelButton bk_whenTapped:^{
         
-        if ([weakSelf.delegate respondsToSelector:@selector(requestEventAction:withAlertTitle:)]) {
-            [weakSelf.delegate requestEventAction:_cancelButton withAlertTitle:weakSelf.titleLabel.text];
-        }
         [weakSelf closeView];
     }];
     //点击确定
@@ -277,10 +279,30 @@
 
 
 - (void)showAlertView:(NSString *)title withDataScoure:(id)dataScoure {
+    
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+    
     self.dataSourceArray = dataScoure;
     self.title = title;
     
     [self tabVieHeaderView];
+    
+    WS(weakSelf);
+
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundColor = [UIColor whiteColor];
+    [self addSubview:_tableView];
+    [_tableView  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.left.bottom.equalTo(weakSelf);
+        make.top.equalTo(weakSelf).offset([Theme paddingWithSize:96]);
+    }];
+    
     [self addSubview:self.tableView];
     
     self.frame = CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:450]);
@@ -315,14 +337,14 @@
     }];
     
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    backImageView.image = [UIImage imageNamed:@"password"];
+    backImageView.image = [UIImage imageNamed:@"close"];
     backImageView.userInteractionEnabled = YES;
     [self addSubview:backImageView];
     [backImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf).offset([Theme paddingWithSize20]);
         make.right.equalTo(weakSelf).offset(-[Theme paddingWithSize20]);
-        make.width.equalTo(@([UIImage imageNamed:@"password"].size.width));
-        make.height.equalTo(@([UIImage imageNamed:@"password"].size.height));
+        make.width.equalTo(@([UIImage imageNamed:@"close"].size.width));
+        make.height.equalTo(@([UIImage imageNamed:@"close"].size.height));
     }];
 
 
@@ -340,7 +362,11 @@
         make.right.equalTo(backImageView.mas_left).offset(-[Theme paddingWithSize20]);
         make.bottom.equalTo(seperatorLabel);
     }];
-
+    
+    [backImageView bk_whenTapped:^{
+        [weakSelf closeView];
+    }];
+    
 
 }
 
@@ -404,23 +430,5 @@
 }
 
 
-- (UITableView *)tableView {
-    WS(weakSelf);
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:_tableView];
-        [_tableView  mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.left.bottom.equalTo(weakSelf);
-            make.top.equalTo(weakSelf).offset([Theme paddingWithSize:96]);
-        }];
-    }
-    
-    return _tableView;
-}
 
 @end

@@ -36,7 +36,7 @@
 
 @property(nonatomic, strong) UIButton *renewButton;
 
-@property (nonatomic, strong) UIButton *unfoldButton;
+
 
 @end
 
@@ -49,7 +49,7 @@
        
         switch (type) {
             case AccountManagerCellTypeStoreName:
-                [self storeNameView];
+                [self storeNameView:dataSource];
                 break;
             case AccountManagerCellTypeAccount:
                 [self accountViewWithDataScource:dataSource cellType:type];
@@ -72,10 +72,10 @@
     return self;
 }
 
-- (void)storeNameView {
+- (void)storeNameView:(NSString *)storeName {
     WS(weakSelf);
     self.storeNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.storeNameLabel.text = @"常营店";
+    self.storeNameLabel.text = storeName;
     self.storeNameLabel.font = [Theme fontWithSize30];
     self.storeNameLabel.textColor = [Theme colorDarkGray];
     [self.contentView addSubview:self.storeNameLabel];
@@ -92,9 +92,9 @@
         make.centerY.equalTo(weakSelf.storeNameLabel);
     }];
     
-    [self.unfoldButton bk_whenTapped:^{
-        weakSelf.unfoldButton.selected = !weakSelf.unfoldButton.selected;
-    }];
+//    [self.unfoldButton bk_whenTapped:^{
+//        weakSelf.unfoldButton.selected = !weakSelf.unfoldButton.selected;
+//    }];
     
 
 }
@@ -250,7 +250,9 @@
     }
     
 
-    
+    [self.openButton bk_whenTapped:^{
+        weakSelf.openButtonClickedBlock(type);
+    }];
     
     
     

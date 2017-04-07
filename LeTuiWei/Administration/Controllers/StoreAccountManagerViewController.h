@@ -10,6 +10,6 @@
 
 @interface StoreAccountManagerViewController : BaseViewController
 
-
+@property(nonatomic, copy) NSString *storeName;
 
 @end

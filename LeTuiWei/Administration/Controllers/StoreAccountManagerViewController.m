@@ -11,7 +11,8 @@
 #import "StoreAccountManagerViewCell.h"
 #import "SelectAccountViewController.h"
 #import "UnfoldTabView.h"
-
+#import "VipMarketingViewController.h"
+#import "PlatformOrderTakingViewController.h"
 
 @interface StoreAccountManagerViewController ()<UITableViewDataSource, UITableViewDelegate, UnfoldTableViewDataSource>
 
@@ -33,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"门店派账号管理";
+    self.storeName = @"常营三兄弟";
 }
 
 - (void)creatTableView {
@@ -91,11 +93,26 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        _unfoldTabView = [[UnfoldTabView alloc] initWithDataSource:self andHeight:kScreenHeight - 64 - [Theme paddingWithSize:86]];
-        [self.unfoldTabView show];
+        
+        StoreAccountManagerViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.unfoldButton.selected = !cell.unfoldButton.selected;
+        if (cell.unfoldButton.selected) {
+            _unfoldTabView = [[UnfoldTabView alloc] initWithDataSource:self andHeight:kScreenHeight - 64 - [Theme paddingWithSize:86]];
+            _unfoldTabView.dismissBlock = ^ {
+                cell.unfoldButton.selected = !cell.unfoldButton.selected;
+            };
+            [self.unfoldTabView show];
+        } else {
+            [self.unfoldTabView dismiss];
+        
+        }
     }
-    
-    
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+     [self.unfoldTabView dismiss];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -104,7 +121,7 @@
     switch (indexPath.section) {
         case 0: {
         
-            cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeStoreName];
+            cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName" withDataSource:self.storeName cellType:AccountManagerCellTypeStoreName];
         }
             
             break;
@@ -145,12 +162,28 @@
             
             switch (indexPath.row) {
                 case 0: {
-                      cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Marketing" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeMarketing];
+                    cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Marketing" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeMarketing];
+                    cell.openButtonClickedBlock = ^(AccountManagerCellType type){
+                        if (type == AccountManagerCellTypeMarketing) {
+                            VipMarketingViewController *vipMarketingVC = [[VipMarketingViewController alloc] init];
+                            [weakSelf.navigationController pushViewController:vipMarketingVC animated:YES];
+                        }
+                        
+                        
+                    };
                 }
                     
                     break;
                 case 1: {
                       cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderTaking" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeOrderTaking];
+                    cell.openButtonClickedBlock = ^(AccountManagerCellType type){
+                        if (type == AccountManagerCellTypeOrderTaking) {
+                            PlatformOrderTakingViewController *platformOrderTakingVC = [[PlatformOrderTakingViewController alloc] init];
+                            [weakSelf.navigationController pushViewController:platformOrderTakingVC animated:YES];
+                        }
+                        
+                        
+                    };
                 
                 }
         
@@ -215,6 +248,8 @@
 - (void)dataForRowAtIndexPath:(id)data didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"~~%@",data);
+    self.storeName = data;
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfRowsInOrderDetailsView {
