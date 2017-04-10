@@ -211,7 +211,7 @@
    
     self.expiredLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.expiredLabel.text = self.isExpireFunction ? @"已经过期 请及时续费" : @"一开通过，有限期到2020-11-11";
-    NSLog(@"%d", self.isExpireFunction);
+
     self.expiredLabel.font = [Theme fontWithSize24];
     self.expiredLabel.textColor = UIColorFromRGB(0x31c07a);
     self.expiredLabel.numberOfLines = 0;

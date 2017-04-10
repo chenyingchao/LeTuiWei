@@ -10,14 +10,14 @@
 #import "AdministrationViewCell.h"
 #import "AdministrationViewModel.h"
 #import "ModifyCodeViewController.h"
-#import "CustomAlertView.h"
 #import "UserLoginViewController.h"
 #import "BaseNavigationController.h"
 #import "AddStoresViewController.h"
 #import "StoresListViewController.h"
 #import "addStoreAccountViewController.h"
 #import "StoreAccountManagerViewController.h"
-@interface AdministrationViewController ()<UITableViewDataSource, UITableViewDelegate, AlertViewDelegate>
+#import "CoustomPopUpView.h"
+@interface AdministrationViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -26,8 +26,6 @@
 @property (nonatomic, strong) NSMutableArray *midSectionArray;
 
 @property (nonatomic, strong) NSMutableArray *footerSectionArray;
-
-@property (nonatomic, strong) CustomAlertView *customAlertView;
 
 @property (nonatomic, assign) BOOL isStore;
 
@@ -159,12 +157,37 @@
                 
                 if (_isStoreAccount) {
                     //如果有账号  取选择门店
-                    [self.customAlertView showAlertView:@"请选择添加账号的门店" withDataScoure:@[@"常营三兄弟店", @"金老三店", @"海天一色店", @"xxxxx店", @"阿斯达所店"]];
+ 
+                    CoustomPopUpView *popUpTabView = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:450])];
+   
+                    [popUpTabView PopUpViewComponent:PopUpViewTypeWithTabView withTitle:@"请选择添加账号的门店" withDataScoure:@[@"常营三兄弟店", @"金老三店", @"海天一色店", @"xxxxx店", @"阿斯达所店"]];
+                    
+                    popUpTabView.tabViewCellClickedBlock = ^(NSIndexPath *indexPath) {
+                        
+                        NSLog(@"~~~%ld", (long)indexPath.row);
+                        StoreAccountManagerViewController *accountManagerVC = [[StoreAccountManagerViewController    alloc] init];
+                        [self.navigationController pushViewController:accountManagerVC animated:YES];
+                    };
                     
                     
                 } else {
                 
-                  [self.customAlertView showAlertView:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机" withType:AlertViewTypeAddAccount];
+                    CoustomPopUpView *view = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:450])];
+                    
+                    view.centreButtonTitle = @"未购买，点击了解门店派收银机";
+                    [view PopUpViewComponent:PopUpViewTypeWithComment withTitle:nil withContent:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机" andButtonType:PopUpViewComponentCentreButton | PopUpViewComponentCentreUpButton];
+                   
+                    //未购买，点击了解门店拍收银机
+                    view.centreButtonClickedBlock = ^(UIButton *button, NSString *tempParameter) {
+       
+                        NSLog(@"未购买，点击了解门派店收银机");
+                    };
+                    //知道了 我已经购买
+                    view.centreUpButtonClickedBlock = ^(UIButton *button) {
+                        
+                        addStoreAccountViewController *addStoreAccountVC = [[addStoreAccountViewController alloc] init];
+                        [self.navigationController pushViewController:addStoreAccountVC animated:YES];
+                    };
                 }
        
             } else {
@@ -182,16 +205,43 @@
     if (indexPath.section == 2) {
         if (indexPath.row == 0) {
             
-            if ([APP_Version floatValue] < 1) {
-            [self.customAlertView showAlertView:@"确定要升级吗" withType:AlertViewTypeCommon];
+            if ([APP_Version floatValue] ) {
+          //  [self.customAlertView showAlertView:@"确定要升级吗" withType:AlertViewTypeCommon];
+                CoustomPopUpView *view = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
+                [view PopUpViewComponent:PopUpViewTypeWithComment withTitle:nil withContent:@"确定要升级吗?" andButtonType:PopUpViewComponentLeftButton | PopUpViewComponentRightButton];
+                //跳去升级
+                view.rightButtonClickedBlock = ^(UIButton *button) {
+                  
+                    NSLog(@"跳去升级");
+                };
+                
+                
             } else {
-            [self.customAlertView showAlertView:@"已是最新版本" withType:AlertViewTypeIKnow];
+
+                CoustomPopUpView *view = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
+                [view PopUpViewComponent:PopUpViewTypeWithComment withTitle:nil withContent:@"已是最新版本" andButtonType:PopUpViewComponentCentreButton];
+         
+                view.centreButtonClickedBlock = ^(UIButton *button, NSString *tempParameter) {
+                    NSLog(@"我知道了");
+                
+                };
+                
+               
             }
     
         }
         
         if (indexPath.row == 1) {
-            [self.customAlertView showAlertView:@"您确定要退出账号吗？" withType:AlertViewTypeCommon];
+
+            CoustomPopUpView *view = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
+            [view PopUpViewComponent:PopUpViewTypeWithComment withTitle:nil withContent:@"您确定要退出账号吗？" andButtonType:PopUpViewComponentLeftButton | PopUpViewComponentRightButton];
+            //退出账号
+            view.rightButtonClickedBlock = ^(UIButton *button) {
+                
+                UserLoginViewController *loginVC = [[UserLoginViewController alloc] init];
+                BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
+                [self presentViewController:nav animated:YES completion:nil];
+            };
         }
     }
 }
@@ -213,37 +263,6 @@
     
     return cell;;
     
-}
-
-#pragma mark 弹窗确定按钮 协议
-- (void)requestEventAction:(UIButton *)button withAlertTitle:(NSString *)title {
-    if ([title isEqualToString:@"确定要升级吗"]) {
-        //跳转去升级
-    }
-    
-    if ([title isEqualToString:@"您确定要退出账号吗？"]) {
-        
-        UserLoginViewController *loginVC = [[UserLoginViewController alloc] init];
-        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:loginVC];
-        [self presentViewController:nav animated:YES completion:nil];
-        
-    }
-    
-    if ([title isEqualToString:@"此处添加的账号需要在“门店派”收银机上登录使用，请确保您已经购买了“门店派”收银机"]) {
-        if ([button.titleLabel.text isEqualToString:@"知道了，我已购买"]) {
-            addStoreAccountViewController *addStoreAccountVC = [[addStoreAccountViewController alloc] init];
-            [self.navigationController pushViewController:addStoreAccountVC animated:YES];
-        } else if ([button.titleLabel.text isEqualToString:@"未购买，点击了解门派店收银机"]) {
-            NSLog(@"未购买，点击了解门派店收银机");
-        }
-    }
-}
-
-- (void)alertView:(CustomAlertView *)alertView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    NSLog(@"%ld", (long)indexPath.row);
-    StoreAccountManagerViewController *accountManagerVC = [[StoreAccountManagerViewController    alloc] init];
-    [self.navigationController pushViewController:accountManagerVC animated:YES];
 }
 
 
@@ -284,18 +303,6 @@
     }
     
     return _footerSectionArray;
-}
-
-- (CustomAlertView *)customAlertView {
-    if (!_customAlertView) {
-        _customAlertView = [[CustomAlertView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
-        
-        
-        _customAlertView.backgroundColor = [UIColor whiteColor];
-        _customAlertView.delegate = self;
-    }
-
-    return _customAlertView;
 }
 
 @end

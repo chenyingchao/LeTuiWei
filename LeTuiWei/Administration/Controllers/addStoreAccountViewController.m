@@ -10,15 +10,15 @@
 #import "LoginInputView.h"
 #import "ConfirmButtonView.h"
 #import "UIButton+text.h"
-#import "CustomAlertView.h"
+#import "CoustomPopUpView.h"
 #import "StoreAccountManagerViewController.h"
-@interface addStoreAccountViewController ()<AlertViewDelegate>
+@interface addStoreAccountViewController ()
 
 @property(nonatomic, strong)LoginInputView *storeAccountView;
 
 @property(nonatomic, strong)LoginInputView *passwordView;
 
-@property (nonatomic, strong) CustomAlertView *customAlertView;
+
 
 @end
 
@@ -39,9 +39,12 @@
 
 - (void)addStoreAccount {
   //添加成功
-    [self.customAlertView showAlertView:@"已成功添加门店派账号！请在收银机端使用" withType:AlertViewTypeIKnow];
+    CoustomPopUpView *view = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
+    [view PopUpViewComponent:PopUpViewTypeWithComment withTitle:nil withContent:@"已成功添加门店派账号！请在收银机端使用" andButtonType:PopUpViewComponentCentreButton];
     
-
+    view.centreButtonClickedBlock = ^(UIButton *button, NSString *tempParameter) {
+        NSLog(@"我知道了");
+    };
 }
 
 //点击我知道了  跳转门店派账号管理详情
@@ -147,18 +150,6 @@
         _passwordView = [[LoginInputView alloc] initWithTitle:@"登录密码" placeHolder:@"请填写"];
     }
     return _passwordView;
-}
-
-- (CustomAlertView *)customAlertView {
-    if (!_customAlertView) {
-        _customAlertView = [[CustomAlertView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:300])];
-        
-        
-        _customAlertView.backgroundColor = [UIColor whiteColor];
-        _customAlertView.delegate = self;
-    }
-    
-    return _customAlertView;
 }
 
 @end

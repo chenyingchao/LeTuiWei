@@ -13,6 +13,7 @@
 #import "UnfoldTabView.h"
 #import "VipMarketingViewController.h"
 #import "PlatformOrderTakingViewController.h"
+#import "CoustomPopUpView.h"
 
 @interface StoreAccountManagerViewController ()<UITableViewDataSource, UITableViewDelegate, UnfoldTableViewDataSource>
 
@@ -26,6 +27,7 @@
 
 - (void)loadView {
     [super loadView];
+    
     [self creatTableView];
     [self creatBottomView];
 
@@ -125,17 +127,17 @@
         }
             
             break;
-            
+             
         case 1:
             switch (indexPath.row) {
                 case 0: {
                  cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"account" withDataSource:@"xxxx店" cellType:AccountManagerCellTypeAccount];
+                    //切换账号
                     cell.changeButtonClickedBlock = ^(AccountManagerCellType type){
                         if (type == AccountManagerCellTypeAccount) {
                             SelectAccountViewController *selectAccountVC = [[SelectAccountViewController alloc] init];
                             [weakSelf.navigationController pushViewController:selectAccountVC animated:YES];
                         }
-
                 
                     };
                 }
@@ -143,9 +145,18 @@
                     
                 case 1: {
                     cell = [[StoreAccountManagerViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"password" withDataSource:@"xxxx店" cellType:AccountManagerCellTypePassword];
+                    //修改密码
                     cell.changeButtonClickedBlock = ^(AccountManagerCellType type){
                         if (type == AccountManagerCellTypePassword) {
-                            NSLog(@"修改密码");
+                            CoustomPopUpView *view = [[CoustomPopUpView alloc] initWithFrame:CGRectMake([Theme paddingWithSize100], 200, [UIScreen mainScreen].bounds.size.width - [Theme paddingWithSize100] * 2,[Theme paddingWithSize:350])];
+                            view.centreButtonTitle = @"确认修改";
+                            [view PopUpViewComponent:PopUpViewTypeWithTextField withTitle:nil withContent:nil andButtonType:PopUpViewComponentCentreButton];
+                            
+                            view.centreButtonClickedBlock = ^(UIButton *button, NSString *tempParameter) {
+                     
+                                NSLog(@"%@",tempParameter);
+                            };
+
                         }
                         
                         

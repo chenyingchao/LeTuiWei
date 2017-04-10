@@ -11,6 +11,7 @@
 #import "ConfirmButtonView.h"
 #import "CustomPickerView.h"
 #import "AddStoresViewModel.h"
+#import "StoreCoordinateViewController.h"
 @interface AddStoresViewController ()<UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -78,14 +79,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (indexPath.row == 5) {
-        [self.pickerView show];
-        WS(weakSelf);
-        self.pickerView.determineBtnBlock = ^(NSInteger shengId, NSInteger shiId, NSInteger xianId, NSString *shengName, NSString *shiName, NSString *xianName){
-            [weakSelf provinceName:shengName city:shiName county:xianName];
-        };
 
+    
+    switch (indexPath.row) {
+        case 5: {
+            [self.pickerView show];
+            WS(weakSelf);
+            self.pickerView.determineBtnBlock = ^(NSInteger shengId, NSInteger shiId, NSInteger xianId, NSString *shengName, NSString *shiName, NSString *xianName){
+                [weakSelf provinceName:shengName city:shiName county:xianName];
+            };
+        
+        }
+            
+            break;
+        case 7: {
+            StoreCoordinateViewController *storeCoordinateVC = [[StoreCoordinateViewController alloc] init];
+            [self.navigationController pushViewController:storeCoordinateVC animated:YES];
+        
+        }
+            break;
+        default:
+            break;
     }
+    
     
 }
 
