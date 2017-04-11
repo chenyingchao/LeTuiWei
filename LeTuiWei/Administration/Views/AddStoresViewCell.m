@@ -55,34 +55,38 @@
 
 - (UITextField *)cellTextFieldMoney {
     if (!_cellTextFieldMoney) {
-        UITextField *textField = [[UITextField alloc] init];
-        textField.font = [Theme fontWithSize28];
-        textField.textAlignment = NSTextAlignmentRight;
-        textField.returnKeyType = UIReturnKeyDone;
-        textField.delegate = self;
-        _cellTextFieldMoney = textField;
-        [self.contentView addSubview:textField];
-        
-        WS(weakSelf);
-        [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakSelf.mas_left).offset(105);
-            make.centerY.equalTo(weakSelf.mas_centerY);
-            //make.right.equalTo(weakSelf.mas_right).offset(-[Theme paddingWithSize:70]);
-            make.height.equalTo(weakSelf.mas_height).offset([Theme paddingWithSize10]);
-        }];
-        
         
         UILabel *moneyLabel = [[UILabel alloc] init];
         moneyLabel.font = [Theme fontWithSize28];
         moneyLabel.textColor = [Theme colorDarkGray];
         moneyLabel.text = @"元";
         [self.contentView addSubview:moneyLabel];
-     
+             WS(weakSelf);
         [moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(weakSelf.mas_right).offset(-[Theme paddingWithSize40]);
             make.centerY.equalTo(weakSelf.mas_centerY);
-            make.left.equalTo(textField.mas_right).offset([Theme paddingWithSize12]);
+           // make.left.equalTo(textField.mas_right).offset([Theme paddingWithSize12]);
         }];
+        UITextField *textField = [[UITextField alloc] init];
+       
+        textField.font = [Theme fontWithSize28];
+        textField.textAlignment = NSTextAlignmentRight;
+        textField.returnKeyType = UIReturnKeyDone;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.delegate = self;
+        _cellTextFieldMoney = textField;
+        [self.contentView addSubview:textField];
+        
+   
+        [textField mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(weakSelf.mas_left).offset(105);
+            make.centerY.equalTo(weakSelf.mas_centerY);
+            make.right.equalTo(moneyLabel.mas_left).offset(-[Theme paddingWithSize20]);
+            make.height.equalTo(weakSelf.mas_height).offset([Theme paddingWithSize10]);
+        }];
+        
+        
+
    
         [moneyLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
         

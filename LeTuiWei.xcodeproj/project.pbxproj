@@ -18,6 +18,7 @@
 		73060F6D1E8E023A0087A9B5 /* xian.json in Resources */ = {isa = PBXBuildFile; fileRef = 73060F6A1E8E023A0087A9B5 /* xian.json */; };
 		73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */; };
 		73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F721E8E441E0087A9B5 /* StoresListViewCell.m */; };
+		73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */; };
 		732D89DE1E973CE900C76488 /* PaymentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 732D89DD1E973CE900C76488 /* PaymentResultViewController.m */; };
 		7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */; };
 		7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4391E8B4DD300FF1156 /* SVProgressAnimatedView.m */; };
@@ -38,6 +39,11 @@
 		733B617A1E9B4D7800BB2636 /* PopUpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733B61791E9B4D7800BB2636 /* PopUpTableViewCell.m */; };
 		733B617D1E9B667100BB2636 /* SelectAccountViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733B617C1E9B667100BB2636 /* SelectAccountViewCell.m */; };
 		733B61801E9B710E00BB2636 /* StoreCoordinateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733B617F1E9B710E00BB2636 /* StoreCoordinateViewController.m */; };
+		733B61891E9B762E00BB2636 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B61881E9B762E00BB2636 /* libz.tbd */; };
+		733B618B1E9B763800BB2636 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618A1E9B763800BB2636 /* SystemConfiguration.framework */; };
+		733B618D1E9B764300BB2636 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618C1E9B764300BB2636 /* QuartzCore.framework */; };
+		733B618F1E9B765100BB2636 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618E1E9B765100BB2636 /* CoreLocation.framework */; };
+		733B61961E9B78D100BB2636 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B61951E9B78D100BB2636 /* QMapKit.framework */; };
 		735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E21E8C9044001AB915 /* ATCommonCell.m */; };
 		735927E61E8C9394001AB915 /* AdministrationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E51E8C9394001AB915 /* AdministrationViewCell.m */; };
 		735BE52F1E8F35A500B37C6C /* addStoreAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 735BE52E1E8F35A500B37C6C /* addStoreAccountViewController.m */; };
@@ -116,6 +122,8 @@
 		73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewController.m; sourceTree = "<group>"; };
 		73060F711E8E441E0087A9B5 /* StoresListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoresListViewCell.h; sourceTree = "<group>"; };
 		73060F721E8E441E0087A9B5 /* StoresListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewCell.m; sourceTree = "<group>"; };
+		73216EAB1E9C750F00A2DB82 /* NSDictionary+log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+log.h"; sourceTree = "<group>"; };
+		73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+log.m"; sourceTree = "<group>"; };
 		732D89DC1E973CE900C76488 /* PaymentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentResultViewController.h; sourceTree = "<group>"; };
 		732D89DD1E973CE900C76488 /* PaymentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentResultViewController.m; sourceTree = "<group>"; };
 		7331D4361E8B4DD300FF1156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -156,6 +164,12 @@
 		733B617C1E9B667100BB2636 /* SelectAccountViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAccountViewCell.m; sourceTree = "<group>"; };
 		733B617E1E9B710E00BB2636 /* StoreCoordinateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreCoordinateViewController.h; sourceTree = "<group>"; };
 		733B617F1E9B710E00BB2636 /* StoreCoordinateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreCoordinateViewController.m; sourceTree = "<group>"; };
+		733B61821E9B74EC00BB2636 /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = ../../Downloads/TencentMapSDK_iOS_2D_v1_2_7/sdk/QMapKit.framework; sourceTree = "<group>"; };
+		733B61881E9B762E00BB2636 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		733B618A1E9B763800BB2636 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		733B618C1E9B764300BB2636 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		733B618E1E9B765100BB2636 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		733B61951E9B78D100BB2636 /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QMapKit.framework; sourceTree = "<group>"; };
 		735927E11E8C9044001AB915 /* ATCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCommonCell.h; sourceTree = "<group>"; };
 		735927E21E8C9044001AB915 /* ATCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCommonCell.m; sourceTree = "<group>"; };
 		735927E41E8C9394001AB915 /* AdministrationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdministrationViewCell.h; sourceTree = "<group>"; };
@@ -243,6 +257,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733B61961E9B78D100BB2636 /* QMapKit.framework in Frameworks */,
+				733B618F1E9B765100BB2636 /* CoreLocation.framework in Frameworks */,
+				733B618D1E9B764300BB2636 /* QuartzCore.framework in Frameworks */,
+				733B618B1E9B763800BB2636 /* SystemConfiguration.framework in Frameworks */,
+				733B61891E9B762E00BB2636 /* libz.tbd in Frameworks */,
 				A2D6B09219BA0DC61694D4AD /* libPods-LeTuiWei.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +288,11 @@
 		0673D5BD0BA0DED780C47705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				733B618E1E9B765100BB2636 /* CoreLocation.framework */,
+				733B618C1E9B764300BB2636 /* QuartzCore.framework */,
+				733B618A1E9B763800BB2636 /* SystemConfiguration.framework */,
+				733B61881E9B762E00BB2636 /* libz.tbd */,
+				733B61821E9B74EC00BB2636 /* QMapKit.framework */,
 				DC25C99F9B6E7961064C3A4A /* libPods-LeTuiWei.a */,
 				9EB9B98468B87E84A72212FE /* libPods-LeTuiWeiTests.a */,
 				0237D19275220CCBD6CDB595 /* libPods-LeTuiWeiUITests.a */,
@@ -355,6 +379,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		733B61931E9B78B800BB2636 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				733B61941E9B78D100BB2636 /* QQMapsdk */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		733B61941E9B78D100BB2636 /* QQMapsdk */ = {
+			isa = PBXGroup;
+			children = (
+				733B61951E9B78D100BB2636 /* QMapKit.framework */,
+			);
+			path = QQMapsdk;
+			sourceTree = "<group>";
+		};
 		73FC94441E8A4B9D0006722E = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +420,7 @@
 		73FC944F1E8A4B9D0006722E /* LeTuiWei */ = {
 			isa = PBXGroup;
 			children = (
+				733B61931E9B78B800BB2636 /* SDK */,
 				733376E61E960DB6002F3DCD /* Payment */,
 				73060F561E8DEE380087A9B5 /* Resources */,
 				73FC94991E8A50570006722E /* Macro */,
@@ -654,6 +695,8 @@
 				73FC94CB1E8A6A010006722E /* UIImage+AT.m */,
 				73FC94CD1E8A6A010006722E /* UIButton+text.h */,
 				73FC94CE1E8A6A010006722E /* UIButton+text.m */,
+				73216EAB1E9C750F00A2DB82 /* NSDictionary+log.h */,
+				73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1002,6 +1045,7 @@
 				735927E61E8C9394001AB915 /* AdministrationViewCell.m in Sources */,
 				733376DF1E95D695002F3DCD /* VipMarketingViewController.m in Sources */,
 				735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */,
+				73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */,
 				7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */,
 				73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */,
 				7331D4501E8B964300FF1156 /* ReplaceCodeLastViewController.m in Sources */,
@@ -1203,6 +1247,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = S3RRTLGH34;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LeTuiWei/SDK/QQMapsdk",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;
@@ -1222,6 +1270,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = S3RRTLGH34;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LeTuiWei/SDK/QQMapsdk",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LeTuiWei/Helper/PrefixHeader.pch";
 				INFOPLIST_FILE = LeTuiWei/Info.plist;

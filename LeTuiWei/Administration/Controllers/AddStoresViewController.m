@@ -94,7 +94,12 @@
             break;
         case 7: {
             StoreCoordinateViewController *storeCoordinateVC = [[StoreCoordinateViewController alloc] init];
+            storeCoordinateVC.storeLocationBlock = ^(CLLocationCoordinate2D storeCoordinate) {
+                NSLog(@"%f  %f", storeCoordinate.latitude , storeCoordinate.longitude);
+            
+            };
             [self.navigationController pushViewController:storeCoordinateVC animated:YES];
+            
         
         }
             break;
@@ -119,7 +124,7 @@
 
     switch (indexPath.row) {
         case 0: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"productName"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"如国美、麦当劳";
             cell.cellTextField.text = self.storeModel.MerchantName;
@@ -144,11 +149,11 @@
             break;
             
         case 2: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"money"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextFieldMoney.placeholder = @"请填写";
-            cell.cellTextField.text = self.storeModel.personCapita;
-            cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+            cell.cellTextFieldMoney.text = self.storeModel.personCapita;
+            cell.cellTextFieldMoney.bk_didEndEditingBlock = ^(UITextField *textField) {
                 weakSelf.storeModel.personCapita = textField.text;
             };
             
@@ -157,7 +162,7 @@
             break;
             
         case 3: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"phone"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"区号-电话，如010-67085435";
             cell.cellTextField.text = self.storeModel.phoneNum;
@@ -171,7 +176,7 @@
             break;
             
         case 4: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"categories"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellContentLabel.text = @"选择";
             
@@ -181,7 +186,7 @@
             break;
             
         case 5: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"area"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellContentLabel.text = self.storeModel.storeArea.length > 0 ? self.storeModel.storeArea : @"选择";
             cell.cellContentLabel.textColor = self.storeModel.storeArea.length > 0 ? [Theme colorDarkGray] : [Theme colorForTextPlaceHolder];
@@ -192,7 +197,7 @@
             break;
             
         case 6: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"address"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
             cell.cellTextField.placeholder = @"请填写";
             cell.cellTextField.text = self.storeModel.detailAddress;
@@ -204,7 +209,7 @@
             
             break;
         case 7: {
-            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storeName"];
+            cell = [[AddStoresViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"locate"];
             cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleFullLength;
             cell.cellContentLabel.text = @"标记";
             

@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import <QMapKit/QMapKit.h>
 
 @interface StoreCoordinateViewController : BaseViewController
+
+
+@property (nonatomic, copy) void (^storeLocationBlock)(CLLocationCoordinate2D storeCoordinate);
 
 @end
