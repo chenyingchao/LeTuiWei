@@ -19,6 +19,8 @@
 		73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */; };
 		73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F721E8E441E0087A9B5 /* StoresListViewCell.m */; };
 		73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */; };
+		73216EB01E9CA64A00A2DB82 /* RingChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAF1E9CA64A00A2DB82 /* RingChartView.m */; };
+		73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EB21E9CB7D500A2DB82 /* LineChartView.m */; };
 		732D89DE1E973CE900C76488 /* PaymentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 732D89DD1E973CE900C76488 /* PaymentResultViewController.m */; };
 		7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */; };
 		7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4391E8B4DD300FF1156 /* SVProgressAnimatedView.m */; };
@@ -124,6 +126,10 @@
 		73060F721E8E441E0087A9B5 /* StoresListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewCell.m; sourceTree = "<group>"; };
 		73216EAB1E9C750F00A2DB82 /* NSDictionary+log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+log.h"; sourceTree = "<group>"; };
 		73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+log.m"; sourceTree = "<group>"; };
+		73216EAE1E9CA64A00A2DB82 /* RingChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingChartView.h; sourceTree = "<group>"; };
+		73216EAF1E9CA64A00A2DB82 /* RingChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingChartView.m; sourceTree = "<group>"; };
+		73216EB11E9CB7D500A2DB82 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
+		73216EB21E9CB7D500A2DB82 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
 		732D89DC1E973CE900C76488 /* PaymentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentResultViewController.h; sourceTree = "<group>"; };
 		732D89DD1E973CE900C76488 /* PaymentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentResultViewController.m; sourceTree = "<group>"; };
 		7331D4361E8B4DD300FF1156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -639,6 +645,10 @@
 		73FC94961E8A4F4C0006722E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				73216EAE1E9CA64A00A2DB82 /* RingChartView.h */,
+				73216EAF1E9CA64A00A2DB82 /* RingChartView.m */,
+				73216EB11E9CB7D500A2DB82 /* LineChartView.h */,
+				73216EB21E9CB7D500A2DB82 /* LineChartView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1047,6 +1057,7 @@
 				735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */,
 				73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */,
 				7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */,
+				73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */,
 				73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */,
 				7331D4501E8B964300FF1156 /* ReplaceCodeLastViewController.m in Sources */,
 				73FC94B01E8A547A0006722E /* AdministrationViewController.m in Sources */,
@@ -1069,6 +1080,7 @@
 				73859F021E94CC830045C283 /* UnfoldTabView.m in Sources */,
 				733376F51E961A7C002F3DCD /* CustomSegmentView.m in Sources */,
 				73FC949F1E8A51200006722E /* BaseViewController.m in Sources */,
+				73216EB01E9CA64A00A2DB82 /* RingChartView.m in Sources */,
 				73FC949C1E8A509E0006722E /* AllocDeallocViewController.m in Sources */,
 				73FC94AA1E8A53930006722E /* BaseTabBarController.m in Sources */,
 				73F51F181E8CD6D700A075A8 /* UIView+Frame.m in Sources */,
@@ -1258,8 +1270,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c45e94e-dc22-48fa-b979-4851e7cda73c";
-				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_dev_profile;
+				PROVISIONING_PROFILE = "efa9c196-d988-41b1-8132-ad9c50025f2f";
+				PROVISIONING_PROFILE_SPECIFIER = lettuiwei_profile;
 			};
 			name = Debug;
 		};
@@ -1281,8 +1293,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6c45e94e-dc22-48fa-b979-4851e7cda73c";
-				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_dev_profile;
+				PROVISIONING_PROFILE = "efa9c196-d988-41b1-8132-ad9c50025f2f";
+				PROVISIONING_PROFILE_SPECIFIER = lettuiwei_profile;
 			};
 			name = Release;
 		};

@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupAllChildViewControllers];
-    
+
 }
 
 - (void)setupAllChildViewControllers {
