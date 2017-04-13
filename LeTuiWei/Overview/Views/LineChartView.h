@@ -50,4 +50,9 @@
  */
 @property (nonatomic,assign) BOOL showYLevelLine;
 
+
+@property (nonatomic, strong) NSArray * valueLineColorArr;
+
+-(void)showAnimation;
+
 @end

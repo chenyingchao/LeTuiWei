@@ -46,6 +46,8 @@
 		733B618D1E9B764300BB2636 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618C1E9B764300BB2636 /* QuartzCore.framework */; };
 		733B618F1E9B765100BB2636 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618E1E9B765100BB2636 /* CoreLocation.framework */; };
 		733B61961E9B78D100BB2636 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B61951E9B78D100BB2636 /* QMapKit.framework */; };
+		735000EE1E9F226E0019C234 /* ColumnChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 735000ED1E9F226E0019C234 /* ColumnChartView.m */; };
+		735000F11E9F527E0019C234 /* DistributionChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 735000F01E9F527E0019C234 /* DistributionChartView.m */; };
 		735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E21E8C9044001AB915 /* ATCommonCell.m */; };
 		735927E61E8C9394001AB915 /* AdministrationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E51E8C9394001AB915 /* AdministrationViewCell.m */; };
 		735BE52F1E8F35A500B37C6C /* addStoreAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 735BE52E1E8F35A500B37C6C /* addStoreAccountViewController.m */; };
@@ -176,6 +178,10 @@
 		733B618C1E9B764300BB2636 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		733B618E1E9B765100BB2636 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		733B61951E9B78D100BB2636 /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QMapKit.framework; sourceTree = "<group>"; };
+		735000EC1E9F226E0019C234 /* ColumnChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnChartView.h; sourceTree = "<group>"; };
+		735000ED1E9F226E0019C234 /* ColumnChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnChartView.m; sourceTree = "<group>"; };
+		735000EF1E9F527E0019C234 /* DistributionChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistributionChartView.h; sourceTree = "<group>"; };
+		735000F01E9F527E0019C234 /* DistributionChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistributionChartView.m; sourceTree = "<group>"; };
 		735927E11E8C9044001AB915 /* ATCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATCommonCell.h; sourceTree = "<group>"; };
 		735927E21E8C9044001AB915 /* ATCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATCommonCell.m; sourceTree = "<group>"; };
 		735927E41E8C9394001AB915 /* AdministrationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdministrationViewCell.h; sourceTree = "<group>"; };
@@ -649,6 +655,10 @@
 				73216EAF1E9CA64A00A2DB82 /* RingChartView.m */,
 				73216EB11E9CB7D500A2DB82 /* LineChartView.h */,
 				73216EB21E9CB7D500A2DB82 /* LineChartView.m */,
+				735000EC1E9F226E0019C234 /* ColumnChartView.h */,
+				735000ED1E9F226E0019C234 /* ColumnChartView.m */,
+				735000EF1E9F527E0019C234 /* DistributionChartView.h */,
+				735000F01E9F527E0019C234 /* DistributionChartView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1092,8 +1102,10 @@
 				73F51F0C1E8CA0A100A075A8 /* BaseModel.m in Sources */,
 				73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */,
 				735BE5381E8F8FFC00B37C6C /* StoreAccountManagerViewCell.m in Sources */,
+				735000EE1E9F226E0019C234 /* ColumnChartView.m in Sources */,
 				7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */,
 				73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */,
+				735000F11E9F527E0019C234 /* DistributionChartView.m in Sources */,
 				7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */,
 				73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */,
 				73F51F121E8CADAB00A075A8 /* ModifyCodeViewController.m in Sources */,

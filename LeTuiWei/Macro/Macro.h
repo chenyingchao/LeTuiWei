@@ -79,4 +79,4 @@ CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].siz
 
 #define APP_Version  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
-
+#define P_M(x,y) CGPointMake(x, y)

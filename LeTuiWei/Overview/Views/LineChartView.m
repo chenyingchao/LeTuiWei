@@ -8,7 +8,7 @@
 
 #import "LineChartView.h"
 
-#define P_M(x,y) CGPointMake(x, y)
+
 
 #define FoldLineColor [UIColor colorWithRed:0 green:255 blue:254 alpha:1]
 
@@ -30,46 +30,80 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = UIColorFromRGB(0x1c2249);
-        self.contentInsets = UIEdgeInsetsMake(50, 50, 20, 50);
-        //XY轴 长度
-        _xLength = CGRectGetWidth(self.frame)-self.contentInsets.left-self.contentInsets.right;
-        _yLength = CGRectGetHeight(self.frame)-self.contentInsets.top-self.contentInsets.bottom;
-        //坐标原点
-        self.chartOrigin = CGPointMake(self.contentInsets.left, self.frame.size.height-self.contentInsets.bottom);
-        //刻度间隔
-         self.xLineDataArr = @[@"0:00",@"4:00",@"8:00",@"12:00",@"16:00",@"20:00",@"24:00"];
-        self.yLineDataArr = @[@"2500",@"5000",@"7500",@"10000"];
-        _perXLen = _xLength/(_xLineDataArr.count-1);
-        _perYlen = _yLength/_yLineDataArr.count;
-        
-        self.valueArr = @[@[@"100",@"2500",@"3000",@2000,@10000,@3000,@5000,@1000]];
-        [self showAnimation];
+        self.backgroundColor = [UIColor whiteColor];//UIColorFromRGB(0x1c2249);
+
     }
     return self;
 }
 
-//开始绘制折线
 
+#pragma mark 开始绘图
 -(void)showAnimation{
+    [self configChartXAndYLength];//xy 长度
+    [self configChartOrigin]; //坐标原点
+    [self configPerXAndPerY];//xy间隔
+    [self configValueDataArray]; //将数据转换为点坐标
+    
+}
+
+
+#pragma mark  绘制xy轴
+- (void)drawRect:(CGRect)rect {
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    [self drawXAndYLineWithContext:context];
+    
+    for (NSInteger i = 0;i<_drawDataArr.count;i++) {
+
+        NSArray *dataArr = _drawDataArr[i];
+
+
+        [self drawXYLineAtMaxPointWithDataArr:dataArr WithContext:context];
+
+    }
     
     
+}
+
+
+#pragma mark  获取 坐标原点
+- (void)configChartOrigin{
+
+    self.chartOrigin = CGPointMake(self.contentInsets.left, self.frame.size.height-self.contentInsets.bottom);
+    
+}
+
+#pragma mark  获取 xy的长度
+- (void)configChartXAndYLength{
+    _xLength = CGRectGetWidth(self.frame)-self.contentInsets.left-self.contentInsets.right;
+    _yLength = CGRectGetHeight(self.frame)-self.contentInsets.top-self.contentInsets.bottom;
+}
+
+#pragma mark 获取xy上的间隔
+- (void)configPerXAndPerY{
+    _perXLen = _xLength/(_xLineDataArr.count-1);
+    _perYlen = _yLength/_yLineDataArr.count;
+}
+
+#pragma mark  将数据 转换为坐标
+- (void)configValueDataArray{
     _perValue = _perYlen/_yLineDataArr.count;
     _drawDataArr = [[NSMutableArray alloc] init];
     for (NSArray *valueArr in _valueArr) {
         NSMutableArray *dataMArr = [NSMutableArray array];
-       
+        
         for (NSInteger i = 0; i<valueArr.count; i++) {
             
             CGPoint p = P_M(i*_perXLen+self.chartOrigin.x,self.contentInsets.top + _yLength - [valueArr[i] floatValue] / [_yLineDataArr.lastObject floatValue] * _yLength);
-
+            
             NSValue *value = [NSValue valueWithCGPoint:p];
             [dataMArr addObject:value];
         }
         [_drawDataArr addObject:[dataMArr copy]];
         
     }
-
+    
     
     [_shapeLayer removeFromSuperlayer];
     _shapeLayer = [CAShapeLayer layer];
@@ -77,19 +111,20 @@
         return;
     }
     
+//开始画折线
     for (NSInteger i = 0;i<_drawDataArr.count;i++) {
         
         NSArray *dataArr = _drawDataArr[i];
-
-         [self drawPathWithDataArr:dataArr andIndex:i];
-
+        
+        [self drawPathWithDataArr:dataArr andIndex:i];
+        
         
     }
-    
+
 
 }
 
-//找到最高点， 画一个十字交叉线
+#pragma mark  找到最高点 画十字线
 - (void)drawXYLineAtMaxPointWithDataArr:(NSArray *)dataArr WithContext:(CGContextRef)contex {
 
     
@@ -154,10 +189,10 @@
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.frame = self.bounds;
     shapeLayer.path = firstPath.CGPath;
-
-    shapeLayer.strokeColor = FoldLineColor.CGColor;
+    UIColor *color = (_valueLineColorArr.count==_drawDataArr.count?(_valueLineColorArr[colorIndex]):([UIColor orangeColor]));
+    shapeLayer.strokeColor = color.CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.lineWidth = 1;
+    shapeLayer.lineWidth = 0.5;
     
     //第三，动画
     
@@ -167,7 +202,7 @@
     
     ani.toValue = @1;
     
-    ani.duration = 2.0;
+    ani.duration = 0.5;
     
     [shapeLayer addAnimation:ani forKey:NSStringFromSelector(@selector(strokeEnd))];
     
@@ -190,28 +225,7 @@
 }
 
 
-
-
-- (void)drawRect:(CGRect)rect {
-    
-
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    [self drawXAndYLineWithContext:context];
-    
-    for (NSInteger i = 0;i<_drawDataArr.count;i++) {
-        
-        NSArray *dataArr = _drawDataArr[i];
-        
-        
-        [self drawXYLineAtMaxPointWithDataArr:dataArr WithContext:context];
-        
-    }
-
-    
-}
-// 绘制  XY轴
+#pragma mark  绘制xy轴 方法
 - (void)drawXAndYLineWithContext:(CGContextRef)context{
     
     //x 轴
@@ -230,7 +244,7 @@
             CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_xLineDataArr[i]].width;
             [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x, p.y-3) andIsDottedLine:NO andColor:[UIColor blackColor]];
             
-            [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:[UIColor whiteColor] andFontSize:10];
+            [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:[UIColor blackColor] andFontSize:10];
             
         }
         
@@ -245,29 +259,22 @@
             
             CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_yLineDataArr[i]].width;
             CGFloat hei = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_yLineDataArr[i]].height;
-            _showYLevelLine = YES;
+           
             if (_showYLevelLine) {
-                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(self.contentInsets.left+_xLength, p.y) andIsDottedLine:NO andColor:[UIColor blueColor]];
+                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(self.contentInsets.left+_xLength, p.y) andIsDottedLine:YES andColor:[UIColor blueColor]];
+                NSLog(@"1");
                 
             }else{
                 [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x+3, p.y) andIsDottedLine:NO andColor:[UIColor blueColor]];
             }
-            [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:[UIColor whiteColor] andFontSize:10];
+            [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:[UIColor blackColor] andFontSize:10];
         }
     }
 
     
 }
 
-/**
- *  返回字符串的占用尺寸
- *
- *  @param maxSize   最大尺寸
- *  @param fontSize  字号大小
- *  @param aimString 目标字符串
- *
- *  @return 占用尺寸
- */
+#pragma mark 返回字符串尺寸
 - (CGSize)sizeOfStringWithMaxSize:(CGSize)maxSize textFont:(CGFloat)fontSize aimString:(NSString *)aimString{
     
     
@@ -304,6 +311,12 @@
         CGFloat ss[] = {1.5,2};
         
         CGContextSetLineDash(context, 0, ss, 2);
+        
+    } else {
+        CGFloat ss[] = {1.5,0};
+        
+        CGContextSetLineDash(context, 0, ss, 2);
+    
     }
     CGContextMoveToPoint(context, end.x, end.y);
     
@@ -320,7 +333,6 @@
  */
 - (void)drawText:(NSString *)text andContext:(CGContextRef )context atPoint:(CGPoint )rect WithColor:(UIColor *)color andFontSize:(CGFloat)fontSize{
     
-    NSLog(@"~~~%@",text);
     [[NSString stringWithFormat:@"%@",text] drawAtPoint:rect withAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSForegroundColorAttributeName:color}];
     
     [color setFill];
@@ -392,7 +404,5 @@
     CGGradientRelease(gradient);
     CGColorSpaceRelease(colorSpace);
 }
-
-
 
 @end

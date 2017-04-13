@@ -25,6 +25,11 @@
 
 @property (nonatomic,assign) CGFloat ringWidth;
 
+
+@property (nonatomic,assign) CGFloat redius;
+
+
+
 - (void)showAnimation;
 
 @end

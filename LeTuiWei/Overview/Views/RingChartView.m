@@ -12,10 +12,6 @@
 
 @interface RingChartView()
 
-@property (nonatomic,assign) CGFloat redius;
-
-
-
 @property (nonatomic,assign) CGFloat totolCount;
 
 @property (assign, nonatomic)  CGPoint chartOrigin;
@@ -34,8 +30,7 @@
     if (self = [super initWithFrame:frame]) {
         self.chartOrigin = CGPointMake(CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame)/2);
     
-        _redius = 100;
-        _ringWidth = 40;
+
     }
     return self;
 }
@@ -53,7 +48,7 @@
     
     _totolCount = 0;
     _itemsSpace =  (M_PI * 2.0 * 10 / 360)/_valueDataArr.count ;
-    NSLog(@"%f", _itemsSpace);
+
     for (id obj in _valueDataArr) {
         
         _totolCount += [obj floatValue];
