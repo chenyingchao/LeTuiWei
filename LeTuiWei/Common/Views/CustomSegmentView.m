@@ -130,9 +130,7 @@ static const int kButtonTag = 1000;
     // create tabs
     [self reloadTabs];
     // create indicator
-    _indicator = [[UIView alloc] initWithFrame:CGRectZero];
-    _indicator.backgroundColor = self.highLightColor;
-    [self addSubview:_indicator];
+
 }
 
 - (void)setNormalColor:(UIColor *)normalColor {

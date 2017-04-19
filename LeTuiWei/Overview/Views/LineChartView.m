@@ -30,7 +30,7 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor whiteColor];//UIColorFromRGB(0x1c2249);
+        self.backgroundColor = [UIColor clearColor];//UIColorFromRGB(0x1c2249);
 
     }
     return self;
@@ -142,9 +142,9 @@
 
     }
     
-    [self drawLineWithContext:contex andStarPoint:P_M(self.chartOrigin.x,markMaxL) andEndPoint:P_M(self.contentInsets.left +_xLength, markMaxL) andIsDottedLine:NO andColor:[UIColor orangeColor]];
+    [self drawLineWithContext:contex andStarPoint:P_M(self.chartOrigin.x,markMaxL) andEndPoint:P_M(self.contentInsets.left +_xLength, markMaxL) andIsDottedLine:NO andColor:UIColorFromRGB(0xff9900)];
     
-    [self drawLineWithContext:contex andStarPoint:P_M(markMaxX,self.chartOrigin.y) andEndPoint:P_M(markMaxX, markMaxL - 15) andIsDottedLine:NO andColor:[UIColor orangeColor]];
+    [self drawLineWithContext:contex andStarPoint:P_M(markMaxX,self.chartOrigin.y) andEndPoint:P_M(markMaxX, markMaxL - 15) andIsDottedLine:NO andColor:UIColorFromRGB(0xff9900)];
 
 }
 
@@ -189,7 +189,7 @@
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.frame = self.bounds;
     shapeLayer.path = firstPath.CGPath;
-    UIColor *color = (_valueLineColorArr.count==_drawDataArr.count?(_valueLineColorArr[colorIndex]):([UIColor orangeColor]));
+    UIColor *color = (_valueLineColorArr.count==_drawDataArr.count?(_valueLineColorArr[colorIndex]):(UIColorFromRGB(0x1aa5e5)));
     shapeLayer.strokeColor = color.CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
     shapeLayer.lineWidth = 0.5;
@@ -214,7 +214,7 @@
         CAShapeLayer *shaperLay = [CAShapeLayer layer];
         shaperLay.frame = weakSelf.bounds;
         shaperLay.path = secondPath.CGPath;
-        shaperLay.fillColor = UIColorFromAlphaRGB(0x1e3e99, 0.4).CGColor;
+        shaperLay.fillColor = UIColorFromAlphaRGB(0x1b3fa6, 0.4).CGColor;
         
         [weakSelf.layer addSublayer:shaperLay];
         
@@ -229,7 +229,7 @@
 - (void)drawXAndYLineWithContext:(CGContextRef)context{
     
     //x 轴
-    [self drawLineWithContext:context andStarPoint:self.chartOrigin andEndPoint:P_M(self.contentInsets.left +_xLength, self.chartOrigin.y) andIsDottedLine:NO andColor:[UIColor blueColor]];
+    [self drawLineWithContext:context andStarPoint:self.chartOrigin andEndPoint:P_M(self.contentInsets.left +_xLength, self.chartOrigin.y) andIsDottedLine:NO andColor:UIColorFromRGB(0x313d80)];
 
     if (_showYLine) {
         //Y轴
@@ -244,7 +244,7 @@
             CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_xLineDataArr[i]].width;
             [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x, p.y-3) andIsDottedLine:NO andColor:[UIColor blackColor]];
             
-            [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:[UIColor blackColor] andFontSize:10];
+            [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:10];
             
         }
         
@@ -261,13 +261,13 @@
             CGFloat hei = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_yLineDataArr[i]].height;
            
             if (_showYLevelLine) {
-                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(self.contentInsets.left+_xLength, p.y) andIsDottedLine:YES andColor:[UIColor blueColor]];
-                NSLog(@"1");
+                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(self.contentInsets.left+_xLength, p.y) andIsDottedLine:NO andColor:UIColorFromRGB(0x313d80)];
+            
                 
             }else{
                 [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x+3, p.y) andIsDottedLine:NO andColor:[UIColor blueColor]];
             }
-            [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:[UIColor blackColor] andFontSize:10];
+            [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:10];
         }
     }
 
@@ -343,6 +343,13 @@
 
 - (void)creatLittleCircleView:(CGRect)frame {
 
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+    imageView.image = [UIImage imageNamed:@"point"];
+    
+    [self addSubview:imageView];
+    return;
+    
     
     //创建CGContextRef
     UIGraphicsBeginImageContext(self.bounds.size);

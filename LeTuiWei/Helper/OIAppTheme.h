@@ -54,6 +54,8 @@
 
 + (UIColor *)colorBgGray;
 
++ (UIColor *)colorOverViewBg ;
+
 // Common component colors
 
 + (UIColor *)colorForAppBackground;

@@ -15,7 +15,7 @@ pod 'YYCache', '~> 1.0.2'
 pod 'iCarousel', '~> 1.8.2'
 pod 'STAlertView', '~> 1.0.0'
 pod 'JSPatch', '~> 1.0'
-pod 'FSCalendar', '~> 2.7.4'
+
 
 target ‘LeTuiWei’ do
 

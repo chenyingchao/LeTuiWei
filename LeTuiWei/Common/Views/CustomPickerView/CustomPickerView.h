@@ -20,11 +20,11 @@ typedef void(^determineBtnActionBlock)(NSInteger shengId, NSInteger shiId, NSInt
 - (void)dismiss;
 
 
-@property (strong, nonatomic) NSArray        *shengArray;
+@property (strong, nonatomic) NSArray *shengArray;
 
-@property (strong, nonatomic) NSArray        *shiArray;
+@property (strong, nonatomic) NSArray *shiArray;
 
-@property (strong, nonatomic) NSArray        *xianArray;
+@property (strong, nonatomic) NSArray *xianArray;
 
 
 @end

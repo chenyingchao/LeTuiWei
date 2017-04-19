@@ -63,6 +63,8 @@
 #define kColorForSearchBarBgColor               0xeeeeee
 #define kColorForOrangeTextNotes                0xfd7530
 
+#define kColorForOverViewbg                     0x222b59
+
 
 // (font) size
 #define kFontSize52                             (26 * kDeviceScaleFactor)
@@ -183,6 +185,10 @@
     return UIColorFromRGB(kColorBgGray);
 }
 
+
++ (UIColor *)colorOverViewBg {
+    return UIColorFromRGB(kColorForOverViewbg);
+}
 
 + (UIColor *)colorTransparent {
     return [UIColor clearColor];

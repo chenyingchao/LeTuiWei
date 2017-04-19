@@ -29,7 +29,6 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - FSCalendar (2.7.4)
   - iCarousel (1.8.3)
   - JSPatch (1.1.3):
     - JSPatch/Core (= 1.1.3)
@@ -49,7 +48,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - BlocksKit (~> 2.2.5)
-  - FSCalendar (~> 2.7.4)
   - iCarousel (~> 1.8.2)
   - JSPatch (~> 1.0)
   - Masonry (~> 0.6.3)
@@ -64,7 +62,6 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
-  FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   JSPatch: 02cfed591cb907bbfe80a346666e5a35fc2d349d
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
@@ -76,6 +73,6 @@ SPEC CHECKSUMS:
   STAlertView: bfcbdfed87dc7bfb35c04acd5d96aecebb923d48
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: a35b2872e54ce2be1c5081b43598ad33636b915d
+PODFILE CHECKSUM: de364da8828d6f6fa3d12b14067cf8f8066b547a
 
 COCOAPODS: 1.2.0

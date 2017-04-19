@@ -47,6 +47,8 @@ typedef NS_OPTIONS (NSUInteger,PopUpViewComponent) {
 
 @property (nonatomic, copy) NSString *title;
 
+@property (nonatomic, strong) NSMutableAttributedString *attributeContent;
+
 @property (nonatomic, copy) NSString *content;
 
 

@@ -200,8 +200,12 @@
        
     }
     
+    if (self.attributeContent.length > 0) {
+        self.contentLabel.attributedText = self.attributeContent;
+    } else {
+        self.contentLabel.text = self.content.length ?self.content : content;
+    }
     
-    self.contentLabel.text = self.content.length ?self.content : content;
     NSString *centreButtonTitle = self.centreButtonTitle.length ? self.centreButtonTitle : @"我知道了";
     
     NSString *centreUpButtonTitle = self.centreUpButtonTitle.length ? self.centreButtonTitle : @"知道了，我已购买";

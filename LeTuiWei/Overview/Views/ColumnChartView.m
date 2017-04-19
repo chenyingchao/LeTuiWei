@@ -30,7 +30,7 @@
 -(instancetype)initWithFrame:(CGRect)frame {
     
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor yellowColor];//UIColorFromRGB(0x1c2249);
+        self.backgroundColor = [UIColor clearColor];
         
 
     }
@@ -71,11 +71,11 @@
     //画竖行
     for (NSInteger i =0; i < self.xLineDataArr.count; i++) {
         
-        [self drawLineWithContext:context andStarPoint:P_M(self.chartOrigin.x + i * _perXLen, self.chartOrigin.y) andEndPoint:P_M(self.chartOrigin.x + i * _perXLen, 0) andIsDottedLine:NO andColor:[UIColor redColor]];
+        [self drawLineWithContext:context andStarPoint:P_M(self.chartOrigin.x + i * _perXLen, self.chartOrigin.y) andEndPoint:P_M(self.chartOrigin.x + i * _perXLen, 0) andIsDottedLine:NO andColor:UIColorFromRGB(0x313d80)];
         
         CGPoint p = P_M(self.chartOrigin.x + i * _perXLen, self.chartOrigin.y);
         CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:_xLineDataArr[i]].width;
-        [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:[UIColor blackColor] andFontSize:14];
+        [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:12];
     }
   
     //画Y轴的字
@@ -84,7 +84,7 @@
         CGPoint p = P_M(self.chartOrigin.x , self.chartOrigin.y - (i + 1)* _perYlen);
         CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:_yLineDataArr[i]].width;
         CGFloat height = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:_yLineDataArr[i]].height;
-        [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[self.yLineDataArr.count - 1 - i]] andContext:context atPoint:P_M(p.x-len -10, p.y - height/2) WithColor:[UIColor blackColor] andFontSize:14];
+        [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[self.yLineDataArr.count - 1 - i]] andContext:context atPoint:P_M(p.x-len -10, p.y - height/2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:14];
     }
     
     
@@ -106,7 +106,7 @@
         UIColor *color = (_columnColorArr.count==_valueArr.count?(_columnColorArr[i]):([UIColor orangeColor]));
         shapeLayer.strokeColor = color.CGColor;
         shapeLayer.fillColor = [UIColor clearColor].CGColor;
-        shapeLayer.lineWidth = 20;
+        shapeLayer.lineWidth = [Theme paddingWithSize:36];
         
         //第三，动画
         
@@ -124,9 +124,18 @@
   
         
         CGFloat height = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:self.valueArr[self.valueArr.count - 1 - i]].height;
-        [self drawText:[NSString stringWithFormat:@"%@",self.valueArr[self.valueArr.count - 1 - i]] andContext:context atPoint:P_M(self.chartOrigin.x+ columnLength + 5, self.chartOrigin.y - (i+ 1)* _perYlen - height/2) WithColor:[UIColor blackColor] andFontSize:14];
+        [self drawText:[NSString stringWithFormat:@"%@",self.valueArr[self.valueArr.count - 1 - i]] andContext:context atPoint:P_M(self.chartOrigin.x+ columnLength + 5, self.chartOrigin.y - (i+ 1)* _perYlen - height/2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:14];
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
 
