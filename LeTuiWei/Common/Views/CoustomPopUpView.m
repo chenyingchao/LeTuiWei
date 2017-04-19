@@ -495,13 +495,13 @@
 
     if (!_maskView) {
 
-        self.maskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _maskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-        [self.maskView addGestureRecognizer:tap];
-        self.maskView.userInteractionEnabled = YES;
-        self.maskView.backgroundColor = [UIColor blackColor];
-        self.maskView.alpha =  0.4;
+        [_maskView addGestureRecognizer:tap];
+        _maskView.userInteractionEnabled = YES;
+        _maskView.backgroundColor = [UIColor blackColor];
+        _maskView.alpha =  0.4;
 
     }
     

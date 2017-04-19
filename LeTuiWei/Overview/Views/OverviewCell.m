@@ -11,6 +11,12 @@
 #import "RingChartView.h"
 #import "ColumnChartView.h"
 
+
+@interface OverviewCell()<UITextViewDelegate>
+
+@end
+
+
 @implementation OverviewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withDataSource:(id)dataSource withCellType:(OverviewCellType)cellType {
@@ -214,6 +220,8 @@
 #pragma mark 明星产品top5
 - (void)createProductTop5:(id)dataSource {
     WS(weakSelf);
+
+    
     UIView *circleView = [[UIView alloc] initWithFrame:CGRectZero];
     circleView.backgroundColor = UIColorFromRGB(0x7c87cd);
     circleView.layer.cornerRadius = [Theme paddingWithSize12] / 2;
@@ -238,6 +246,73 @@
         make.left.equalTo(circleView).offset([Theme paddingWithSize32]);
         make.centerY.equalTo(circleView);
     }];
+    
+
+    NSArray *array = [NSArray arrayWithObjects:@"按销量",@"按销售额", nil];
+
+    UISegmentedControl *segment = [[UISegmentedControl alloc]initWithItems:array];
+    segment.backgroundColor = UIColorFromRGB(0x303A65);
+    segment.apportionsSegmentWidthsByContent = YES;
+    segment.layer.masksToBounds = YES;
+    segment.layer.borderWidth = CGFLOAT_MIN;
+    segment.layer.cornerRadius = 5;
+    segment.tintColor = UIColorFromRGB(0x41518f);
+    segment.selectedSegmentIndex = 0;
+    [segment setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0xffffff)} forState:UIControlStateSelected];
+    [segment setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0x7b86cc)} forState:UIControlStateNormal];
+    [segment addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
+
+    [self.contentView addSubview:segment];
+    [segment mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.centerY.equalTo(titleNameLabel);
+        make.right.equalTo(weakSelf.contentView).offset(-[Theme paddingWithSize32]);
+
+        make.height.equalTo(@([Theme paddingWithSize:50]));
+        
+    }];
+    
+    if (!dataSource) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"尚未开通“会员营销”功能，不能统计明星产品，要想展开此数据，请先为门店派账号开通“开通智慧门店”"];
+        [attributedString addAttribute:NSLinkAttributeName
+                                 value:@"openStore://"
+                                 range:[[attributedString string] rangeOfString:@"开通“开通智慧门店”"]];
+        
+        [attributedString addAttribute:NSFontAttributeName
+                              value:[Theme fontWithSize28]
+                              range:NSMakeRange(0, attributedString.length)];
+        
+        [attributedString addAttribute:NSForegroundColorAttributeName
+                              value:UIColorFromRGB(0xc5cae9)
+                              range:NSMakeRange(0, attributedString.length)];
+
+        
+        UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
+        textView.backgroundColor =  UIColorFromRGB(0x1b224c);
+        textView.delegate = self;
+        textView.editable = NO;
+        textView.scrollEnabled = NO;
+        textView.font = [Theme fontWithSize30];
+        textView.textColor = UIColorFromRGB(0xc5cae9);
+        textView.linkTextAttributes = @{NSForegroundColorAttributeName:
+                                           UIColorFromRGB(0x338cf2),
+                                        NSUnderlineColorAttributeName:  UIColorFromRGB(0x338cf2),
+                                        NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+        
+        [self.contentView addSubview:textView];
+
+        
+        textView.attributedText = attributedString;
+        [textView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize40]);
+            make.right.equalTo(weakSelf.contentView).offset(-[Theme paddingWithSize40]);
+            make.top.equalTo(titleNameLabel.mas_bottom).offset([Theme paddingWithSize40]);
+            make.bottom.equalTo(weakSelf.contentView).offset(-[Theme paddingWithSize40]);
+        }];
+        
+        return;
+        
+    }
     
 
     ColumnChartView *columnChart = [[ColumnChartView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:400])];
@@ -327,12 +402,14 @@
                 make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(-[Theme paddingWithSize:50]);
             }];
         }
-        
-        
     }
+}
 
-    
-
+- (void)segmentSelected:(id)sender {
+    UISegmentedControl* control = (UISegmentedControl*)sender;
+    if (self.segmentIndexBlock) {
+        self.segmentIndexBlock(control.selectedSegmentIndex);
+    }
 }
 
 
@@ -386,7 +463,7 @@
 
     UIView *tempView = nil;
     NSArray *titleArray = cellType == OverviewCellTypePayTypeProportion ?  @[@"微信支付",@"支付宝支付",@"现金支付",@"会员卡余额支付",@"刷卡支付",] :  @[@"美团",@"饿了么",@"百度外卖"];
-    for (NSInteger i = 0; i < ringView.valueDataArr.count; i++) {
+    for (NSInteger i = 0; i < titleArray.count; i++) {
         
         if (tempView) {
             UIView *circleView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -449,7 +526,7 @@
         
     
         
-        if (i == ringView.valueDataArr.count - 1) {
+        if (i == titleArray.count - 1) {
             [tempView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.bottom.equalTo(weakSelf.contentView.mas_bottom).offset(-[Theme paddingWithSize:50]);
             }];
@@ -531,8 +608,7 @@
     lineChart.contentInsets = UIEdgeInsetsMake([Theme paddingWithSize40], [Theme paddingWithSize100], [Theme paddingWithSize40], [Theme paddingWithSize100]);
     lineChart.xLineDataArr = @[@"0:00",@"4:00",@"8:00",@"12:00",@"16:00",@"20:00",@"24:00"];
     lineChart.yLineDataArr = @[@"2500",@"5000",@"7500",@"10000"];
-    lineChart.valueArr = @[@[@"100",@"2500",@"200",@2000,@10000,@300,@5000]
-                           ];
+    lineChart.valueArr = @[@[@"100",@"2500",@"200",@2000,@10000,@300,@5000]];
     lineChart.showYLine = NO;
     lineChart.showYLevelLine = YES;
     lineChart.valueLineColorArr =@[ [UIColor greenColor], [UIColor orangeColor]];
@@ -593,7 +669,7 @@
     UILabel *orderQuantityValueLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     orderQuantityValueLabel.font = [UIFont systemFontOfSize:30];
     orderQuantityValueLabel.textColor = UIColorFromRGB(0xf9d542);
-    orderQuantityValueLabel.text = dataArray.firstObject;
+    
     [self.contentView addSubview:orderQuantityValueLabel];
     
     [orderQuantityValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -605,7 +681,7 @@
     UILabel *orderMoneryValueLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     orderMoneryValueLabel.font = [UIFont systemFontOfSize:30];
     orderMoneryValueLabel.textColor = UIColorFromRGB(0xf9d542);
-    orderMoneryValueLabel.text = dataArray.lastObject;
+
     [self.contentView addSubview:orderMoneryValueLabel];
     
     [orderMoneryValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -613,18 +689,39 @@
         make.centerX.equalTo(orderMoneryLabel.mas_centerX);
     }];
     
+    NSString *quantityValueStr = [NSString stringWithFormat:@"%@", dataArray.firstObject] ;
+    NSString *moneryValueStr = [NSString stringWithFormat:@"%@", dataArray.lastObject];
+    
     if (cellType == OverviewCellTypeStoreDate) {
         orderQuantityLabel.text = @"订单数";
         orderMoneryLabel.text = @"订单总额";
+        orderQuantityValueLabel.text = quantityValueStr;
+        orderMoneryValueLabel.text = moneryValueStr;
+
     } else  if (cellType == OverviewCellTypeVipDate) {
         orderQuantityLabel.text = @"会员充值金额";
         orderMoneryLabel.text = @"新增会员";
+        orderQuantityValueLabel.text = quantityValueStr;
+        orderMoneryValueLabel.text = moneryValueStr;
     } else  if (cellType == OverviewCellTypeTakeOutDate) {
         orderQuantityLabel.text = @"订单数";
         orderMoneryLabel.text = @"订单总额";
+        orderQuantityValueLabel.text = quantityValueStr;
+        orderMoneryValueLabel.text = moneryValueStr;
     }
     
     
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    if ([[URL scheme] isEqualToString:@"openStore"]) {
+        if (self.openWisdomStoreBlock) {
+            self.openWisdomStoreBlock();
+        }
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end

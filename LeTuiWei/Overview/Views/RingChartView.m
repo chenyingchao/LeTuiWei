@@ -65,6 +65,24 @@
         [layer removeFromSuperlayer];
     }
     
+    if (_valueDataArr.count == 0) {
+        CAShapeLayer *layer = [CAShapeLayer layer] ;
+        
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        
+        layer.fillColor = [UIColor clearColor].CGColor;
+        layer.strokeColor = UIColorFromRGB(0x222b59).CGColor;
+      
+        
+        [path addArcWithCenter:self.chartOrigin radius:_redius startAngle:0  endAngle: 2 * M_PI clockwise:YES];
+        
+        layer.path = path.CGPath;
+        [self.layer addSublayer:layer];
+        layer.lineWidth = _ringWidth;
+
+
+        return;
+    }
     
     CGFloat lastBegin = 0 * M_PI;
     

@@ -12,13 +12,15 @@
 #import "OverviewCell.h"
 #import "NewCustomPickerView.h"
 #import "CoustomPopUpView.h"
+#import "AddStoreMaskView.h"
+#import "AddStoresViewController.h"
 
 typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     ATCalendarSelectStepOne,
     ATCalendarSelectStepTwo,
 };
 
-@interface OverviewViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface OverviewViewController () <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -36,6 +38,8 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 
 @property (nonatomic, strong) NewCustomPickerView *pickerView;
 
+@property (nonatomic, assign) BOOL haveStoreInfo;
+
 @end
 
 @implementation OverviewViewController
@@ -52,7 +56,21 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     [super viewDidLoad];
     self.edgesForExtendedLayout=UIRectEdgeNone;
     self.headerButtonType = NaviHeaderViewButtonToday;
-    [self loadDataSource];
+   // [self loadDataSource];
+    
+    self.haveStoreInfo = NO;
+    WS(weakSelf);
+    AddStoreMaskView *addStoreMaskView = [[AddStoreMaskView alloc] initWithFrame:CGRectMake([Theme paddingWithSize:90], [Theme paddingWithSize:220], kScreenWidth - 2 * [Theme paddingWithSize:90], [Theme paddingWithSize:700])];
+    addStoreMaskView.addStoreButtonBlock = ^(UIButton *button) {
+
+        AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
+        [weakSelf.navigationController pushViewController:addStoreVC animated:YES];
+    
+    };
+    
+    [addStoreMaskView showView];
+    
+    
 
 }
 
@@ -106,7 +124,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
- 
+    WS(weakSelf);
     OverviewCell *cell = nil;
     
     switch (indexPath.section) {
@@ -130,6 +148,31 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
             
         case OverviewCellTypeProductTop5: {
             cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductTop5" withDataSource:self.dataArray withCellType:OverviewCellTypeProductTop5];
+            
+            cell.segmentIndexBlock = ^(NSInteger index) {
+                //按销量
+                if (index == 0) {
+                    NSLog(@"按销量");
+                } else { //按销售额
+                    NSLog(@"按销售额");
+                
+                }
+                
+                
+            };
+            //开通智慧门店
+            cell.openWisdomStoreBlock = ^() {
+                AddStoreMaskView *addStoreMaskView = [[AddStoreMaskView alloc] initWithFrame:CGRectMake([Theme paddingWithSize:90], [Theme paddingWithSize:220], kScreenWidth - 2 * [Theme paddingWithSize:90], [Theme paddingWithSize:700])];
+                
+                [addStoreMaskView showView];
+                addStoreMaskView.addStoreButtonBlock = ^(UIButton *button) {
+                 
+                    AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
+                    [weakSelf.navigationController pushViewController:addStoreVC animated:YES];
+                    
+                };
+
+            };
         }
             
             break;
@@ -268,7 +311,44 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                 make.left.equalTo(bgView).offset([Theme paddingWithSize32]);
                 make.centerY.equalTo(bgView);
             }];
-            
+            if (!_haveStoreInfo) {
+                NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"(未开通“智慧门店”,会员功能不可用,立即开通)"];
+                [attributedString addAttribute:NSLinkAttributeName
+                                         value:@"openStore://"
+                                         range:[[attributedString string] rangeOfString:@"立即开通"]];
+                
+                [attributedString addAttribute:NSFontAttributeName
+                                         value:[Theme fontWithSize24]
+                                         range:NSMakeRange(0, attributedString.length)];
+                
+                [attributedString addAttribute:NSForegroundColorAttributeName
+                                         value:UIColorFromRGB(0x7b86cc)
+                                         range:NSMakeRange(0, attributedString.length)];
+                
+                
+                UITextView *textView = [[UITextView alloc] initWithFrame:CGRectZero];
+                textView.backgroundColor =  UIColorFromRGB(0x14193f);
+                textView.delegate = self;
+                textView.editable = NO;
+                textView.scrollEnabled = NO;
+                textView.font = [Theme fontWithSize30];
+                textView.textColor = UIColorFromRGB(0xc5cae9);
+                textView.linkTextAttributes = @{NSForegroundColorAttributeName:
+                                                    UIColorFromRGB(0x338cf2),
+                                                NSUnderlineColorAttributeName:  UIColorFromRGB(0x338cf2),
+                                                NSUnderlineStyleAttributeName: @(NSUnderlinePatternSolid)};
+                
+                [bgView addSubview:textView];
+                
+                
+                textView.attributedText = attributedString;
+                [textView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.equalTo(titleNameLabel.mas_right).offset([Theme paddingWithSize:5]);
+                    make.centerY.equalTo(titleNameLabel);
+                }];
+
+            }
+ 
         }
             
             break;
@@ -290,7 +370,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
             
             UIImageView *promptImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
             promptImageView.userInteractionEnabled = YES;
-            promptImageView.image = [UIImage imageNamed:@"exit"];
+            promptImageView.image = [UIImage imageNamed:@"note"];
             [bgView addSubview:promptImageView];
             [promptImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                
@@ -370,8 +450,8 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     
     self.headerView = [[NavigitionHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:200]) withTitles:@[@"今天",@"昨天",@"近7天"]];
 
-    self.checkInDateStr = @"2017-3-3";
-    self.checkOutDateStr = @"2017-3-10";
+    self.checkInDateStr = @"2017-4-19";
+    self.checkOutDateStr = @"2017-4-19";
     self.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",self.checkInDateStr,self.checkOutDateStr];
     
     [self.headerView upDateView];
@@ -387,6 +467,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                     weakSelf.calendarView.checkOutDate  = [NSDate at_dateFromString:weakSelf.checkOutDateStr];
                     [weakSelf.calendarView showCalendarView];
                     weakSelf.tabBarController.tabBar.hidden = YES;
+
                 } else {
                     [weakSelf.calendarView dismissCalendarView];
                     weakSelf.tabBarController.tabBar.hidden = NO;
@@ -474,6 +555,24 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     }
     
     return _pickerView;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange {
+    if ([[URL scheme] isEqualToString:@"openStore"]) {
+        WS(weakSelf);
+        AddStoreMaskView *addStoreMaskView = [[AddStoreMaskView alloc] initWithFrame:CGRectMake([Theme paddingWithSize:90], [Theme paddingWithSize:220], kScreenWidth - 2 * [Theme paddingWithSize:90], [Theme paddingWithSize:700])];
+        
+        [addStoreMaskView showView];
+        addStoreMaskView.addStoreButtonBlock = ^(UIButton *button) {
+            
+            AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
+            [weakSelf.navigationController pushViewController:addStoreVC animated:YES];
+            
+        };
+        return NO;
+    }
+    
+    return YES;
 }
 
 

@@ -35,8 +35,16 @@
         }
         
     }];
+    
+    
+    
+    
+    
+   // [clickButton addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchDown];
+    
     return bgView;
 }
+
 
 
 

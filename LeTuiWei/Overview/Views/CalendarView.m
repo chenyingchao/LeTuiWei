@@ -49,6 +49,7 @@
     WS(weakSelf);
     UIView *bgHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
     bgHeaderView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
+
     [self.calendar addSubview:bgHeaderView];
     [bgHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(weakSelf.calendar);
@@ -57,13 +58,13 @@
     
     ConfirmButtonView *submitView = [ConfirmButtonView confirmButtonViewWithTitle:@"选择完毕" andButtonClickedBlock:^(UIButton *button) {
          NSLog(@"%@", [weakSelf.calendar.checkInDate stringForYearMonthDayDashed]);
-   
-        if (weakSelf.confirmDateButton) {
-            weakSelf.confirmDateButton([weakSelf.calendar.checkInDate stringForYearMonthDayDashed],[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]);
-            
-            [weakSelf dismissCalendarView];
-        }
-        
+//   
+//        if (weakSelf.confirmDateButton) {
+//            weakSelf.confirmDateButton([weakSelf.calendar.checkInDate stringForYearMonthDayDashed],[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]);
+//            
+//            [weakSelf dismissCalendarView];
+//        }
+//        
         
       
     }];
@@ -71,7 +72,7 @@
     [submitView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(bgHeaderView.mas_left).offset([Theme paddingWithSize40]);
         make.right.equalTo(bgHeaderView.mas_right).offset(-[Theme paddingWithSize40]);
-        make.bottom.equalTo(bgHeaderView.mas_bottom).offset(- [Theme paddingWithSize40]);
+        make.bottom.equalTo(bgHeaderView.mas_bottom).offset(- [Theme paddingWithSize:100]);
         make.height.equalTo(@([Theme paddingWithSize:88]));
     }];
 

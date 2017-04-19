@@ -28,4 +28,9 @@ typedef NS_ENUM(NSUInteger, OverviewCellType){
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withDataSource:(id)dataSource withCellType:(OverviewCellType)cellType;
 
+
+@property (nonatomic, copy) void (^openWisdomStoreBlock)(void);
+
+@property (nonatomic, copy) void (^segmentIndexBlock)(NSInteger index);
+
 @end

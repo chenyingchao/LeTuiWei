@@ -10,4 +10,11 @@
 
 @interface AddStoreMaskView : UIView
 
+- (void)showView;
+
+@property (nonatomic, copy) void (^addStoreButtonBlock)(UIButton *button);
+
+
+
+
 @end
