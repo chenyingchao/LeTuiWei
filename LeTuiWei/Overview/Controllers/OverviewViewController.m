@@ -57,21 +57,22 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     self.edgesForExtendedLayout=UIRectEdgeNone;
     self.headerButtonType = NaviHeaderViewButtonToday;
    // [self loadDataSource];
-    
+//    
     self.haveStoreInfo = NO;
     WS(weakSelf);
-    AddStoreMaskView *addStoreMaskView = [[AddStoreMaskView alloc] initWithFrame:CGRectMake([Theme paddingWithSize:90], [Theme paddingWithSize:220], kScreenWidth - 2 * [Theme paddingWithSize:90], [Theme paddingWithSize:700])];
-    addStoreMaskView.addStoreButtonBlock = ^(UIButton *button) {
 
-        AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
-        [weakSelf.navigationController pushViewController:addStoreVC animated:YES];
+    if (!self.haveStoreInfo) {
+        AddStoreMaskView *addStoreMaskView = [[AddStoreMaskView alloc] initWithFrame:CGRectMake([Theme paddingWithSize:90], [Theme paddingWithSize:220], kScreenWidth - 2 * [Theme paddingWithSize:90], [Theme paddingWithSize:700])];
+        addStoreMaskView.addStoreButtonBlock = ^(UIButton *button) {
+            
+            AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
+            [weakSelf.navigationController pushViewController:addStoreVC animated:YES];
+            
+        };
+        
+        [addStoreMaskView showView];
+    }
     
-    };
-    
-    [addStoreMaskView showView];
-    
-    
-
 }
 
 - (void)loadDataSource {
@@ -455,7 +456,8 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     self.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",self.checkInDateStr,self.checkOutDateStr];
     
     [self.headerView upDateView];
-    [self.view addSubview:self.headerView];
+  
+     [[UIApplication sharedApplication].keyWindow addSubview:self.headerView];
   
     WS(weakSelf);
     self.headerView.selectAtIndexBlock = ^(NaviHeaderViewButtonType indexType, BOOL isSelected) {
@@ -466,11 +468,11 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                     weakSelf.calendarView.checkInDate = [NSDate at_dateFromString:weakSelf.checkInDateStr];
                     weakSelf.calendarView.checkOutDate  = [NSDate at_dateFromString:weakSelf.checkOutDateStr];
                     [weakSelf.calendarView showCalendarView];
-                    weakSelf.tabBarController.tabBar.hidden = YES;
+
 
                 } else {
                     [weakSelf.calendarView dismissCalendarView];
-                    weakSelf.tabBarController.tabBar.hidden = NO;
+         
                 }
             }
                 break;
@@ -478,14 +480,14 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
             case NaviHeaderViewButtonToday: {
                 
                 [weakSelf.calendarView dismissCalendarView];
-                weakSelf.tabBarController.tabBar.hidden = NO;
+           
             }
                 
                 break;
                 
             case NaviHeaderViewButtontYesterday: {
                 [weakSelf.calendarView dismissCalendarView];
-                weakSelf.tabBarController.tabBar.hidden = NO;
+        
                 
             }
                 
@@ -493,7 +495,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                 
             case NaviHeaderViewButtontSevenDay: {
                 [weakSelf.calendarView dismissCalendarView];
-                weakSelf.tabBarController.tabBar.hidden = NO;
+            
                 
             }
                 
@@ -523,8 +525,8 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
             [weakSelf.headerView upDateView];
             weakSelf.tabBarController.tabBar.hidden = NO;
         };
-        [self.view addSubview:_calendarView];
-        [self.view insertSubview:_calendarView belowSubview:self.headerView];
+
+        [[UIApplication sharedApplication].keyWindow insertSubview:_calendarView belowSubview:self.headerView];
     
         
         
@@ -535,8 +537,16 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.headerView.hidden = NO;
 
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.headerView.hidden = YES;
+
+}
+
 
 #pragma mark 返回字符串尺寸
 - (CGSize)sizeOfStringWithMaxSize:(CGSize)maxSize textFont:(UIFont *)fontSize aimString:(NSString *)aimString{
