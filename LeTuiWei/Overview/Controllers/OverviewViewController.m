@@ -5,6 +5,11 @@
 //  Created by 陈营超 on 2017/3/28.
 //  Copyright © 2017年 陈营超. All rights reserved.
 //
+//
+//DistributionChartView *lineChart = [[DistributionChartView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 200)];
+//
+//[lineChart showAnimation];
+//[self.view addSubview:lineChart];
 
 #import "OverviewViewController.h"
 #import "NavigitionHeaderView.h"
@@ -56,9 +61,9 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     [super viewDidLoad];
     self.edgesForExtendedLayout=UIRectEdgeNone;
     self.headerButtonType = NaviHeaderViewButtonToday;
-   // [self loadDataSource];
-//    
-    self.haveStoreInfo = NO;
+    [self loadDataSource];
+   
+    self.haveStoreInfo = YES;
     WS(weakSelf);
 
     if (!self.haveStoreInfo) {
@@ -450,9 +455,10 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 -(void)createNavigitionHeaderView {
     
     self.headerView = [[NavigitionHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:200]) withTitles:@[@"今天",@"昨天",@"近7天"]];
+    self.checkInDateStr =  [[NSDate date] stringForYearMonthDayDashed];
 
-    self.checkInDateStr = @"2017-4-19";
-    self.checkOutDateStr = @"2017-4-19";
+    self.checkOutDateStr =  [[NSDate date] stringForYearMonthDayDashed];
+
     self.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",self.checkInDateStr,self.checkOutDateStr];
     
     [self.headerView upDateView];
@@ -461,32 +467,67 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
   
     WS(weakSelf);
     self.headerView.selectAtIndexBlock = ^(NaviHeaderViewButtonType indexType, BOOL isSelected) {
+        
         weakSelf.headerButtonType = indexType;
         switch (indexType) {
             case NaviHeaderViewButtonCalendar: {
                 if (isSelected) {
+                    //创建日历
+                    weakSelf.calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0,[Theme paddingWithSize:200], kScreenWidth, kScreenHeight - [Theme paddingWithSize:200])];
+                    weakSelf.calendarView.confirmDateButton = ^(NSString *checkInDate, NSString *checkOutDate) {
+                        
+                        weakSelf.headerView.calendarButton.selected = NO;
+                        //更改button内容
+                        weakSelf.checkInDateStr = checkInDate;
+                        weakSelf.checkOutDateStr = checkOutDate;
+                        weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
+                        [weakSelf.headerView upDateView];
+                        [weakSelf loadDataSource];
+                        
+                    };
+                    
+                    [[UIApplication sharedApplication].keyWindow insertSubview:weakSelf.calendarView belowSubview:weakSelf.headerView];
+                    
+           
                     weakSelf.calendarView.checkInDate = [NSDate at_dateFromString:weakSelf.checkInDateStr];
                     weakSelf.calendarView.checkOutDate  = [NSDate at_dateFromString:weakSelf.checkOutDateStr];
+   
                     [weakSelf.calendarView showCalendarView];
-
-
+                    
                 } else {
+                    
                     [weakSelf.calendarView dismissCalendarView];
          
                 }
             }
                 break;
-                
+
             case NaviHeaderViewButtonToday: {
+                weakSelf.checkInDateStr =  [[NSDate date] stringForYearMonthDayDashed];
+                weakSelf.checkOutDateStr =  [[NSDate date] stringForYearMonthDayDashed];
+                weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
                 
+                [weakSelf.headerView upDateView];
+                
+                weakSelf.headerView.calendarButton.selected = NO;
                 [weakSelf.calendarView dismissCalendarView];
+                [weakSelf loadDataSource];
            
             }
                 
                 break;
                 
             case NaviHeaderViewButtontYesterday: {
-                [weakSelf.calendarView dismissCalendarView];
+                
+                NSDate *lastDay = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:[NSDate date] ];//前一天
+                weakSelf.checkInDateStr =  [lastDay stringForYearMonthDayDashed];
+                weakSelf.checkOutDateStr = [lastDay stringForYearMonthDayDashed];
+                weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
+                
+                [weakSelf.headerView upDateView];
+                weakSelf.headerView.calendarButton.selected = NO;
+               [weakSelf.calendarView dismissCalendarView];
+                [weakSelf loadDataSource];
         
                 
             }
@@ -494,7 +535,19 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                 break;
                 
             case NaviHeaderViewButtontSevenDay: {
+                
+                NSDate *lastSevenDay = [NSDate dateWithTimeInterval:-24*60*60*7 sinceDate:[NSDate date] ];//前7天
+                NSDate *lastDay = [NSDate dateWithTimeInterval:-24*60*60 sinceDate:[NSDate date] ];//前一天
+                
+                weakSelf.checkInDateStr =  [lastSevenDay stringForYearMonthDayDashed];
+                weakSelf.checkOutDateStr = [lastDay stringForYearMonthDayDashed];
+                weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
+                [weakSelf.headerView upDateView];
+                
+                
+                weakSelf.headerView.calendarButton.selected = NO;
                 [weakSelf.calendarView dismissCalendarView];
+                [weakSelf loadDataSource];
             
                 
             }
@@ -503,35 +556,8 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
             
         }
         
-        [weakSelf loadDataSource];
-        
     };
 
-}
-
-#pragma mark 创建日历
--(CalendarView *)calendarView {
-    if (!_calendarView) {
-        WS(weakSelf);
-        _calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0,[Theme paddingWithSize:200], kScreenWidth, kScreenHeight - [Theme paddingWithSize:200])];
-        _calendarView.confirmDateButton = ^(NSString *checkInDate, NSString *checkOutDate) {
-            //更改button状态
-            weakSelf.headerView.calendarButton.selected = NO;
-           // [ weakSelf.headerView.calendarButton setTitleColor:UIColorFromRGB(0xc5cae9) forState:UIControlStateNormal];
-            //更改button内容
-            weakSelf.checkInDateStr = checkInDate;
-            weakSelf.checkOutDateStr = checkOutDate;
-            weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
-            [weakSelf.headerView upDateView];
-            weakSelf.tabBarController.tabBar.hidden = NO;
-        };
-
-        [[UIApplication sharedApplication].keyWindow insertSubview:_calendarView belowSubview:self.headerView];
-    
-        
-        
-    }
-    return _calendarView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

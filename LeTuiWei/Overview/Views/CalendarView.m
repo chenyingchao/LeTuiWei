@@ -45,49 +45,22 @@
     return self;
 }
 
-- (void)creatFooterView {
-    WS(weakSelf);
-    UIView *bgHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
-    bgHeaderView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
-
-    [self.calendar addSubview:bgHeaderView];
-    [bgHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(weakSelf.calendar);
-        make.height.equalTo(@([Theme paddingWithSize:200]));
-    }];
-    
-    ConfirmButtonView *submitView = [ConfirmButtonView confirmButtonViewWithTitle:@"选择完毕" andButtonClickedBlock:^(UIButton *button) {
-        
-        if (weakSelf.confirmDateButton) {
-            weakSelf.confirmDateButton([weakSelf.calendar.checkInDate stringForYearMonthDayDashed],[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]);
-            
-            [weakSelf dismissCalendarView];
-        }
-    }];
-    [bgHeaderView addSubview:submitView];
-    [submitView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(bgHeaderView.mas_left).offset([Theme paddingWithSize40]);
-        make.right.equalTo(bgHeaderView.mas_right).offset(-[Theme paddingWithSize40]);
-        make.bottom.equalTo(bgHeaderView.mas_bottom).offset(- [Theme paddingWithSize40]);
-        make.height.equalTo(@([Theme paddingWithSize:88]));
-    }];
-
-    
-    
-
-}
-
 
 - (void)showCalendarView {
 
     self.calendar.minimumDate = [NSDate at_dateFromString:@"1970-01-01"];
     self.calendar.maximumDate = [NSDate at_dateFromString:@"2099-12-31"];
+
     
     self.calendar.checkInDate = self.checkInDate;
     if (self.calendar.checkInDate) {
         [self.calendar setCurrentPage:self.calendar.checkInDate animated:YES];
     }
     self.calendar.checkOutDate = self.checkOutDate;
+    
+    
+  
+    [self.calendar reloadData];
     
     WS(weakSelf);
     [UIView animateWithDuration:0.3 animations:^{
@@ -108,7 +81,7 @@
      weakSelf.frame = CGRectMake(0, - 1000, kScreenWidth, self.frame.size.height);
     } completion:^(BOOL finished) {
         
-        
+        [weakSelf removeFromSuperview];
     }];
 }
 
@@ -153,5 +126,35 @@
         calendar.checkInDate = date;
     }
 }
+
+- (void)creatFooterView {
+    WS(weakSelf);
+    UIView *bgHeaderView = [[UIView alloc] initWithFrame:CGRectZero];
+    bgHeaderView.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
+    
+    [self.calendar addSubview:bgHeaderView];
+    [bgHeaderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(weakSelf.calendar);
+        make.height.equalTo(@([Theme paddingWithSize:200]));
+    }];
+    
+    ConfirmButtonView *submitView = [ConfirmButtonView confirmButtonViewWithTitle:@"选择完毕" andButtonClickedBlock:^(UIButton *button) {
+        
+        if (weakSelf.confirmDateButton) {
+            weakSelf.confirmDateButton([weakSelf.calendar.checkInDate stringForYearMonthDayDashed],[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]);
+            
+            [weakSelf dismissCalendarView];
+        }
+    }];
+    [bgHeaderView addSubview:submitView];
+    [submitView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bgHeaderView.mas_left).offset([Theme paddingWithSize40]);
+        make.right.equalTo(bgHeaderView.mas_right).offset(-[Theme paddingWithSize40]);
+        make.bottom.equalTo(bgHeaderView.mas_bottom).offset(- [Theme paddingWithSize40]);
+        make.height.equalTo(@([Theme paddingWithSize:88]));
+    }];
+    
+}
+
 
 @end

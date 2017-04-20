@@ -127,15 +127,6 @@
             
                 [button setTitleColor:UIColorFromRGB(0x3f88cd) forState:UIControlStateNormal];
                 
-                if (index == 1000) {
-                    if (button.selected ==  YES) {
-                        
-                        [button setTitleColor:UIColorFromRGB(0x3f88cd) forState:UIControlStateNormal];
-                    } else {
-                        [button setTitleColor:UIColorFromRGB(0xc5cae9) forState:UIControlStateNormal];
-                    }
-                }
-
             }
         }
 
