@@ -187,8 +187,7 @@
     
 }
 
-
-#pragma mark 明星产品top5
+#pragma mark 客单价分布图
 - (void)createOrderDistributionMapView:(id)dataSource {
     WS(weakSelf);
     UIView *circleView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -215,6 +214,38 @@
         make.left.equalTo(circleView).offset([Theme paddingWithSize32]);
         make.centerY.equalTo(circleView);
     }];
+    
+    if (!dataSource) {
+        
+    }
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    imageView.image = [UIImage imageNamed:@"nodata_"];
+    [self.contentView addSubview:imageView];
+    
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.contentView);
+        make.top.equalTo(titleNameLabel.mas_bottom).offset([Theme paddingWithSize28]);
+    }];
+    
+    
+    
+    UILabel *noDataLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    noDataLabel.font = [Theme fontWithSize28];
+    noDataLabel.textColor = UIColorFromRGB(0xc5cae9);
+    noDataLabel.text = @"暂无数据";
+    [self.contentView addSubview:noDataLabel];
+    
+    [noDataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(imageView.mas_bottom).offset([Theme paddingWithSize20]);
+        make.centerX.equalTo(weakSelf.contentView);
+        
+        make.bottom.equalTo(weakSelf.contentView).offset(-[Theme paddingWithSize32]);
+        
+    }];
+    
+    
 }
 
 #pragma mark 明星产品top5
