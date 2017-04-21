@@ -47,6 +47,7 @@
 		733B618D1E9B764300BB2636 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618C1E9B764300BB2636 /* QuartzCore.framework */; };
 		733B618F1E9B765100BB2636 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618E1E9B765100BB2636 /* CoreLocation.framework */; };
 		733B61961E9B78D100BB2636 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B61951E9B78D100BB2636 /* QMapKit.framework */; };
+		7347DC331EA9A7C100D9CF67 /* IncomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7347DC321EA9A7C100D9CF67 /* IncomeViewCell.m */; };
 		735000EE1E9F226E0019C234 /* ColumnChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 735000ED1E9F226E0019C234 /* ColumnChartView.m */; };
 		735000F11E9F527E0019C234 /* DistributionChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 735000F01E9F527E0019C234 /* DistributionChartView.m */; };
 		735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 735927E21E8C9044001AB915 /* ATCommonCell.m */; };
@@ -200,6 +201,8 @@
 		733B618C1E9B764300BB2636 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		733B618E1E9B765100BB2636 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		733B61951E9B78D100BB2636 /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QMapKit.framework; sourceTree = "<group>"; };
+		7347DC311EA9A7C100D9CF67 /* IncomeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeViewCell.h; sourceTree = "<group>"; };
+		7347DC321EA9A7C100D9CF67 /* IncomeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeViewCell.m; sourceTree = "<group>"; };
 		735000EC1E9F226E0019C234 /* ColumnChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnChartView.h; sourceTree = "<group>"; };
 		735000ED1E9F226E0019C234 /* ColumnChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnChartView.m; sourceTree = "<group>"; };
 		735000EF1E9F527E0019C234 /* DistributionChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistributionChartView.h; sourceTree = "<group>"; };
@@ -721,6 +724,8 @@
 		73FC94931E8A4F370006722E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7347DC311EA9A7C100D9CF67 /* IncomeViewCell.h */,
+				7347DC321EA9A7C100D9CF67 /* IncomeViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1183,6 +1188,7 @@
 				735927E31E8C9044001AB915 /* ATCommonCell.m in Sources */,
 				73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */,
 				7331D44D1E8B93C300FF1156 /* ReplaceCodeViewController.m in Sources */,
+				7347DC331EA9A7C100D9CF67 /* IncomeViewCell.m in Sources */,
 				73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */,
 				73FC94A71E8A53740006722E /* BaseNavigationController.m in Sources */,
 				7331D4501E8B964300FF1156 /* ReplaceCodeLastViewController.m in Sources */,

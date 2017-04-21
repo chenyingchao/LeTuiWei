@@ -454,7 +454,8 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 
 -(void)createNavigitionHeaderView {
     
-    self.headerView = [[NavigitionHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:200]) withTitles:@[@"今天",@"昨天",@"近7天"]];
+    self.headerView = [[NavigitionHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:200]) withTitles:@[@"今天",@"昨天",@"近7天"] withViewType:NaviHeaderViewOverView];
+    self.headerView.backgroundColor = [Theme colorOverViewBg];
     self.checkInDateStr =  [[NSDate date] stringForYearMonthDayDashed];
 
     self.checkOutDateStr =  [[NSDate date] stringForYearMonthDayDashed];
@@ -474,6 +475,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                 if (isSelected) {
                     //创建日历
                     weakSelf.calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0,[Theme paddingWithSize:200], kScreenWidth, kScreenHeight - [Theme paddingWithSize:200])];
+                    weakSelf.calendarView.origin = CGPointMake(0, [Theme paddingWithSize:200]);
                     weakSelf.calendarView.confirmDateButton = ^(NSString *checkInDate, NSString *checkOutDate) {
                         
                         weakSelf.headerView.calendarButton.selected = NO;

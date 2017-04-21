@@ -16,20 +16,26 @@
 
 @property (nonatomic, assign) CGFloat tabWidth;
 
-
 @property (nonatomic, assign) CGFloat interval;
+
+@property (nonatomic, strong) UILabel * seperatorLabel;
+
+@property (nonatomic, strong) UILabel * seperatorLabel1;
+
+
+@property (nonatomic, assign) NaviHeaderViewType viewType;
 
 @end
 
 @implementation NavigitionHeaderView
 
--(instancetype)initWithFrame:(CGRect)frame withTitles:(NSArray *)titles {
+-(instancetype)initWithFrame:(CGRect)frame withTitles:(NSArray *)titles withViewType:(NaviHeaderViewType)type {
     
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [Theme colorOverViewBg];
-
+       
+        self.viewType = type;
         self.titles = titles;
-        
+        [self drawLine];
         WS(weakSelf);
         _interval = 3.0;
         self.calendarButton = [[UIButton alloc] initWithFrame:CGRectZero];
@@ -37,13 +43,17 @@
         
         NSString *title = self.calendarTitle;
         [self.calendarButton setTitle:title forState:UIControlStateNormal];
-        [self.calendarButton setTitleColor:UIColorFromRGB(0xc5cae9) forState:UIControlStateNormal];
         [self.calendarButton setImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
         [self.calendarButton setImage:[UIImage imageNamed:@"up"] forState:UIControlStateSelected];
         [self addSubview: self.calendarButton];
         [self.calendarButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(weakSelf);
-            make.top.equalTo(weakSelf).offset([Theme paddingWithSize:60]);
+            if (type == NaviHeaderViewOverView) {
+                make.top.equalTo(weakSelf).offset([Theme paddingWithSize:60]);
+            } else {
+                make.top.equalTo(weakSelf).offset([Theme paddingWithSize28]);
+            }
+            
         }];
         
         CGSize size = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) textFont: [Theme fontWithSize28] aimString:_calendarTitle];
@@ -68,7 +78,6 @@
             
             button.titleLabel.font = [Theme fontWithSize30];
             [button setTitle:title forState:UIControlStateNormal];
-            [button setTitleColor:UIColorFromRGB(0xc5cae9) forState:UIControlStateNormal];
             button.tag = 1001 + i;
             [button bk_whenTapped:^{
                 [weakSelf selectTabAtIndex:button.tag];
@@ -98,6 +107,13 @@
     return self;
 }
 
+- (void)setIsHideLine:(BOOL)isHideLine {
+
+    self.seperatorLabel.hidden = isHideLine;
+    self.seperatorLabel1.hidden = isHideLine;
+
+}
+
 - (void)upDateView {
 
     NSString *title = self.calendarTitle;
@@ -108,10 +124,6 @@
 
 }
 
-- (void)showView {
-
-
-}
 
 - (void)selectTabAtIndex:(NSInteger)index {
 
@@ -120,9 +132,12 @@
             UIButton *button = (UIButton *)view;
             if (view.tag != index) {
               
-                [button setTitleColor:UIColorFromRGB(0xc5cae9) forState:UIControlStateNormal];
+                if (self.viewType == NaviHeaderViewOverView) {
+                    [button setTitleColor:UIColorFromRGB(0xc5cae9) forState:UIControlStateNormal];
+                } else {
+                    [button setTitleColor:[Theme colorDarkGray] forState:UIControlStateNormal];
+                }
                 
-
             }else {
             
                 [button setTitleColor:UIColorFromRGB(0x3f88cd) forState:UIControlStateNormal];
@@ -140,7 +155,7 @@
         
         if (selectButton.tag == 1000) {
             _indicator.hidden = YES;
-            CGRect targetFrame = CGRectMake(-CGFLOAT_MAX,CGRectGetMaxY(self.frame) - 3, self.tabWidth - 2 * indicatorSpace, 3);
+            CGRect targetFrame = CGRectMake(-CGFLOAT_MAX,self.frame.size.height - 3, self.tabWidth - 2 * indicatorSpace, 3);
             _indicator.frame = targetFrame;
         } else {
             _indicator.hidden = NO;
@@ -154,7 +169,8 @@
         }
         // update indicator position
         CGFloat indicatorLeft = self.tabWidth * (index - 1001);
-        CGRect targetFrame = CGRectMake(indicatorLeft + indicatorSpace, CGRectGetMaxY(self.frame) - 3, self.tabWidth - 2 * indicatorSpace, 3);
+        CGRect targetFrame = CGRectMake(indicatorLeft + indicatorSpace, self.frame.size.height - 3, self.tabWidth - 2 * indicatorSpace, 3);
+
         if (isInitialSelect) {
             _indicator.frame = targetFrame;
         } else {
@@ -167,7 +183,34 @@
     
 }
 
-
+- (void)drawLine {
+    WS(weakSelf);
+    self.seperatorLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.seperatorLabel.hidden = YES;
+    self.seperatorLabel .backgroundColor = [Theme colorBlackWithAlpha:0.3];
+    [self addSubview:self.seperatorLabel ];
+    
+    
+    [self.seperatorLabel  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(weakSelf);
+        make.height.equalTo(@(kSeparatorHeight));
+        make.centerY.equalTo(weakSelf);
+    }];
+    
+    self.seperatorLabel1 = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.seperatorLabel1.hidden = YES;
+    self.seperatorLabel1 .backgroundColor = [Theme colorBlackWithAlpha:0.3];
+    [self addSubview:self.seperatorLabel1 ];
+    
+    
+    [self.seperatorLabel1  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(weakSelf);
+        make.height.equalTo(@(kSeparatorHeight));
+        make.bottom.equalTo(weakSelf);
+    }];
+    
+    
+}
 
 
 #pragma mark 返回字符串尺寸

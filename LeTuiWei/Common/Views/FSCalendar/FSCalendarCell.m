@@ -281,7 +281,7 @@ typedef NS_ENUM(NSUInteger, CellCornerType) {
         _backgroundLayer.hidden = false;
         _backgroundLayer.cornerRadius = _backgroundLayer.frame.size.height/2.0;
         _backgroundLayer.masksToBounds = YES;
-        self.backgroundLayer.backgroundColor = [OIAppTheme colorForTextButtonHilighted].CGColor;
+        self.backgroundLayer.backgroundColor = UIColorFromRGB(0x3f88cd).CGColor;
     
     }
     else {
@@ -493,7 +493,7 @@ typedef NS_ENUM(NSUInteger, CellCornerType) {
     } else {
         self.selectedLayer.path = [UIBezierPath bezierPathWithRect:self.selectedLayer.bounds].CGPath;
     }
-     self.selectedLayer.fillColor = [OIAppTheme colorForCalendarSelection].CGColor;
+     self.selectedLayer.fillColor = UIColorFromRGB(0xa9c9ef).CGColor;
 }
 
 

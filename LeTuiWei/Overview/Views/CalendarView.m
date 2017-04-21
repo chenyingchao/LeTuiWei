@@ -58,13 +58,9 @@
     }
     self.calendar.checkOutDate = self.checkOutDate;
     
-    
-  
-    [self.calendar reloadData];
-    
     WS(weakSelf);
     [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.frame = CGRectMake(0, [Theme paddingWithSize:200], kScreenWidth, self.frame.size.height);
+        weakSelf.frame = CGRectMake(0, weakSelf.origin.y, kScreenWidth, self.frame.size.height);
 
         
     } completion:^(BOOL finished) {
@@ -141,6 +137,9 @@
     ConfirmButtonView *submitView = [ConfirmButtonView confirmButtonViewWithTitle:@"选择完毕" andButtonClickedBlock:^(UIButton *button) {
         
         if (weakSelf.confirmDateButton) {
+            if (weakSelf.calendar.checkOutDate == nil) {
+                weakSelf.calendar.checkOutDate = weakSelf.calendar.checkInDate;
+            }
             weakSelf.confirmDateButton([weakSelf.calendar.checkInDate stringForYearMonthDayDashed],[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]);
             
             [weakSelf dismissCalendarView];

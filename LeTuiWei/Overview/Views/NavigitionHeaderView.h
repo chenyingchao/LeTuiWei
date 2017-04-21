@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger,NaviHeaderViewType) {
+    
+    NaviHeaderViewOverView = 0,
+    NaviHeaderViewIncome,
+};
 
 typedef NS_ENUM(NSUInteger,NaviHeaderViewButtonType) {
 
@@ -27,7 +32,10 @@ typedef void(^SelectAtIndexBlock)(NaviHeaderViewButtonType indexType, BOOL isSel
 
 @property (nonatomic, strong) UIButton *calendarButton;
 
--(instancetype)initWithFrame:(CGRect)frame withTitles:(NSArray *)titles;
+
+@property (nonatomic, assign) BOOL isHideLine;
+
+-(instancetype)initWithFrame:(CGRect)frame withTitles:(NSArray *)titles withViewType:(NaviHeaderViewType)type;
 
 @property(nonatomic, copy) NSString *calendarTitle;
 

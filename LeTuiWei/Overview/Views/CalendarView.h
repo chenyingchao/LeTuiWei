@@ -21,4 +21,6 @@
 
 @property (nonatomic, copy) void (^confirmDateButton)(NSString *checkIndate, NSString *checkOutDate);
 
+@property (nonatomic, assign) CGPoint calendarOrigin;
+
 @end

@@ -89,7 +89,7 @@
         _backgroundColors = [NSMutableDictionary dictionaryWithCapacity:5];
         _backgroundColors[@(FSCalendarCellStateNormal)]      = [UIColor clearColor];
 
-        _backgroundColors[@(FSCalendarCellStateSelected)]    = [OIAppTheme colorForTextButtonHilighted];
+        _backgroundColors[@(FSCalendarCellStateSelected)]    = UIColorFromRGB(0x3f88cd);
         _backgroundColors[@(FSCalendarCellStateDisabled)]    = [UIColor clearColor];
         _backgroundColors[@(FSCalendarCellStatePlaceholder)] = [UIColor clearColor];
         _backgroundColors[@(FSCalendarCellStateToday)]       = [UIColor clearColor];
@@ -102,12 +102,13 @@
         _titleColors[@(FSCalendarCellStatePlaceholder)] = [OIAppTheme colorForTextNotes];
 
         _titleColors[@(FSCalendarCellStateToday)]       = _titleColors[@(FSCalendarCellStateNormal)];
-        _titleColors[@(FSCalendarCellStateInSelectedRange)]= [OIAppTheme colorForTextButtonHilighted];
+        
+        _titleColors[@(FSCalendarCellStateInSelectedRange)]= UIColorFromRGB(0x3f88cd);
         
         _subtitleColors = [NSMutableDictionary dictionaryWithCapacity:5];
         _subtitleColors[@(FSCalendarCellStateNormal)]      = [OIAppTheme colorForTextBody];
-        _subtitleColors[@(FSCalendarCellStateSelected)]    = [OIAppTheme colorForTextButtonHilighted];
-
+        _subtitleColors[@(FSCalendarCellStateSelected)]    = UIColorFromRGB(0x3f88cd);
+        
         _subtitleColors[@(FSCalendarCellStateDisabled)]    = [UIColor lightGrayColor];
         _subtitleColors[@(FSCalendarCellStatePlaceholder)] = [UIColor lightGrayColor];
         _subtitleColors[@(FSCalendarCellStateToday)]       = [UIColor whiteColor];
