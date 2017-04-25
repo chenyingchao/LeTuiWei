@@ -11,6 +11,7 @@
 #import "AdministrationViewController.h"
 #import "IncomeViewController.h"
 #import "OverviewViewController.h"
+#import "IncomeDataViewController.h"
 @interface BaseTabBarController ()
 
 @end
@@ -34,8 +35,15 @@
             OverviewViewController *overviewVC = [[OverviewViewController alloc] init];
             [self setupChildViewController:overviewVC title:titleArray[i] imageName:normalImageArray[i] selectedImageName:selectedImageArray[i]];
         } else if (i == 1) {
-            IncomeViewController *incomeVC = [[IncomeViewController alloc] init];
-            [self setupChildViewController:incomeVC title:titleArray[i] imageName:normalImageArray[i] selectedImageName:selectedImageArray[i]];
+            //暂时砍掉此页面
+//            IncomeViewController *incomeVC = [[IncomeViewController alloc] init];
+//            [self setupChildViewController:incomeVC title:titleArray[i] imageName:normalImageArray[i] selectedImageName:selectedImageArray[i]];
+            
+            IncomeDataViewController *incomeDataVC = [[IncomeDataViewController alloc] init];
+            [self setupChildViewController:incomeDataVC title:titleArray[i] imageName:normalImageArray[i] selectedImageName:selectedImageArray[i]];
+            
+            
+            
         } else if (i == 2) {
             AdministrationViewController *adminVC = [[AdministrationViewController alloc] init];
             [self setupChildViewController:adminVC title:titleArray[i] imageName:normalImageArray[i] selectedImageName:selectedImageArray[i]];

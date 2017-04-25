@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     ATCalendarSelectStepTwo,
 };
 
-@interface OverviewViewController () <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate>
+@interface OverviewViewController () <UITableViewDataSource, UITableViewDelegate,UITextViewDelegate,CalendarViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -464,7 +464,7 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     
     [self.headerView upDateView];
   
-     [[UIApplication sharedApplication].keyWindow addSubview:self.headerView];
+     [ATKeyWindow addSubview:self.headerView];
   
     WS(weakSelf);
     self.headerView.selectAtIndexBlock = ^(NaviHeaderViewButtonType indexType, BOOL isSelected) {
@@ -476,19 +476,9 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
                     //创建日历
                     weakSelf.calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0,[Theme paddingWithSize:200], kScreenWidth, kScreenHeight - [Theme paddingWithSize:200])];
                     weakSelf.calendarView.origin = CGPointMake(0, [Theme paddingWithSize:200]);
-                    weakSelf.calendarView.confirmDateButton = ^(NSString *checkInDate, NSString *checkOutDate) {
-                        
-                        weakSelf.headerView.calendarButton.selected = NO;
-                        //更改button内容
-                        weakSelf.checkInDateStr = checkInDate;
-                        weakSelf.checkOutDateStr = checkOutDate;
-                        weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
-                        [weakSelf.headerView upDateView];
-                        [weakSelf loadDataSource];
-                        
-                    };
-                    
-                    [[UIApplication sharedApplication].keyWindow insertSubview:weakSelf.calendarView belowSubview:weakSelf.headerView];
+
+                    weakSelf.calendarView.calendarViewDelegate = weakSelf;
+                    [ATKeyWindow insertSubview:weakSelf.calendarView belowSubview:weakSelf.headerView];
                     
            
                     weakSelf.calendarView.checkInDate = [NSDate at_dateFromString:weakSelf.checkInDateStr];
@@ -559,6 +549,20 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
         }
         
     };
+
+}
+
+#pragma mark 日历 delegate
+
+- (void)calendarView:(CalendarView *)calendarView comfirmDidSelectedCheckInDate:(NSString *)checkInDate checkOutDate:(NSString *)checkOutDate {
+    self.headerView.calendarButton.selected = NO;
+    //更改button内容
+    self.checkInDateStr = checkInDate;
+    self.checkOutDateStr = checkOutDate;
+    self.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",self.checkInDateStr,self.checkOutDateStr];
+    [self.headerView upDateView];
+    [self loadDataSource];
+
 
 }
 

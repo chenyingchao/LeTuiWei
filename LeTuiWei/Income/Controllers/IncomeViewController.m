@@ -11,6 +11,7 @@
 #import "NavigitionHeaderView.h"
 #import "CalendarView.h"
 #import "IncomeViewCell.h"
+#import "IncomeDataViewController.h"
 
 @interface IncomeViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -34,6 +35,8 @@
 @end
 
 @implementation IncomeViewController
+
+//此页面暂时砍掉
 
 - (void)loadView {
     [super loadView];
@@ -81,6 +84,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    IncomeDataViewController *incomeDataVC = [[IncomeDataViewController alloc] init];
+    [self.navigationController pushViewController:incomeDataVC animated:YES];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,7 +133,7 @@
     WS(weakSelf);
     self.naviView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 64)];
     self.naviView.backgroundColor = [Theme colorForAppearance];
-    [[UIApplication sharedApplication].keyWindow addSubview:self.naviView];
+    [ATKeyWindow addSubview:self.naviView];
     
     self.naviLbael = [[UILabel alloc] initWithFrame:CGRectZero];
     self.naviLbael.text = @"我的收入";
@@ -155,9 +161,9 @@
     
     [self.headerView upDateView];
     
-   // [[UIApplication sharedApplication].keyWindow addSubview:self.headerView];
+   // [ATKeyWindow addSubview:self.headerView];
     
-    [[UIApplication sharedApplication].keyWindow insertSubview:self.headerView belowSubview:self.naviView];
+    [ATKeyWindow insertSubview:self.headerView belowSubview:self.naviView];
     
 
     self.headerView.selectAtIndexBlock = ^(NaviHeaderViewButtonType indexType, BOOL isSelected) {
@@ -169,19 +175,8 @@
                     //创建日历
                     weakSelf.calendarView = [[CalendarView alloc] initWithFrame:CGRectMake(0,[Theme paddingWithSize:200] + 64, kScreenWidth, kScreenHeight - [Theme paddingWithSize:200] - 64)];
                     weakSelf.calendarView.origin = CGPointMake(0, [Theme paddingWithSize:200] + 64);
-                    weakSelf.calendarView.confirmDateButton = ^(NSString *checkInDate, NSString *checkOutDate) {
-                        
-                        weakSelf.headerView.calendarButton.selected = NO;
-                        //更改button内容
-                        weakSelf.checkInDateStr = checkInDate;
-                        weakSelf.checkOutDateStr = checkOutDate;
-                        weakSelf.headerView.calendarTitle = [NSString stringWithFormat:@"%@至%@",weakSelf.checkInDateStr,weakSelf.checkOutDateStr];
-                        [weakSelf.headerView upDateView];
-                       // [weakSelf loadDataSource];
-                        
-                    };
-                    
-                    [[UIApplication sharedApplication].keyWindow insertSubview:weakSelf.calendarView belowSubview:weakSelf.headerView];
+                                      
+                    [ATKeyWindow insertSubview:weakSelf.calendarView belowSubview:weakSelf.headerView];
                     
                     
                     weakSelf.calendarView.checkInDate = [NSDate at_dateFromString:weakSelf.checkInDateStr];

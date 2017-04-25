@@ -154,4 +154,7 @@
     newframe.origin.x += delta ;
     self.frame = newframe;
 }
+
+
+
 @end

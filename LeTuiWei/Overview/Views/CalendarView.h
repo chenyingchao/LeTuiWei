@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class CalendarView;
+@protocol CalendarViewDelegate<NSObject>
+
+@required
+
+- (void)calendarView:(CalendarView *)calendarView comfirmDidSelectedCheckInDate:(NSString *)checkInDate checkOutDate:(NSString *)checkOutDate;
+
+@optional
+
+
+
+@end
+
 @interface CalendarView : UIView
 
 @property (strong, nonatomic)NSDate *checkInDate;
@@ -18,8 +31,7 @@
 
 - (void)dismissCalendarView;
 
-
-@property (nonatomic, copy) void (^confirmDateButton)(NSString *checkIndate, NSString *checkOutDate);
+@property (nonatomic, weak) id<CalendarViewDelegate> calendarViewDelegate;
 
 @property (nonatomic, assign) CGPoint calendarOrigin;
 

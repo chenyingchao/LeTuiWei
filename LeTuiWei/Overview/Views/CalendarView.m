@@ -25,6 +25,7 @@
     
     self = [super initWithFrame:frame];
     if (self) {
+        self.tag = 10000;
         self.backgroundColor = [UIColor whiteColor];
         self.frame = CGRectMake(0, -1000, kScreenWidth, self.frame.size.height);
    
@@ -135,15 +136,19 @@
     }];
     
     ConfirmButtonView *submitView = [ConfirmButtonView confirmButtonViewWithTitle:@"选择完毕" andButtonClickedBlock:^(UIButton *button) {
-        
-        if (weakSelf.confirmDateButton) {
-            if (weakSelf.calendar.checkOutDate == nil) {
-                weakSelf.calendar.checkOutDate = weakSelf.calendar.checkInDate;
-            }
-            weakSelf.confirmDateButton([weakSelf.calendar.checkInDate stringForYearMonthDayDashed],[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]);
-            
-            [weakSelf dismissCalendarView];
+
+        if (weakSelf.calendar.checkOutDate == nil) {
+            weakSelf.calendar.checkOutDate = weakSelf.calendar.checkInDate;
         }
+        
+        if ([weakSelf.calendarViewDelegate respondsToSelector:@selector(calendarView:comfirmDidSelectedCheckInDate:checkOutDate:)]) {
+            
+            [weakSelf.calendarViewDelegate calendarView:weakSelf comfirmDidSelectedCheckInDate:[weakSelf.calendar.checkInDate stringForYearMonthDayDashed] checkOutDate:[weakSelf.calendar.checkOutDate stringForYearMonthDayDashed]];
+            
+        }
+        
+        [weakSelf dismissCalendarView];
+        
     }];
     [bgHeaderView addSubview:submitView];
     [submitView mas_makeConstraints:^(MASConstraintMaker *make) {

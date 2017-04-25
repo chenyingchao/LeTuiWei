@@ -84,8 +84,8 @@
         make.width.equalTo(@([Theme paddingWithSize:300]));
     }];
     
-    [[UIApplication sharedApplication].keyWindow addSubview:self.maskView];
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [ATKeyWindow addSubview:self.maskView];
+    [ATKeyWindow addSubview:self];
 
 }
 

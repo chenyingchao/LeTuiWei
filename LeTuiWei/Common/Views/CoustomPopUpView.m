@@ -103,8 +103,8 @@
         self.dataSourceArray = dataScoure;
     }
 
-    [[UIApplication sharedApplication].keyWindow addSubview:self.maskView];
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [ATKeyWindow addSubview:self.maskView];
+    [ATKeyWindow addSubview:self];
 
 }
 
@@ -327,8 +327,8 @@
     }
     
     
-    [[UIApplication sharedApplication].keyWindow addSubview:self.maskView];
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [ATKeyWindow addSubview:self.maskView];
+    [ATKeyWindow addSubview:self];
 
 }
 
