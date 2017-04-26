@@ -19,6 +19,9 @@
 		73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */; };
 		73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F721E8E441E0087A9B5 /* StoresListViewCell.m */; };
 		730DAF4F1EB0362100E3C4B7 /* IncomeDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */; };
+		730DAF521EB0651200E3C4B7 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730DAF511EB0651200E3C4B7 /* OrderDetailViewController.m */; };
+		730DAF551EB067A500E3C4B7 /* OrderDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730DAF541EB067A500E3C4B7 /* OrderDetailViewCell.m */; };
+		730DAF581EB0924A00E3C4B7 /* DataChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730DAF571EB0924A00E3C4B7 /* DataChartViewController.m */; };
 		73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */; };
 		73216EB01E9CA64A00A2DB82 /* RingChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAF1E9CA64A00A2DB82 /* RingChartView.m */; };
 		73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EB21E9CB7D500A2DB82 /* LineChartView.m */; };
@@ -155,6 +158,12 @@
 		73060F721E8E441E0087A9B5 /* StoresListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewCell.m; sourceTree = "<group>"; };
 		730DAF4D1EB0362100E3C4B7 /* IncomeDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeDataViewCell.h; sourceTree = "<group>"; };
 		730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeDataViewCell.m; sourceTree = "<group>"; };
+		730DAF501EB0651200E3C4B7 /* OrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
+		730DAF511EB0651200E3C4B7 /* OrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
+		730DAF531EB067A500E3C4B7 /* OrderDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewCell.h; sourceTree = "<group>"; };
+		730DAF541EB067A500E3C4B7 /* OrderDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewCell.m; sourceTree = "<group>"; };
+		730DAF561EB0924A00E3C4B7 /* DataChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataChartViewController.h; sourceTree = "<group>"; };
+		730DAF571EB0924A00E3C4B7 /* DataChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataChartViewController.m; sourceTree = "<group>"; };
 		73216EAB1E9C750F00A2DB82 /* NSDictionary+log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+log.h"; sourceTree = "<group>"; };
 		73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+log.m"; sourceTree = "<group>"; };
 		73216EAE1E9CA64A00A2DB82 /* RingChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingChartView.h; sourceTree = "<group>"; };
@@ -726,10 +735,14 @@
 		73FC94911E8A4F370006722E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				73FC94B11E8A548C0006722E /* IncomeViewController.h */,
-				73FC94B21E8A548C0006722E /* IncomeViewController.m */,
 				7347DC341EA9DC4B00D9CF67 /* IncomeDataViewController.h */,
 				7347DC351EA9DC4B00D9CF67 /* IncomeDataViewController.m */,
+				730DAF501EB0651200E3C4B7 /* OrderDetailViewController.h */,
+				730DAF511EB0651200E3C4B7 /* OrderDetailViewController.m */,
+				730DAF561EB0924A00E3C4B7 /* DataChartViewController.h */,
+				730DAF571EB0924A00E3C4B7 /* DataChartViewController.m */,
+				73FC94B11E8A548C0006722E /* IncomeViewController.h */,
+				73FC94B21E8A548C0006722E /* IncomeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -756,6 +769,8 @@
 				73457B2C1EAEFBC800542421 /* AllIncomeView.m */,
 				730DAF4D1EB0362100E3C4B7 /* IncomeDataViewCell.h */,
 				730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */,
+				730DAF531EB067A500E3C4B7 /* OrderDetailViewCell.h */,
+				730DAF541EB067A500E3C4B7 /* OrderDetailViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1259,6 +1274,8 @@
 				736B9D801EA0BD7A0053DDB0 /* FSCalendar+IBExtension.m in Sources */,
 				73F51F0F1E8CA0CF00A075A8 /* AdministrationViewModel.m in Sources */,
 				73F51F211E8D024100A075A8 /* AddStoresViewCell.m in Sources */,
+				730DAF551EB067A500E3C4B7 /* OrderDetailViewCell.m in Sources */,
+				730DAF581EB0924A00E3C4B7 /* DataChartViewController.m in Sources */,
 				733376EF1E961460002F3DCD /* SelectPaymentTypeViewController.m in Sources */,
 				73F51F0C1E8CA0A100A075A8 /* BaseModel.m in Sources */,
 				73ED54651E9F7E5E00B3ECF2 /* NavigitionHeaderView.m in Sources */,
@@ -1267,6 +1284,7 @@
 				735000EE1E9F226E0019C234 /* ColumnChartView.m in Sources */,
 				7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */,
 				73457B2D1EAEFBC800542421 /* AllIncomeView.m in Sources */,
+				730DAF521EB0651200E3C4B7 /* OrderDetailViewController.m in Sources */,
 				73E2E10A1EA4657000BF5CB7 /* CalendarView.m in Sources */,
 				73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */,
 				736B9D851EA0BD7A0053DDB0 /* FSCalendarConstance.m in Sources */,

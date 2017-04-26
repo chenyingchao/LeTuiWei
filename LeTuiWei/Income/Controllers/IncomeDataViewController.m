@@ -11,6 +11,8 @@
 #import "CalendarView.h"
 #import "SiftView.h"
 #import "IncomeDataViewCell.h"
+#import "OrderDetailViewController.h"
+#import "DataChartViewController.h"
 
 @interface IncomeDataViewController ()<UITableViewDataSource, UITableViewDelegate, SiftViewDelegate,IncomeHeaderViewDelegate,CalendarViewDelegate>
 
@@ -229,6 +231,10 @@
     [dataChartbutton setTitleColor:[Theme colorForCommentBlue] forState:UIControlStateNormal];
     dataChartbutton.titleLabel.font = [Theme fontWithSize28];
     [view addSubview:dataChartbutton];
+    [dataChartbutton bk_whenTapped:^{
+        DataChartViewController *dataChartVC = [[DataChartViewController alloc] init];
+        [weakSelf.navigationController pushViewController:dataChartVC animated:YES];
+    }];
 
     CGSize size = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) textFont: [Theme fontWithSize28] aimString:@"数据图表"];
     dataChartbutton.imageEdgeInsets = UIEdgeInsetsMake(0,size.width + 3, 0, -(size.width + 3));
@@ -260,6 +266,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    OrderDetailViewController *orderDeatilVC = [[OrderDetailViewController alloc] init];
+    [self.navigationController pushViewController:orderDeatilVC animated:YES];
     
 }
 
