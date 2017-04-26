@@ -177,6 +177,10 @@
     return UIColorFromRGB(kColorForTextPlaceHolder);
 }
 
++ (UIColor *)colorForCommentBlue {
+    return UIColorFromRGB(0x3f88cd);
+}
+
 + (UIColor *)colorGray {
     return UIColorFromRGB(kColorGray);
 }

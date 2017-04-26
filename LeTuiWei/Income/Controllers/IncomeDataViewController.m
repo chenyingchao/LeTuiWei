@@ -10,6 +10,8 @@
 #import "IncomeHeaderView.h"
 #import "CalendarView.h"
 #import "SiftView.h"
+#import "IncomeDataViewCell.h"
+
 @interface IncomeDataViewController ()<UITableViewDataSource, UITableViewDelegate, SiftViewDelegate,IncomeHeaderViewDelegate,CalendarViewDelegate>
 
 @property (nonatomic, strong) CalendarView *calendarView;
@@ -44,6 +46,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout=UIRectEdgeNone;
+
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
@@ -185,7 +189,7 @@
     _tableView.dataSource = self;
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    _tableView.tableHeaderView = [self tabViewHeaderView];
     [self.view addSubview:_tableView];
     [self.view sendSubviewToBack:_tableView];
     [_tableView  mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -194,16 +198,64 @@
     }];
 }
 
+- (UIView *)tabViewHeaderView {
+    WS(weakSelf);
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:150])];
+    view.backgroundColor = UIColorFromRGB(0xe1ebf7);
+    UILabel *orderNumLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    orderNumLabel.text = @"共10笔收入";
+    orderNumLabel.font = [Theme fontWithSize28];
+    orderNumLabel.textColor = [Theme colorForCommentBlue];
+    [view addSubview:orderNumLabel];
+    [orderNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view).offset([Theme paddingWithSize32]);
+        make.top.equalTo(view).offset([Theme paddingWithSize32]);
+    }];
+    
+    UILabel *incomeNumLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    incomeNumLabel.text = @"总收入:21020";
+    incomeNumLabel.font = [Theme fontWithSize28];
+    incomeNumLabel.textColor = [Theme colorForCommentBlue];
+    [view addSubview:incomeNumLabel];
+    [incomeNumLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view).offset([Theme paddingWithSize32]);
+        make.top.equalTo(orderNumLabel.mas_bottom).offset([Theme paddingWithSize20]);
+    }];
+    
+    UIButton *dataChartbutton = [[UIButton alloc] init];
+    [dataChartbutton setTitle:@"数据图表" forState:UIControlStateNormal];
+    [dataChartbutton setImage:[UIImage imageNamed:@"income_arrow"] forState:UIControlStateNormal];
+    [dataChartbutton setTitleColor:[Theme colorForCommentBlue] forState:UIControlStateNormal];
+    dataChartbutton.titleLabel.font = [Theme fontWithSize28];
+    [view addSubview:dataChartbutton];
 
+    CGSize size = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) textFont: [Theme fontWithSize28] aimString:@"数据图表"];
+    dataChartbutton.imageEdgeInsets = UIEdgeInsetsMake(0,size.width + 3, 0, -(size.width + 3));
+    dataChartbutton.titleEdgeInsets = UIEdgeInsetsMake(0, -([UIImage imageNamed:@"down"].size.width + 3), 0, [UIImage imageNamed:@"down"].size.width + 3);
+    
+    [dataChartbutton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(view);
+        make.right.equalTo(view).offset(-[Theme paddingWithSize32]);
+        
+    }];
+    return view;
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
+    return 4;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 20;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [Theme paddingWithSize:40];
+    return [Theme paddingWithSize:126];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -213,9 +265,84 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-       return [[UITableViewCell alloc] init];
+    IncomeDataViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderCell"];
+    
+    if (!cell) {
+        cell = [[IncomeDataViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"orderCell"];
+    }
+    
+    switch (indexPath.row) {
+        case IncomeDataViewCellTypeHaveProductQuantity:{
+        
+            [cell  creatCellView:nil withCellType:IncomeDataViewCellTypeHaveProductQuantity];
+        }
+            
+            
+            break;
+        case IncomeDataViewCellTypeNoProductQuantity:{
+            
+            [cell  creatCellView:nil withCellType:IncomeDataViewCellTypeNoProductQuantity];
+        }
+            
+
+            
+            break;
+        case IncomeDataViewCellTypeVIpTopUp:{
+            
+            [cell  creatCellView:nil withCellType:IncomeDataViewCellTypeVIpTopUp];
+        }
+            
+
+            
+            break;
+            
+        default:
+            [cell  creatCellView:nil withCellType:IncomeDataViewCellTypeHaveProductQuantity];
+
+            break;
+    }
+    
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleSymmetricalDefault;
+    return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return [Theme paddingWithSize:60];
+}
+
+- (UIView  *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:60])];
+    
+    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    dateLabel.font = [Theme fontWithSize24];
+    dateLabel.textColor = [Theme colorDimGray];
+    [bgView addSubview:dateLabel];
+    dateLabel.text = @"2017-12-11";
+    [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bgView).offset([Theme  paddingWithSize40]);
+        make.centerY.equalTo(bgView);
+        
+    }];
+    
+    UILabel *totalMoneyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    totalMoneyLabel.font = [Theme fontWithSize24];
+    totalMoneyLabel.textColor = [Theme colorDimGray];
+    [bgView addSubview:totalMoneyLabel];
+    totalMoneyLabel.text = @"收入:￥200000";
+    [totalMoneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(bgView).offset(-[Theme  paddingWithSize40]);
+        make.centerY.equalTo(bgView);
+        
+    }];
+    return bgView;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -234,5 +361,11 @@
     
 }
 
-
+#pragma mark 返回字符串尺寸
+- (CGSize)sizeOfStringWithMaxSize:(CGSize)maxSize textFont:(UIFont *)fontSize aimString:(NSString *)aimString{
+    
+    
+    return [[NSString stringWithFormat:@"%@",aimString] boundingRectWithSize:maxSize options:NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:fontSize} context:nil].size;
+    
+}
 @end

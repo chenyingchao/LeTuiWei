@@ -319,13 +319,25 @@
             
             break;
         case IncomeButtonTypeOrderNoProduct: {
-          [self dissmisTabView];
+            [self dissmisTabView];
+            [self dissmisAllIncomeHeaderView];
+            
+            if ([self.allIncomeDelegate respondsToSelector:@selector(allIncomeView:didSelectData:)]) {
+                [self.allIncomeDelegate allIncomeView:self didSelectData:@"无商品订单"];
+            }
+
         }
             
             break;
         case IncomeButtonTypeOrderVipTopUp: {
         
-          [self dissmisTabView];
+            [self dissmisTabView];
+            [self dissmisAllIncomeHeaderView];
+            
+            if ([self.allIncomeDelegate respondsToSelector:@selector(allIncomeView:didSelectData:)]) {
+                [self.allIncomeDelegate allIncomeView:self didSelectData:@"会员充值"];
+            }
+
         }
             
             break;

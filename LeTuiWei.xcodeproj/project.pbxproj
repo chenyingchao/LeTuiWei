@@ -18,6 +18,7 @@
 		73060F6D1E8E023A0087A9B5 /* xian.json in Resources */ = {isa = PBXBuildFile; fileRef = 73060F6A1E8E023A0087A9B5 /* xian.json */; };
 		73060F701E8E367A0087A9B5 /* StoresListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */; };
 		73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73060F721E8E441E0087A9B5 /* StoresListViewCell.m */; };
+		730DAF4F1EB0362100E3C4B7 /* IncomeDataViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */; };
 		73216EAD1E9C750F00A2DB82 /* NSDictionary+log.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */; };
 		73216EB01E9CA64A00A2DB82 /* RingChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAF1E9CA64A00A2DB82 /* RingChartView.m */; };
 		73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EB21E9CB7D500A2DB82 /* LineChartView.m */; };
@@ -152,6 +153,8 @@
 		73060F6F1E8E367A0087A9B5 /* StoresListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewController.m; sourceTree = "<group>"; };
 		73060F711E8E441E0087A9B5 /* StoresListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoresListViewCell.h; sourceTree = "<group>"; };
 		73060F721E8E441E0087A9B5 /* StoresListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoresListViewCell.m; sourceTree = "<group>"; };
+		730DAF4D1EB0362100E3C4B7 /* IncomeDataViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncomeDataViewCell.h; sourceTree = "<group>"; };
+		730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IncomeDataViewCell.m; sourceTree = "<group>"; };
 		73216EAB1E9C750F00A2DB82 /* NSDictionary+log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+log.h"; sourceTree = "<group>"; };
 		73216EAC1E9C750F00A2DB82 /* NSDictionary+log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+log.m"; sourceTree = "<group>"; };
 		73216EAE1E9CA64A00A2DB82 /* RingChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingChartView.h; sourceTree = "<group>"; };
@@ -751,6 +754,8 @@
 				733EC35E1EAE00F100AD4E29 /* SiftViewCell.m */,
 				73457B2B1EAEFBC800542421 /* AllIncomeView.h */,
 				73457B2C1EAEFBC800542421 /* AllIncomeView.m */,
+				730DAF4D1EB0362100E3C4B7 /* IncomeDataViewCell.h */,
+				730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1265,6 +1270,7 @@
 				73E2E10A1EA4657000BF5CB7 /* CalendarView.m in Sources */,
 				73FC94551E8A4B9D0006722E /* AppDelegate.m in Sources */,
 				736B9D851EA0BD7A0053DDB0 /* FSCalendarConstance.m in Sources */,
+				730DAF4F1EB0362100E3C4B7 /* IncomeDataViewCell.m in Sources */,
 				735000F11E9F527E0019C234 /* DistributionChartView.m in Sources */,
 				7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */,
 				73060F731E8E441E0087A9B5 /* StoresListViewCell.m in Sources */,

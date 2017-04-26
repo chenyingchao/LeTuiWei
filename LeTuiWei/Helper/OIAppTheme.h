@@ -60,6 +60,8 @@
 
 + (UIColor *)colorForAppBackground;
 
++ (UIColor *)colorForCommentBlue;
+
 // Text
 + (UIColor *)colorForTextTitle;
 
