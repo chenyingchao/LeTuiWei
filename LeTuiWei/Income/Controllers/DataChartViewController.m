@@ -10,6 +10,9 @@
 #import "IncomeHeaderView.h"
 #import "CalendarView.h"
 #import "SiftView.h"
+#import "OverviewCell.h"
+#import "AddStoreMaskView.h"
+#import "AddStoresViewController.h"
 @interface DataChartViewController ()<UITableViewDataSource, UITableViewDelegate, SiftViewDelegate,IncomeHeaderViewDelegate,CalendarViewDelegate>
 @property (nonatomic, strong) CalendarView *calendarView;
 
@@ -36,15 +39,112 @@
 - (void)loadView {
     [super loadView];
     [self createHeaderView];
-   // [self creatTableView];
+    [self creatTableView];
     
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout=UIRectEdgeNone;
 
 }
+
+- (void)creatTableView {
+    WS(weakSelf);
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView.backgroundColor = [Theme colorForTabBackground];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.estimatedRowHeight = 200;
+    
+    [self.view addSubview:_tableView];
+    [self.view sendSubviewToBack:_tableView];
+    [_tableView  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(weakSelf.view);
+        make.top.equalTo(weakSelf.view).offset(CGRectGetMaxY(weakSelf.siftView.frame));
+    }];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    WS(weakSelf);
+    OverviewCell *cell = nil;
+    
+    switch (indexPath.section) {
+        
+
+            
+        case 0: {
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderMoneyStatistics" withDataSource:nil withCellType:OverviewCellTypeOrderMoneyStatistics];
+        }
+            
+            break;
+            
+            
+        case 1: {
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductTop5" withDataSource:nil withCellType:OverviewCellTypeProductTop5];
+            
+            cell.segmentIndexBlock = ^(NSInteger index) {
+                //按 self.tabBarController.tabBar.hidden = YES;
+                if (index == 0) {
+                    NSLog(@"按销量");
+                } else { //按销售额
+                    NSLog(@"按销售额");
+                    
+                }
+                
+                
+            };
+            //开通智慧门店
+            cell.openWisdomStoreBlock = ^() {
+                AddStoreMaskView *addStoreMaskView = [[AddStoreMaskView alloc] initWithFrame:CGRectMake([Theme paddingWithSize:90], [Theme paddingWithSize:220], kScreenWidth - 2 * [Theme paddingWithSize:90], [Theme paddingWithSize:700])];
+                
+                [addStoreMaskView showView];
+                addStoreMaskView.addStoreButtonBlock = ^(UIButton *button) {
+                    
+                    AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
+                    [weakSelf.navigationController pushViewController:addStoreVC animated:YES];
+                    
+                };
+                
+            };
+        }
+            
+            break;
+            
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleNone;
+    cell.backgroundColor = UIColorFromRGB(0x1b224c);
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 0) {
+        return [Theme paddingWithSize20];
+    }
+    return CGFLOAT_MIN;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+
 
 -(void)createHeaderView {
     WS(weakSelf);
@@ -63,6 +163,12 @@
         
         make.centerX.equalTo(weakSelf.naviView);
         make.bottom.equalTo(weakSelf.naviView).offset(-[Theme paddingWithSize24]);
+    }];
+    
+    ////////////////////////
+    self.naviLbael.userInteractionEnabled = YES;
+    [self.naviLbael bk_whenTapped:^{
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     
     self.checkInDateStr =  [[NSDate date] stringForYearMonthDayDashed];
