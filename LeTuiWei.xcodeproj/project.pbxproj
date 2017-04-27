@@ -26,6 +26,7 @@
 		73216EB01E9CA64A00A2DB82 /* RingChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EAF1E9CA64A00A2DB82 /* RingChartView.m */; };
 		73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EB21E9CB7D500A2DB82 /* LineChartView.m */; };
 		7322F3C11EA6206D001DF522 /* NewCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7322F3C01EA6206D001DF522 /* NewCustomPickerView.m */; };
+		732318181EB1933A000EEAE6 /* DataChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 732318171EB1933A000EEAE6 /* DataChartViewCell.m */; };
 		732D89DE1E973CE900C76488 /* PaymentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 732D89DD1E973CE900C76488 /* PaymentResultViewController.m */; };
 		7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */; };
 		7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4391E8B4DD300FF1156 /* SVProgressAnimatedView.m */; };
@@ -172,6 +173,8 @@
 		73216EB21E9CB7D500A2DB82 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
 		7322F3BF1EA6206D001DF522 /* NewCustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewCustomPickerView.h; sourceTree = "<group>"; };
 		7322F3C01EA6206D001DF522 /* NewCustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCustomPickerView.m; sourceTree = "<group>"; };
+		732318161EB1933A000EEAE6 /* DataChartViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataChartViewCell.h; sourceTree = "<group>"; };
+		732318171EB1933A000EEAE6 /* DataChartViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataChartViewCell.m; sourceTree = "<group>"; };
 		732D89DC1E973CE900C76488 /* PaymentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentResultViewController.h; sourceTree = "<group>"; };
 		732D89DD1E973CE900C76488 /* PaymentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentResultViewController.m; sourceTree = "<group>"; };
 		7331D4361E8B4DD300FF1156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -771,6 +774,8 @@
 				730DAF4E1EB0362100E3C4B7 /* IncomeDataViewCell.m */,
 				730DAF531EB067A500E3C4B7 /* OrderDetailViewCell.h */,
 				730DAF541EB067A500E3C4B7 /* OrderDetailViewCell.m */,
+				732318161EB1933A000EEAE6 /* DataChartViewCell.h */,
+				732318171EB1933A000EEAE6 /* DataChartViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1303,6 +1308,7 @@
 				73FC94C91E8A5FC90006722E /* LoginInputView.m in Sources */,
 				736B9D861EA0BD7A0053DDB0 /* FSCalendarFlowLayout.m in Sources */,
 				733EC35F1EAE00F100AD4E29 /* SiftViewCell.m in Sources */,
+				732318181EB1933A000EEAE6 /* DataChartViewCell.m in Sources */,
 				733376F21E961487002F3DCD /* SelectPaymentTypeViewCell.m in Sources */,
 				73060F551E8DE3EB0087A9B5 /* AddStoresViewModel.m in Sources */,
 				733B617A1E9B4D7800BB2636 /* PopUpTableViewCell.m in Sources */,

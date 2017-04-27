@@ -22,6 +22,13 @@
 
 @property (nonatomic, strong) NSArray * yLineDataArr;
 
+@property (nonatomic, strong) UIColor *xTextColor;
+
+@property (nonatomic, strong) UIColor *yTextColor;
+
+@property (nonatomic, strong) UIColor *yLineColor;
+
+@property (nonatomic, strong) UIColor *columnTextColor;
 
 -(void)showAnimation;
 

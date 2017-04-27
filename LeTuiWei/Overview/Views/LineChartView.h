@@ -11,6 +11,10 @@
 @interface LineChartView : UIView
 
 
+@property (nonatomic, strong) UIColor *xTextColor;
+
+@property (nonatomic, strong) UIColor *yTextColor;
+
 /**
  *  An array of values that are about to be drawn.
  */

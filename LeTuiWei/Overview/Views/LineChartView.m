@@ -244,7 +244,10 @@
             CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_xLineDataArr[i]].width;
             [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x, p.y-3) andIsDottedLine:NO andColor:[UIColor blackColor]];
             
-            [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:10];
+            
+            UIColor *xTextColor = self.xTextColor?self.xTextColor:UIColorFromRGB(0xc5cae9);
+            
+            [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:xTextColor andFontSize:10];
             
         }
         
@@ -267,7 +270,9 @@
             }else{
                 [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x+3, p.y) andIsDottedLine:NO andColor:[UIColor blueColor]];
             }
-            [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:10];
+            
+            UIColor *yTextColor = self.yTextColor?self.yTextColor:UIColorFromRGB(0xc5cae9);
+            [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:yTextColor andFontSize:10];
         }
     }
 

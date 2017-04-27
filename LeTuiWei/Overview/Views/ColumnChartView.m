@@ -71,11 +71,15 @@
     //画竖行
     for (NSInteger i =0; i < self.xLineDataArr.count; i++) {
         
-        [self drawLineWithContext:context andStarPoint:P_M(self.chartOrigin.x + i * _perXLen, self.chartOrigin.y) andEndPoint:P_M(self.chartOrigin.x + i * _perXLen, 0) andIsDottedLine:NO andColor:UIColorFromRGB(0x313d80)];
+        UIColor *ylineColor = self.yLineColor ? self.yLineColor : UIColorFromRGB(0x313d80);
+        
+        [self drawLineWithContext:context andStarPoint:P_M(self.chartOrigin.x + i * _perXLen, self.chartOrigin.y) andEndPoint:P_M(self.chartOrigin.x + i * _perXLen, 0) andIsDottedLine:NO andColor:ylineColor];
         
         CGPoint p = P_M(self.chartOrigin.x + i * _perXLen, self.chartOrigin.y);
         CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:_xLineDataArr[i]].width;
-        [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:12];
+        
+        UIColor *textColor = self.xTextColor ? self.xTextColor : UIColorFromRGB(0xc5cae9);
+        [self drawText:[NSString stringWithFormat:@"%@",_xLineDataArr[i]] andContext:context atPoint:P_M(p.x-len/2, p.y+2) WithColor:textColor andFontSize:12];
     }
   
     //画Y轴的字
@@ -84,7 +88,9 @@
         CGPoint p = P_M(self.chartOrigin.x , self.chartOrigin.y - (i + 1)* _perYlen);
         CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:_yLineDataArr[i]].width;
         CGFloat height = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:_yLineDataArr[i]].height;
-        [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[self.yLineDataArr.count - 1 - i]] andContext:context atPoint:P_M(p.x-len -10, p.y - height/2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:14];
+        UIColor *textColor = self.xTextColor ? self.xTextColor : UIColorFromRGB(0xc5cae9);
+        
+        [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[self.yLineDataArr.count - 1 - i]] andContext:context atPoint:P_M(p.x-len -10, p.y - height/2) WithColor:textColor andFontSize:14];
     }
     
     
@@ -124,7 +130,10 @@
   
         
         CGFloat height = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:14 aimString:self.valueArr[self.valueArr.count - 1 - i]].height;
-        [self drawText:[NSString stringWithFormat:@"%@",self.valueArr[self.valueArr.count - 1 - i]] andContext:context atPoint:P_M(self.chartOrigin.x+ columnLength + 5, self.chartOrigin.y - (i+ 1)* _perYlen - height/2) WithColor:UIColorFromRGB(0xc5cae9) andFontSize:14];
+        
+        UIColor *columnTextColor = self.columnTextColor ? self.columnTextColor : UIColorFromRGB(0xc5cae9);
+        
+        [self drawText:[NSString stringWithFormat:@"%@",self.valueArr[self.valueArr.count - 1 - i]] andContext:context atPoint:P_M(self.chartOrigin.x+ columnLength + 5, self.chartOrigin.y - (i+ 1)* _perYlen - height/2) WithColor:columnTextColor andFontSize:14];
         
     }
     

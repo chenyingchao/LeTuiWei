@@ -10,7 +10,7 @@
 #import "IncomeHeaderView.h"
 #import "CalendarView.h"
 #import "SiftView.h"
-#import "OverviewCell.h"
+#import "DataChartViewCell.h"
 #import "AddStoreMaskView.h"
 #import "AddStoresViewController.h"
 @interface DataChartViewController ()<UITableViewDataSource, UITableViewDelegate, SiftViewDelegate,IncomeHeaderViewDelegate,CalendarViewDelegate>
@@ -46,14 +46,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout=UIRectEdgeNone;
+    //self.edgesForExtendedLayout=UIRectEdgeNone;
 
 }
 
 - (void)creatTableView {
     WS(weakSelf);
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    _tableView.backgroundColor = [Theme colorForTabBackground];
+    _tableView.backgroundColor = [Theme colorForAppBackground];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.showsVerticalScrollIndicator = NO;
@@ -82,21 +82,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     WS(weakSelf);
-    OverviewCell *cell = nil;
+    DataChartViewCell *cell = nil;
     
     switch (indexPath.section) {
         
 
             
         case 0: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderMoneyStatistics" withDataSource:nil withCellType:OverviewCellTypeOrderMoneyStatistics];
+            cell = [[DataChartViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderMoneyStatistics" withDataSource:nil withCellType:DataChartViewCellTypeTrendChart];
         }
             
             break;
             
             
         case 1: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductTop5" withDataSource:nil withCellType:OverviewCellTypeProductTop5];
+            cell = [[DataChartViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductTop5" withDataSource:@"123" withCellType:DataChartViewCellTypeTop5];
             
             cell.segmentIndexBlock = ^(NSInteger index) {
                 //按 self.tabBarController.tabBar.hidden = YES;
@@ -130,7 +130,7 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.bottomSeparatorStyle = ATCommonCellSeparatorStyleNone;
-    cell.backgroundColor = UIColorFromRGB(0x1b224c);
+    cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -165,11 +165,27 @@
         make.bottom.equalTo(weakSelf.naviView).offset(-[Theme paddingWithSize24]);
     }];
     
-    ////////////////////////
-    self.naviLbael.userInteractionEnabled = YES;
-    [self.naviLbael bk_whenTapped:^{
-        [self.navigationController popViewControllerAnimated:YES];
+    UIView *leftContainerView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 44, 44)];
+    [self.naviView addSubview:leftContainerView];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftContainerView addSubview:backBtn];
+    
+    [backBtn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateHighlighted];
+    [backBtn setImage:[UIImage imageNamed:@"return"] forState:UIControlStateSelected];
+    backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.bottom.equalTo(leftContainerView);
     }];
+    
+ 
+    [backBtn bk_whenTapped:^{
+        [weakSelf leftbarbuttonAction];
+    }];
+
+    
     
     self.checkInDateStr =  [[NSDate date] stringForYearMonthDayDashed];
     self.checkOutDateStr =  [[NSDate date] stringForYearMonthDayDashed];
@@ -296,6 +312,11 @@
     self.naviView.hidden = YES;
     self.siftView.hidden = YES;
     
+}
+
+- (void)leftbarbuttonAction {
+    [self.view endEditing:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

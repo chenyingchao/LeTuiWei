@@ -169,7 +169,7 @@
     }
     
     UILabel *line = [[UILabel  alloc] initWithFrame:CGRectZero];
-    line.backgroundColor = [UIColor redColor];//[Theme colorForSeparatorLine];
+    line.backgroundColor = [Theme colorForSeparatorLine];
     [self.contentView addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(weakSelf);
