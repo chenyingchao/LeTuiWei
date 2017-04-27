@@ -12,9 +12,10 @@
 #import "CustomPickerView.h"
 #import "AddStoresViewModel.h"
 #import "StoreCoordinateViewController.h"
+#import <TPKeyboardAvoidingTableView.h>
 @interface AddStoresViewController ()<UITableViewDataSource, UITableViewDelegate,UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) TPKeyboardAvoidingTableView *tableView;
 
 @property (nonatomic, strong) NSArray *titleArray;
 
@@ -34,11 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"添加门店";
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard:)];
-    tap.delegate = self;
-    tap.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:tap];
-    
     self.storeModel = [[AddStoresViewModel   alloc] init];
     
 }
@@ -51,7 +47,7 @@
 
 - (void)creatTableView {
     WS(weakSelf);
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+    _tableView = [[TPKeyboardAvoidingTableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.backgroundColor = [Theme colorForAppBackground];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -83,6 +79,7 @@
     
     switch (indexPath.row) {
         case 5: {
+           
             [self.pickerView show];
             WS(weakSelf);
             self.pickerView.determineBtnBlock = ^(NSInteger shengId, NSInteger shiId, NSInteger xianId, NSString *shengName, NSString *shiName, NSString *xianName){
@@ -167,6 +164,7 @@
             cell.cellTextField.placeholder = @"区号-电话，如010-67085435";
             cell.cellTextField.text = self.storeModel.phoneNum;
             cell.cellTextField.bk_didEndEditingBlock = ^(UITextField *textField) {
+     
                 weakSelf.storeModel.phoneNum = textField.text;
             };
             
@@ -273,13 +271,6 @@
         _titleArray = [[NSArray alloc] initWithObjects:@"商户名称",@"门店名称",@"人均消费",@"电话",@"经营类目",@"所在区域",@"详细地址",@"门店坐标", nil];
     }
     return _titleArray;
-}
-
-
-#pragma mark - UITapGestureRecognizer Action
-
-- (void)hideKeyboard:(UITapGestureRecognizer *)gesture {
-    [self.view endEditing:YES];
 }
 
 #pragma mark - UITapGestureRecognizer Delegate

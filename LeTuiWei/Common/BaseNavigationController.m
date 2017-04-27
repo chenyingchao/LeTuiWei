@@ -8,7 +8,7 @@
 
 #import "BaseNavigationController.h"
 
-@interface BaseNavigationController ()
+@interface BaseNavigationController ()<UIGestureRecognizerDelegate>
 
 @end
 
@@ -16,8 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.exclusiveTouch = YES;
+    WS(weakSelf);
+    if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.interactivePopGestureRecognizer.delegate = weakSelf;
+    }
    
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+
+    [super pushViewController:viewController animated:animated];
+    self.interactivePopGestureRecognizer.enabled = YES;
+    
 }
 
 @end

@@ -43,6 +43,7 @@ PODS:
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
   - STAlertView (1.0.0)
+  - TPKeyboardAvoiding (1.3.1)
   - YYCache (1.0.4)
 
 DEPENDENCIES:
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - SDCycleScrollView (~> 1.61)
   - SDWebImage (~> 3.7.3)
   - STAlertView (~> 1.0.0)
+  - TPKeyboardAvoiding (~> 1.3)
   - YYCache (~> 1.0.2)
 
 SPEC CHECKSUMS:
@@ -71,8 +73,9 @@ SPEC CHECKSUMS:
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   STAlertView: bfcbdfed87dc7bfb35c04acd5d96aecebb923d48
+  TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
 
-PODFILE CHECKSUM: de364da8828d6f6fa3d12b14067cf8f8066b547a
+PODFILE CHECKSUM: 57568cb8c78d79e56cfb8a63168783dec36d9b89
 
 COCOAPODS: 1.2.0

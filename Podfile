@@ -15,7 +15,7 @@ pod 'YYCache', '~> 1.0.2'
 pod 'iCarousel', '~> 1.8.2'
 pod 'STAlertView', '~> 1.0.0'
 pod 'JSPatch', '~> 1.0'
-
+pod 'TPKeyboardAvoiding', '~> 1.3'
 
 target ‘LeTuiWei’ do
 

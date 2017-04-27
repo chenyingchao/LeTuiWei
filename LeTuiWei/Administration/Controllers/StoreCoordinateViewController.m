@@ -26,6 +26,7 @@
     [self.view addSubview:self.mapView];
     [self.mapView setZoomLevel:14];
     [_mapView setShowsUserLocation:YES];
+    
     [self setUpNavigationBarLeftBack];
     [self setUpNavigationBarRight];
 }
@@ -110,6 +111,17 @@
 
 }
 
+- (void)mapView:(QMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+ 
+    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
+
+    
+    NSLog(@" regionDidChangeAnimated %f,%f",centerCoordinate.latitude, centerCoordinate.longitude);
+
+
+}
+
+
 - (void)mapView:(QMapView *)mapView didUpdateUserLocation:(QUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation{
     //刷新位置
 
@@ -133,9 +145,15 @@
         //设置子标题
         userLocation.subtitle = placeMark.name;
         
+    
+        
     }];
     
 
+    
+    
+
 }
+
 
 @end

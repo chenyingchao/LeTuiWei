@@ -74,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TPKeyboardAvoiding.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YYCache.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -87,6 +92,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>04426484249133B017034F6EE518D2D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0AC55E754182E1FCF070AC7F74379523</key>
 		<dict>
 			<key>primary</key>
@@ -97,17 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24CEA17AE5374F25E311A963A3583532</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>371D57EC749E834CF9E33F0DE49743C3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3B1A8471922428E3376AFD76565353B4</key>
+		<key>1E9E9EE4573FC70E42405E386E553B18</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,7 +117,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>694D97EC097B1DFE30D051FB6C38F561</key>
+		<key>71E69D61A09869F042B5BAFB663D6D00</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7FDDE2FFCD1D32BBFD8F7A291C0E9C5B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>895B5CB33B8E419E73A454D03A03C9CA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,17 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C186B3AF21CB7FAB4E6DADA29512CA79</key>
+		<key>ADF73B80F251995E115E752EC34AF4AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD4B410E5BE75F51DAB9DC5091EB5696</key>
+		<key>D2CBFC24E697515192B5A6BF5C5866EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D32D45F853FFE72974C942C81B478088</key>
+		<key>D411837A939B7CBA7D3D95BC0665721C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,7 +167,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EFB38A7A6DB8D680A834FCB5269E67BC</key>
+		<key>E9FA295E7F62BD41456CBC412C76282B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -82,7 +82,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
  
-  
+    AddStoresViewController *addStoreVC = [[AddStoresViewController alloc] init];
+    [self.navigationController pushViewController:addStoreVC animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

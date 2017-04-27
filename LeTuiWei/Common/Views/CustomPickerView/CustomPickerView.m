@@ -57,7 +57,7 @@
 
 - (void)initView {
     
-    [self showInView:[[UIApplication sharedApplication].windows lastObject]];
+    [self showInView:ATKeyWindow];
     
     [self addSubview:self.darkView];
     [self addSubview:self.backView];

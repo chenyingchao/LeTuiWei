@@ -36,7 +36,12 @@
         self.tabBarController.tabBar.hidden = YES;
     }
 }
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.navigationController.childViewControllers.count == 1) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
 
 - (void)setupNavigationBar:(UINavigationController *)naviController {
     naviController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[Theme colorWhite], NSFontAttributeName:[Theme fontWithSize36]};
