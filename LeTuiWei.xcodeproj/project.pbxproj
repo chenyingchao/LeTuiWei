@@ -27,6 +27,8 @@
 		73216EB31E9CB7D500A2DB82 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73216EB21E9CB7D500A2DB82 /* LineChartView.m */; };
 		7322F3C11EA6206D001DF522 /* NewCustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7322F3C01EA6206D001DF522 /* NewCustomPickerView.m */; };
 		732318181EB1933A000EEAE6 /* DataChartViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 732318171EB1933A000EEAE6 /* DataChartViewCell.m */; };
+		732577451EB2EC0500CBC691 /* OverviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 732577441EB2EC0500CBC691 /* OverviewModel.m */; };
+		732577481EB2ECA300CBC691 /* StoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 732577471EB2ECA300CBC691 /* StoreModel.m */; };
 		732D89DE1E973CE900C76488 /* PaymentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 732D89DD1E973CE900C76488 /* PaymentResultViewController.m */; };
 		7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4371E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m */; };
 		7331D4411E8B4DD300FF1156 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7331D4391E8B4DD300FF1156 /* SVProgressAnimatedView.m */; };
@@ -175,6 +177,10 @@
 		7322F3C01EA6206D001DF522 /* NewCustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewCustomPickerView.m; sourceTree = "<group>"; };
 		732318161EB1933A000EEAE6 /* DataChartViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataChartViewCell.h; sourceTree = "<group>"; };
 		732318171EB1933A000EEAE6 /* DataChartViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataChartViewCell.m; sourceTree = "<group>"; };
+		732577431EB2EC0500CBC691 /* OverviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewModel.h; sourceTree = "<group>"; };
+		732577441EB2EC0500CBC691 /* OverviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewModel.m; sourceTree = "<group>"; };
+		732577461EB2ECA300CBC691 /* StoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreModel.h; sourceTree = "<group>"; };
+		732577471EB2ECA300CBC691 /* StoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreModel.m; sourceTree = "<group>"; };
 		732D89DC1E973CE900C76488 /* PaymentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentResultViewController.h; sourceTree = "<group>"; };
 		732D89DD1E973CE900C76488 /* PaymentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentResultViewController.m; sourceTree = "<group>"; };
 		7331D4361E8B4DD300FF1156 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -792,6 +798,10 @@
 		73FC94951E8A4F4C0006722E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				732577431EB2EC0500CBC691 /* OverviewModel.h */,
+				732577441EB2EC0500CBC691 /* OverviewModel.m */,
+				732577461EB2ECA300CBC691 /* StoreModel.h */,
+				732577471EB2ECA300CBC691 /* StoreModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1233,6 +1243,7 @@
 				7331D4471E8B4DF900FF1156 /* MBProgressHUD+AT.m in Sources */,
 				7347DC391EA9DEB800D9CF67 /* IncomeHeaderView.m in Sources */,
 				73FC94C61E8A5EDF0006722E /* LoginBaseViewController.m in Sources */,
+				732577451EB2EC0500CBC691 /* OverviewModel.m in Sources */,
 				73060F671E8DEF340087A9B5 /* CityModel.m in Sources */,
 				73C030341EA0909500EAAC66 /* UIView+Extension.m in Sources */,
 				735927E61E8C9394001AB915 /* AdministrationViewCell.m in Sources */,
@@ -1288,6 +1299,7 @@
 				735BE5381E8F8FFC00B37C6C /* StoreAccountManagerViewCell.m in Sources */,
 				735000EE1E9F226E0019C234 /* ColumnChartView.m in Sources */,
 				7331D4401E8B4DD300FF1156 /* SVIndefiniteAnimatedView.m in Sources */,
+				732577481EB2ECA300CBC691 /* StoreModel.m in Sources */,
 				73457B2D1EAEFBC800542421 /* AllIncomeView.m in Sources */,
 				730DAF521EB0651200E3C4B7 /* OrderDetailViewController.m in Sources */,
 				73E2E10A1EA4657000BF5CB7 /* CalendarView.m in Sources */,
@@ -1478,8 +1490,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "efa9c196-d988-41b1-8132-ad9c50025f2f";
-				PROVISIONING_PROFILE_SPECIFIER = lettuiwei_profile;
+				PROVISIONING_PROFILE = "9f82576d-60d2-49cb-b670-2f8de472d159";
+				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_P_1;
 			};
 			name = Debug;
 		};
@@ -1501,8 +1513,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "efa9c196-d988-41b1-8132-ad9c50025f2f";
-				PROVISIONING_PROFILE_SPECIFIER = lettuiwei_profile;
+				PROVISIONING_PROFILE = "9f82576d-60d2-49cb-b670-2f8de472d159";
+				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_P_1;
 			};
 			name = Release;
 		};

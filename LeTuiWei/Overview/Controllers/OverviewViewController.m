@@ -19,6 +19,7 @@
 #import "CoustomPopUpView.h"
 #import "AddStoreMaskView.h"
 #import "AddStoresViewController.h"
+#import "OverviewModel.h"
 
 typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     ATCalendarSelectStepOne,
@@ -39,11 +40,11 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 
 @property (nonatomic, assign) NaviHeaderViewButtonType headerButtonType;
 
-@property (nonatomic, strong) NSArray *dataArray;
-
 @property (nonatomic, strong) NewCustomPickerView *pickerView;
 
 @property (nonatomic, assign) BOOL haveStoreInfo;
+
+@property (nonatomic, strong) OverviewModel *viewModel;
 
 @end
 
@@ -82,26 +83,45 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
 
 - (void)loadDataSource {
     
+    _viewModel = [[OverviewModel alloc] init];
+
+    
+    
+    StoreModel *storeModle = [[StoreModel alloc] init];
+    storeModle.storName = @"xx面馆";
+    
+    StoreModel *storeModle1 = [[StoreModel alloc] init];
+    storeModle1.storName = @"xx超市";
+    
+    _viewModel.storeArray = @[storeModle, storeModle1];
+    
+    _viewModel.checkInDateStr =  self.checkInDateStr;
+    _viewModel.checkOutDateStr =  self.checkOutDateStr;
+    
+    
     switch (self.headerButtonType) {
         case NaviHeaderViewButtonCalendar: {
-            self.dataArray = @[@"1", @"100"];
+            
+           
         
         }
             
             break;
             
         case NaviHeaderViewButtonToday: {
-            self.dataArray = @[@"2", @"200"];
+            
+
+ 
         }
             
             break;
         case NaviHeaderViewButtontYesterday: {
-            self.dataArray = @[@"3", @"300"];
+   
         }
             
             break;
         case NaviHeaderViewButtontSevenDay: {
-            self.dataArray = @[@"4", @"400"];
+        
         }
             
             break;
@@ -135,25 +155,38 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
     
     switch (indexPath.section) {
         case OverviewCellTypeStoreDate: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StoreDate" withDataSource:self.dataArray withCellType:OverviewCellTypeStoreDate];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StoreDate" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypeStoreDate];
         }
             
             break;
             
         case OverviewCellTypeOrderMoneyStatistics: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderMoneyStatistics" withDataSource:self.dataArray withCellType:OverviewCellTypeOrderMoneyStatistics];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderMoneyStatistics" withDataSource:self.viewModel withCellType:OverviewCellTypeOrderMoneyStatistics];
+            
+            cell.segmentIndexBlock = ^(NSInteger index) {
+                //按销量
+                if (index == 0) {
+                    NSLog(@"按金额");
+                } else { //按销售额
+                    NSLog(@"按订单数");
+                    
+                }
+                
+                
+            };
+
         }
             
             break;
             
         case OverviewCellTypePayTypeProportion: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PayTypeProportion" withDataSource:self.dataArray withCellType:OverviewCellTypePayTypeProportion];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"PayTypeProportion" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypePayTypeProportion];
         }
             
             break;
             
         case OverviewCellTypeProductTop5: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductTop5" withDataSource:self.dataArray withCellType:OverviewCellTypeProductTop5];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductTop5" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypeProductTop5];
             
             cell.segmentIndexBlock = ^(NSInteger index) {
                 //按销量
@@ -183,31 +216,31 @@ typedef NS_ENUM(NSUInteger,ATCalendarSelectStep) {
             
             break;
         case OverviewCellTypeOrderDistributionMap: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderDistributionMap" withDataSource:self.dataArray withCellType:OverviewCellTypeOrderDistributionMap];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderDistributionMap" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypeOrderDistributionMap];
         }
             
             break;
             
         case OverviewCellTypeVipDate: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"VipDate" withDataSource:self.dataArray withCellType:OverviewCellTypeVipDate];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"VipDate" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypeVipDate];
         }
             
             break;
             
         case OverviewCellTypeWeixinPayFuns: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WeixinPayFuns" withDataSource:self.dataArray withCellType:OverviewCellTypeWeixinPayFuns];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"WeixinPayFuns" withDataSource:self.viewModel withCellType:OverviewCellTypeWeixinPayFuns];
         }
             
             break;
             
         case OverviewCellTypeTakeOutDate: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TakeOutDate" withDataSource:self.dataArray withCellType:OverviewCellTypeTakeOutDate];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TakeOutDate" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypeTakeOutDate];
         }
             
             break;
             
         case OverviewCellTypeTakeOutProportion: {
-            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TakeOutProportion" withDataSource:self.dataArray withCellType:OverviewCellTypeTakeOutProportion];
+            cell = [[OverviewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TakeOutProportion" withDataSource:@[@"1", @"2"] withCellType:OverviewCellTypeTakeOutProportion];
         }
             
             break;

@@ -75,6 +75,11 @@ static NSDateFormatter *currentFormatter = nil;
     return [self stringForFormat:[NSString stringWithFormat:@"MM%@dd%@", @"月",@"日"]];
 }
 
+- (NSString *)stringForMonthDay {
+    return [self stringForFormat:@"MM-dd"];
+}
+
+
 - (NSString *)stringForYearMontDayCN {
     return [self stringForFormat:@"yyyy年MM月dd日"];
 }

@@ -17,5 +17,6 @@
         #import "UIView+Extension.h"
         #import "NSDate+AT.h"
         #import "NSDate+FSExtension.h"
+        #import "MBProgressHUD+AT.h"
     #endif
 #endif /* PrefixHeader_pch */

@@ -10,7 +10,7 @@
 #import "LineChartView.h"
 #import "RingChartView.h"
 #import "ColumnChartView.h"
-
+#import "OverviewModel.h"
 
 @interface OverviewCell()<UITextViewDelegate>
 
@@ -104,6 +104,7 @@
 - (void)createWeiXinPayFunsView:(id)dataSource {
     WS(weakSelf);
     
+    OverviewModel *model = dataSource;
     
     NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:@"加粉总数:148"];
  
@@ -150,7 +151,7 @@
     [moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerY.equalTo(bgView);
-        make.right.equalTo(bgView.mas_centerX).offset(-[Theme paddingWithSize40]);
+        make.right.equalTo(bgView.mas_centerX).offset(-[Theme paddingWithSize10]);
     }];
     
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -162,19 +163,37 @@
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerY.equalTo(bgView);
-        make.left.equalTo(bgView.mas_centerX).offset([Theme paddingWithSize40]);
+        make.left.equalTo(bgView.mas_centerX).offset([Theme paddingWithSize10]);
     }];
     
     
     LineChartView *lineChart = [[LineChartView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:270])];
     lineChart.contentInsets = UIEdgeInsetsMake([Theme paddingWithSize40], [Theme paddingWithSize100], [Theme paddingWithSize40], [Theme paddingWithSize100]);
-    lineChart.xLineDataArr = @[@"0:00",@"4:00",@"8:00",@"12:00",@"16:00",@"20:00",@"24:00"];
-    lineChart.yLineDataArr = @[@"2500",@"5000",@"7500",@"10000"];
-    lineChart.valueArr = @[@[@"100",@"2500",@"200",@2000,@10000,@300,@5000]
-                           ];
+    
+    lineChart.checkInDateStr = model.checkInDateStr;
+    lineChart.checkOutDateStr = model.checkOutDateStr;
+    
+    //假数据
+    NSDate *checkIndate = [NSDate at_dateFromString: lineChart.checkInDateStr];
+    NSDate *checkOutdate = [NSDate at_dateFromString: lineChart.checkOutDateStr];
+    NSInteger days = [checkIndate daysBetween:checkOutdate];
+    NSMutableArray *mockArray = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < days; i++) {
+        
+        CGFloat num = arc4random() % 10000;
+        [mockArray addObject:[NSNumber numberWithFloat:num]];
+        
+    }
+    NSComparisonResult result = [checkIndate compare:checkOutdate];
+    if (result == NSOrderedSame) {
+        lineChart.valueArr = @[@100.5,@2123,@789.951,@1232.1,@1000,@300,@1000];
+    } else {
+        lineChart.valueArr = mockArray;
+        
+        
+    }
     lineChart.showYLine = NO;
     lineChart.showYLevelLine = YES;
-    lineChart.valueLineColorArr =@[ [UIColor greenColor], [UIColor orangeColor]];
     [lineChart showAnimation];
     [self.contentView addSubview:lineChart];
     [lineChart mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -184,6 +203,24 @@
         make.height.equalTo(@([Theme paddingWithSize:270]));
         
     }];
+    
+    lineChart.didSelectPointBlock = ^(NSString *dateStr, NSString *moneyStr){
+        
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"加粉数量%@",moneyStr]];
+        
+        [attrStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(4, moneyStr.length)];
+        
+        moneyLabel.attributedText = attrStr;
+        
+        
+        NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"时间%@",dateStr]];
+        
+        [attrStr1 addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, dateStr.length)];
+        
+        timeLabel.attributedText = attrStr1;
+        
+    };
+
     
 }
 
@@ -572,6 +609,9 @@
 
 #pragma  mark 门店订单金额统计
 - (void)createOrderMoneyStatisticView:(id)dataSource {
+    
+    OverviewModel *model = dataSource;
+    
     WS(weakSelf);
     UIView *circleView = [[UIView alloc] initWithFrame:CGRectZero];
     circleView.backgroundColor = UIColorFromRGB(0x7c87cd);
@@ -597,7 +637,33 @@
         make.left.equalTo(circleView).offset([Theme paddingWithSize32]);
         make.centerY.equalTo(circleView);
     }];
+    
+    
+    NSArray *array = [NSArray arrayWithObjects:@"按金额",@"按订单数", nil];
+    
+    UISegmentedControl *segment = [[UISegmentedControl alloc]initWithItems:array];
+    segment.backgroundColor = UIColorFromRGB(0x303A65);
+    segment.apportionsSegmentWidthsByContent = YES;
+    segment.layer.masksToBounds = YES;
+    segment.layer.borderWidth = CGFLOAT_MIN;
+    segment.layer.cornerRadius = 5;
+    segment.tintColor = UIColorFromRGB(0x41518f);
+    segment.selectedSegmentIndex = 0;
+    [segment setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0xffffff)} forState:UIControlStateSelected];
+    [segment setTitleTextAttributes:@{NSForegroundColorAttributeName : UIColorFromRGB(0x7b86cc)} forState:UIControlStateNormal];
+    [segment addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.contentView addSubview:segment];
+    [segment mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerY.equalTo(titleNameLabel);
+        make.right.equalTo(weakSelf.contentView).offset(-[Theme paddingWithSize32]);
+        
+        make.height.equalTo(@([Theme paddingWithSize:50]));
+        
+    }];
 
+    
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
     bgView.backgroundColor = UIColorFromRGB(0x222b59);
 
@@ -619,30 +685,76 @@
     [moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerY.equalTo(bgView);
-        make.right.equalTo(bgView.mas_centerX).offset(-[Theme paddingWithSize40]);
+        make.right.equalTo(bgView.mas_centerX).offset(-[Theme paddingWithSize10]);
     }];
     
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     timeLabel.font = [Theme fontWithSize30];
     timeLabel.textColor = UIColorFromRGB(0xc5cae9);
-    timeLabel.text = @"时间84000.90";
+    timeLabel.text = @"时间12:00";
     [bgView addSubview:timeLabel];
     
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerY.equalTo(bgView);
-        make.left.equalTo(bgView.mas_centerX).offset([Theme paddingWithSize40]);
+        make.left.equalTo(bgView.mas_centerX).offset([Theme paddingWithSize10]);
     }];
+    
+    NSString *moneyStr = @"9999999";
+    
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额%@元",moneyStr]];
+    
+    [attrStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, moneyStr.length + 1)];
+    
+    moneyLabel.attributedText = attrStr;
+    
+    NSString *dateStr = @"12:00";
+    
+    NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"时间%@",dateStr]];
+    
+    [attrStr1 addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, dateStr.length)];
+    
+    timeLabel.attributedText = attrStr1;
+
+    
+    
+    
     
     
     LineChartView *lineChart = [[LineChartView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:270])];
     lineChart.contentInsets = UIEdgeInsetsMake([Theme paddingWithSize40], [Theme paddingWithSize100], [Theme paddingWithSize40], [Theme paddingWithSize100]);
-    lineChart.xLineDataArr = @[@"0:00",@"4:00",@"8:00",@"12:00",@"16:00",@"20:00",@"24:00"];
-    lineChart.yLineDataArr = @[@"2500",@"5000",@"7500",@"10000"];
-    lineChart.valueArr = @[@[@"100",@"2500",@"200",@2000,@10000,@300,@5000]];
+    
+    lineChart.checkInDateStr = model.checkInDateStr;
+    lineChart.checkOutDateStr = model.checkOutDateStr;
+    
+    //假数据
+    NSDate *checkIndate = [NSDate at_dateFromString: lineChart.checkInDateStr];
+    NSDate *checkOutdate = [NSDate at_dateFromString: lineChart.checkOutDateStr];
+    NSInteger days = [checkIndate daysBetween:checkOutdate];
+    NSMutableArray *mockArray = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < days; i++) {
+        
+        CGFloat num = arc4random() % 10000;
+        [mockArray addObject:[NSNumber numberWithFloat:num]];
+        
+    }
+    NSComparisonResult result = [checkIndate compare:checkOutdate];
+    if (result == NSOrderedSame) {
+         lineChart.valueArr = @[@100.5,@2123,@789.951,@1232.1,@1000,@300,@1000];
+    } else {
+        lineChart.valueArr = mockArray;
+       
+    
+    }
+    
+   
+    
+    
+    
+    
     lineChart.showYLine = NO;
     lineChart.showYLevelLine = YES;
-    lineChart.valueLineColorArr =@[ [UIColor greenColor], [UIColor orangeColor]];
+   
     [lineChart showAnimation];
     [self.contentView addSubview:lineChart];
     [lineChart mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -652,6 +764,23 @@
         make.height.equalTo(@([Theme paddingWithSize:270]));
         
     }];
+    
+    lineChart.didSelectPointBlock = ^(NSString *dateStr, NSString *moneyStr){
+        
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额%@元",moneyStr]];
+
+        [attrStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, moneyStr.length + 1)];
+        
+        moneyLabel.attributedText = attrStr;
+        
+        
+        NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"时间%@",dateStr]];
+        
+        [attrStr1 addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, dateStr.length)];
+        
+        timeLabel.attributedText = attrStr1;
+    
+    };
     
 }
 

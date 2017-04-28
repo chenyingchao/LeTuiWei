@@ -110,8 +110,17 @@
         if (calendar.checkOutDate) {
             calendar.checkInDate = date;
             calendar.checkOutDate = nil;
-            //self.checkOutDate = nil;
+            
         } else {
+            
+            NSInteger days = [calendar.checkInDate daysBetween:date];
+            if (days > 31) {
+                 [MBProgressHUD showError:@"所选时间段不能超过31天"];
+                NSLog(@"所选时间段不能超过31天");
+                return ;
+                
+            }
+            
             if ([date fs_daysFrom:calendar.checkInDate] >= 0) {
                 calendar.checkOutDate = date;
             } else {
@@ -140,6 +149,7 @@
         if (weakSelf.calendar.checkOutDate == nil) {
             weakSelf.calendar.checkOutDate = weakSelf.calendar.checkInDate;
         }
+        
         
         if ([weakSelf.calendarViewDelegate respondsToSelector:@selector(calendarView:comfirmDidSelectedCheckInDate:checkOutDate:)]) {
             

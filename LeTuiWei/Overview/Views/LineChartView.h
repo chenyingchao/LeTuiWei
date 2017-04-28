@@ -8,7 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, LineChartViewType) {
+    LineChartViewType24Hours = 0,
+    LineChartViewTypeDays,
+
+};
+
+
 @interface LineChartView : UIView
+
+@property (nonatomic, copy) void (^didSelectPointBlock)(NSString *dateStr, NSString *moneyStr);
+
+
+@property (nonatomic, assign) LineChartViewType lineChartViewType;
+
+
+@property (nonatomic, copy) NSString *checkInDateStr;
+
+@property (nonatomic, copy) NSString *checkOutDateStr;
 
 
 @property (nonatomic, strong) UIColor *xTextColor;

@@ -100,12 +100,33 @@
     
     LineChartView *lineChart = [[LineChartView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:270])];
     lineChart.contentInsets = UIEdgeInsetsMake([Theme paddingWithSize40], [Theme paddingWithSize100], [Theme paddingWithSize40], [Theme paddingWithSize100]);
-    lineChart.xLineDataArr = @[@"0:00",@"4:00",@"8:00",@"12:00",@"16:00",@"20:00",@"24:00"];
-    lineChart.yLineDataArr = @[@"2500",@"5000",@"7500",@"10000"];
-    lineChart.valueArr = @[@[@"100",@"2500",@"200",@2000,@10000,@300,@5000]];
+    
+    lineChart.checkInDateStr = @"2017-04-02";
+    lineChart.checkOutDateStr = @"2017-04-06";
+    
+    //假数据
+    NSDate *checkIndate = [NSDate at_dateFromString: lineChart.checkInDateStr];
+    NSDate *checkOutdate = [NSDate at_dateFromString: lineChart.checkOutDateStr];
+    NSInteger days = [checkIndate daysBetween:checkOutdate];
+    NSMutableArray *mockArray = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < days; i++) {
+        
+        CGFloat num = arc4random() % 10000;
+        [mockArray addObject:[NSNumber numberWithFloat:num]];
+        
+    }
+    NSComparisonResult result = [checkIndate compare:checkOutdate];
+    if (result == NSOrderedSame) {
+        lineChart.valueArr = @[@100.5,@2123,@789.951,@1232.1,@1000,@300,@1000];
+    } else {
+        lineChart.valueArr = mockArray;
+        
+        
+    }
+
     lineChart.showYLine = NO;
     lineChart.showYLevelLine = YES;
-    lineChart.valueLineColorArr =@[ [UIColor greenColor], [UIColor orangeColor]];
+
     lineChart.xTextColor = [Theme colorGray];
     lineChart.yTextColor = [Theme colorGray];
     [lineChart showAnimation];
@@ -117,6 +138,24 @@
         make.height.equalTo(@([Theme paddingWithSize:270]));
         
     }];
+    
+    lineChart.didSelectPointBlock = ^(NSString *dateStr, NSString *moneyStr){
+        
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额%@元",moneyStr]];
+        
+        [attrStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, moneyStr.length + 1)];
+        
+        moneyLabel.attributedText = attrStr;
+        
+        
+        NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"时间%@",dateStr]];
+        
+        [attrStr1 addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, dateStr.length)];
+        
+        timeLabel.attributedText = attrStr1;
+        
+    };
+
     
 }
 

@@ -39,6 +39,9 @@ extern NSString *const kDateFormatYYMMDDTHHmm;
 // 06月15日
 - (NSString *)stringForMonthDayCN;
 
+// 06-15
+- (NSString *)stringForMonthDay;
+
 // 周五
 - (NSString *)weekday;
 // 5
