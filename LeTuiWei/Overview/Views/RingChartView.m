@@ -57,6 +57,31 @@
     
 }
 
+
+- (void)orderTotalMoney {
+    
+    WS(weakSelf);
+    UILabel *totalMoneyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    totalMoneyLabel.font = [Theme fontWithSize24];
+    totalMoneyLabel.textColor = UIColorFromRGB(0xc5cae9);
+    totalMoneyLabel.textAlignment = NSTextAlignmentCenter;
+    totalMoneyLabel.numberOfLines = 0;
+    [self addSubview:totalMoneyLabel];
+    [totalMoneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.centerY.equalTo(weakSelf);
+      
+    }];
+    
+    NSString *str = [NSString stringWithFormat:@"订单金额\n%@",@"9999"];
+    
+    
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
+    [attrStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(4, str.length - 4)];
+    
+    totalMoneyLabel.attributedText = attrStr;
+    
+}
+
 //开始动画
 - (void)showAnimation{
     
@@ -64,6 +89,7 @@
     for (CALayer *layer in self.layer.sublayers) {
         [layer removeFromSuperlayer];
     }
+    [self orderTotalMoney];
     
     if (_valueDataArr.count == 0) {
         CAShapeLayer *layer = [CAShapeLayer layer] ;
@@ -112,7 +138,7 @@
         CABasicAnimation *basic = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
         basic.fromValue = @(0);
         basic.toValue = @(1);
-        basic.duration = 2;
+        basic.duration = 0.5;
         basic.fillMode = kCAFillModeForwards;
         
         [layer addAnimation:basic forKey:@"basic"];

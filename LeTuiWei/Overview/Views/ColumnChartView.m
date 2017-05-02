@@ -42,6 +42,8 @@
     [self configChartXAndYLength];//xy 长度
     [self configChartOrigin]; //坐标原点
     [self configPerXAndPerY];//xy间隔
+    
+    
   
     
 }

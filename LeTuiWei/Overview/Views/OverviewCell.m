@@ -421,7 +421,7 @@
                 
                 if (i % 2 == 0 ) {
                      make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize40]);
-                    make.top.equalTo(tempView.mas_bottom).offset([Theme paddingWithSize28]);
+                     make.top.equalTo(tempView.mas_bottom).offset([Theme paddingWithSize28]);
                 } else {
                   
                     make.left.equalTo(weakSelf.contentView.mas_centerX).offset([Theme paddingWithSize20]);
@@ -450,7 +450,7 @@
         }
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        titleLabel.font = [Theme fontWithSize20];
+        titleLabel.font = [Theme fontWithSize24];
         titleLabel.textColor = UIColorFromRGB(0xc5cae9);
         titleLabel.text = @"安达市大所发";
         titleLabel.numberOfLines = 0;
@@ -544,7 +544,7 @@
                 make.height.equalTo(@([Theme paddingWithSize20]));
                 make.width.equalTo(@([Theme paddingWithSize20]));
                 make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize100]);
-                make.top.equalTo(tempView.mas_bottom).offset([Theme paddingWithSize28]);
+                make.top.equalTo(tempView.mas_bottom).offset([Theme paddingWithSize40]);
             }];
             tempView = circleView;
         } else {
@@ -566,7 +566,7 @@
         }
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        titleLabel.font = [Theme fontWithSize20];
+        titleLabel.font = [Theme fontWithSize24];
         titleLabel.textColor = UIColorFromRGB(0xc5cae9);
         titleLabel.text = titleArray[i];
         [self.contentView addSubview:titleLabel];
@@ -579,7 +579,7 @@
 
         
         UILabel *titleValueLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        titleValueLabel.font = [Theme fontWithSize20];
+        titleValueLabel.font = [Theme fontWithSize24];
         titleValueLabel.textColor = UIColorFromRGB(0xc5cae9);
         titleValueLabel.text = @"收款金额:100000元，占比100%";
         titleValueLabel.numberOfLines = 0;
@@ -740,7 +740,7 @@
     }
     NSComparisonResult result = [checkIndate compare:checkOutdate];
     if (result == NSOrderedSame) {
-         lineChart.valueArr = @[@100.5,@2123,@789.951,@1232.1,@1000,@300,@1000];
+         lineChart.valueArr = @[@0,@1000,@0,@1000,@2000,@3000,@4000];
     } else {
         lineChart.valueArr = mockArray;
        

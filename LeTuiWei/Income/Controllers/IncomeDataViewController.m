@@ -110,9 +110,14 @@
         
     }
     
+}
+
+#pragma mark 初始化数据
+-(void)didInitData {
 
 
 }
+
 #pragma mark 日历delegate 
 
 - (void)calendarView:(CalendarView *)calendarView comfirmDidSelectedCheckInDate:(NSString *)checkInDate checkOutDate:(NSString *)checkOutDate {
@@ -145,7 +150,7 @@
             
             break;
         case SiftViewButtonTypeAllChannel: {
-            self.siftDataSource = @[@"全部渠道",@"微信",@"支付宝",@"刷卡",@"现金",@"现金1",@"现金2",@"现金三"];
+            self.siftDataSource = @[@"全部渠道",@"微信",@"支付宝",@"刷卡",@"现金"];
         }
             
             break;

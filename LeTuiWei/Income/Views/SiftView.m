@@ -197,7 +197,7 @@
         [tableView  mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.right.left.equalTo(weakSelf.maskView);
             make.top.equalTo(weakSelf.maskView);
-            if ([self.siftDelegate numberOfRowsInOrderDetailsView] < 5) {
+            if ([self.siftDelegate numberOfRowsInOrderDetailsView] <= 5) {
                 make.height.equalTo(@( [Theme paddingWithSize:84] * [self.siftDelegate numberOfRowsInOrderDetailsView] ));
             } else {
                 make.height.equalTo(@([Theme paddingWithSize:300]));

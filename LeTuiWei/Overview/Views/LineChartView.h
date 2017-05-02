@@ -22,6 +22,7 @@ typedef NS_ENUM(NSUInteger, LineChartViewType) {
 
 @property (nonatomic, assign) LineChartViewType lineChartViewType;
 
+@property (nonatomic, assign) BOOL isDataChartView;
 
 @property (nonatomic, copy) NSString *checkInDateStr;
 
@@ -31,6 +32,10 @@ typedef NS_ENUM(NSUInteger, LineChartViewType) {
 @property (nonatomic, strong) UIColor *xTextColor;
 
 @property (nonatomic, strong) UIColor *yTextColor;
+
+@property (nonatomic, strong) UIColor *yLineColor;
+
+@property (nonatomic, strong) UIColor *gradientColor;
 
 /**
  *  An array of values that are about to be drawn.

@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong)  CAShapeLayer *markLayerY;
 
+@property (nonatomic, strong)  CAShapeLayer *littleRingLayer;
+
 @property (assign , nonatomic)  CGFloat  maxValue ;
 
 @property (assign , nonatomic)  CGFloat  maxYValue ;
@@ -321,7 +323,8 @@
     _markLayerX.lineWidth = 0.5;
 
     [self.layer addSublayer:_markLayerX];
-    
+ 
+
     UIBezierPath *linePath1 = [UIBezierPath bezierPath];
     // 起点
     [linePath1 moveToPoint:P_M(markMaxX,self.chartOrigin.y)];
@@ -334,7 +337,21 @@
     _markLayerY.lineWidth = 0.5;
     
     [self.layer addSublayer:_markLayerY];
+    
+    
+    if (_isDataChartView) {
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path addArcWithCenter:P_M(markMaxX, markMaxL) radius:3 startAngle:0.0 endAngle:180.0 clockwise:YES];
 
+        _littleRingLayer = [CAShapeLayer layer];
+        _littleRingLayer.path = path.CGPath;
+        _littleRingLayer.strokeColor = UIColorFromRGB(0xff9900).CGColor;
+        _littleRingLayer.lineWidth = 0.5;
+        _littleRingLayer.fillColor = [UIColor whiteColor].CGColor;
+      
+        [self.layer insertSublayer:_littleRingLayer above:_markLayerY];
+        
+    }
 }
 
 #pragma mark 开始画图
@@ -362,40 +379,16 @@
             [secondPath addLineToPoint:P_M(p.x, self.chartOrigin.y)];
             
         }
+   
+        if (!_isDataChartView) {
+            //添加光点
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(p.x - 7.5, p.y - 7.5, 15, 15)];
+            
+            imageView.image = [UIImage imageNamed:@"point"];
+            imageView.userInteractionEnabled = YES;
+            [self addSubview:imageView];
+        }
         
-      WS(weakSelf);
-        //添加光点
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(p.x - 7.5, p.y - 7.5, 15, 15)];
-     
-        imageView.image = [UIImage imageNamed:@"point"];
-        imageView.userInteractionEnabled = YES;
-        [imageView bk_whenTapped:^{
-            
-             NSLog(@"点击 (x, y) is (%f, %f)", imageView.frame.origin.x + 7.5, imageView.frame.origin.y + 7.5);
-            
-            [weakSelf ponitToData:CGPointMake(imageView.frame.origin.x + 7.5, imageView.frame.origin.y + 7.5)];
-            
-            
-            UIBezierPath *linePath = [UIBezierPath bezierPath];
-
-            [linePath moveToPoint:P_M(weakSelf.chartOrigin.x,imageView.frame.origin.y + 7.5)];
-         
-            [linePath addLineToPoint:P_M(weakSelf.contentInsets.left +_xLength, imageView.frame.origin.y + 7.5)];
-            
-            weakSelf.markLayerX.path = linePath.CGPath;
-            
-            
-            UIBezierPath *linePath1 = [UIBezierPath bezierPath];
-          
-            [linePath1 moveToPoint:P_M(imageView.frame.origin.x + 7.5,weakSelf.chartOrigin.y)];
-          
-            [linePath1 addLineToPoint:P_M(imageView.frame.origin.x + 7.5, 10)];
-            weakSelf.markLayerY.path = linePath1.CGPath;
-            
-            
-        }];
-        
-        [self addSubview:imageView];
         
     }
     
@@ -430,95 +423,188 @@
         CAShapeLayer *shaperLay = [CAShapeLayer layer];
         shaperLay.frame = weakSelf.bounds;
         shaperLay.path = secondPath.CGPath;
-        shaperLay.fillColor = UIColorFromAlphaRGB(0x1b3fa6, 0.4).CGColor;
-        
+        shaperLay.fillColor = UIColorFromRGB(0x1b3fa6).CGColor;
+        shaperLay.strokeColor = UIColorFromRGB(0x1b3fa6).CGColor;
         [weakSelf.layer addSublayer:shaperLay];
         
-      
+        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+        gradientLayer.frame = weakSelf.bounds;
+        if (!self.gradientColor) {
+            
+            gradientLayer.colors = @[(__bridge id)UIColorFromAlphaRGB(0x1b3fa6, 0.1).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0x1b3fa6, 0.8).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0x1b3fa6, 0.6).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0x1b3fa6, 0.4).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0x1b3fa6, 0.2).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0x1b3fa6, 0.0).CGColor,
+                                     ];
+            
+
+        } else {
+            gradientLayer.colors = @[(__bridge id)UIColorFromAlphaRGB(0xe1e8fb, 0.1).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0xe1e8fb, 0.8).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0xe1e8fb, 0.6).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0xe1e8fb, 0.4).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0xe1e8fb, 0.2).CGColor,
+                                     (__bridge id)UIColorFromAlphaRGB(0xe1e8fb, 0.0).CGColor,
+                                     ];
+
+        }
+
+        gradientLayer.startPoint = CGPointMake(0,0);
+        gradientLayer.endPoint = CGPointMake(1,1);
+        
+        [self.layer addSublayer:gradientLayer];
+        
+        gradientLayer.mask = shaperLay;
     });
 
     
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    return;
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
+
     NSSet *allTouches = [event allTouches];    //返回与当前接收者有关的所有的触摸对象
     UITouch *touch = [allTouches anyObject];   //视图中的所有对象
     CGPoint point = [touch locationInView:self]; //返回触摸点在视图中的当前坐标
-    CGFloat x = point.x;
-    CGFloat y = point.y;
-    NSLog(@"touch (x, y) is (%f, %f)", x, y);
+    CGFloat touchX = point.x;
+    CGFloat touchY = point.y;
     
+    if (touchX < self.contentInsets.left || touchX > self.contentInsets.left + _xLength || touchY < self.contentInsets.top || touchY > self.contentInsets.top + _yLength) {
+        return;
+    }
     
-    NSLog(@"%@", _drawDataArr);
+    CGPoint intersectionPoint;
+    
     for (NSInteger i = 0; i < _drawDataArr.count; i++) {
-        if (i + 1 >= _drawDataArr.count) {
+        if (i + 1 > _drawDataArr.count - 1) {  //5
             break;
         }
-        NSLog(@"A  %@", _drawDataArr[i]);
-        
-        NSLog(@"  B   %@", _drawDataArr[i + 1]);
-        
+
         NSValue *valueA = _drawDataArr[i];
         CGPoint A = valueA.CGPointValue;
-        
-
         
         NSValue *valueB = _drawDataArr[i + 1];
         
         CGPoint B = valueB.CGPointValue;
+
+        if (touchX < A.x  || touchX > B.x) {
+            continue;
+        }
         
-     CGPoint p = [self twoLineWithFistLine:A :B withSecondLine:P_M(x, 0) :P_M(x, y - 10)];
-        NSLog(@"交点%f   %f", p.x, p.y);
+        CGPoint p = [self twoLineWithFistLine:P_M(A.x, -A.y) :P_M(B.x, -B.y) withSecondLine:P_M(touchX, 0.0) :P_M(touchX, -1000.0)];
+
+        intersectionPoint = P_M(p.x, - p.y);
         
     }
     
-    
-    
-    
-    
-    
-    [self ponitToData:CGPointMake(x, y)];
+    [self ponitToData:CGPointMake(intersectionPoint.x, intersectionPoint.y)];
     
     //横线
     UIBezierPath *linePath = [UIBezierPath bezierPath];
     
-    [linePath moveToPoint:P_M(self.chartOrigin.x,y)];
+    [linePath moveToPoint:P_M(self.chartOrigin.x,intersectionPoint.y)];
     
-    [linePath addLineToPoint:P_M(self.contentInsets.left +_xLength, y)];
+    [linePath addLineToPoint:P_M(self.contentInsets.left +_xLength, intersectionPoint.y)];
+    
+    self.markLayerX.path = linePath.CGPath;
+    UIBezierPath *linePath1 = [UIBezierPath bezierPath];
+    
+    [linePath1 moveToPoint:P_M(intersectionPoint.x ,self.chartOrigin.y)];
+    
+    [linePath1 addLineToPoint:P_M(intersectionPoint.x, 10)];
+    self.markLayerY.path = linePath1.CGPath;
+    
+    if (_isDataChartView) {
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path addArcWithCenter:P_M(intersectionPoint.x, intersectionPoint.y) radius:3 startAngle:0.0 endAngle:180.0 clockwise:YES];
+        
+        _littleRingLayer.path = path.CGPath;
+        
+    }
+    
+    
+
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    NSSet *allTouches = [event allTouches];    //返回与当前接收者有关的所有的触摸对象
+    UITouch *touch = [allTouches anyObject];   //视图中的所有对象
+    CGPoint point = [touch locationInView:self]; //返回触摸点在视图中的当前坐标
+    CGFloat touchX = point.x;
+    
+    CGFloat touchY = point.y;
+    
+    if (touchX < self.contentInsets.left || touchX > self.contentInsets.left + _xLength || touchY < self.contentInsets.top || touchY > self.contentInsets.top + _yLength) {
+        return;
+    }
+    
+    CGPoint intersectionPoint;
+    for (NSInteger i = 0; i < _drawDataArr.count; i++) {
+     
+        if (i + 1 > _drawDataArr.count - 1) {  //5
+            break;
+        }
+
+        NSValue *valueA = _drawDataArr[i];//4
+        CGPoint A = valueA.CGPointValue;
+        
+        NSValue *valueB = _drawDataArr[i + 1];//3
+        
+        CGPoint B = valueB.CGPointValue;
+        //判处不在触摸点范围内的线段
+        if (touchX < A.x  || touchX > B.x) {
+            continue;
+        }
+        
+        //AB 为数组中取得的线段
+        //获得交点
+     CGPoint p = [self twoLineWithFistLine:P_M(A.x, -A.y) :P_M(B.x, -B.y) withSecondLine:P_M(touchX, 0.0) :P_M(touchX, -1000.0)];
+  
+        intersectionPoint = P_M(p.x, - p.y);
+        
+    }
+    
+    
+    [self ponitToData:CGPointMake(intersectionPoint.x, intersectionPoint.y)];
+    
+    //横线
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    
+    [linePath moveToPoint:P_M(self.chartOrigin.x,intersectionPoint.y)];
+    
+    [linePath addLineToPoint:P_M(self.contentInsets.left +_xLength, intersectionPoint.y)];
     
     self.markLayerX.path = linePath.CGPath;
     
     
     UIBezierPath *linePath1 = [UIBezierPath bezierPath];
     
-    [linePath1 moveToPoint:P_M(x ,self.chartOrigin.y)];
+    [linePath1 moveToPoint:P_M(intersectionPoint.x ,self.chartOrigin.y)];
     
-    [linePath1 addLineToPoint:P_M(x, 10)];
+    [linePath1 addLineToPoint:P_M(intersectionPoint.x, 10)];
     self.markLayerY.path = linePath1.CGPath;
     
+    if (_isDataChartView) {
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path addArcWithCenter:P_M(intersectionPoint.x, intersectionPoint.y) radius:3 startAngle:0.0 endAngle:180.0 clockwise:YES];
+    
+        _littleRingLayer.path = path.CGPath;
 
+    }
 }
 
 
 - (CGPoint)twoLineWithFistLine:(CGPoint)a :(CGPoint)b withSecondLine:(CGPoint)c :(CGPoint)d {
+    CGFloat x1 = a.x, y1 = a.y, x2 = b.x, y2 = b.y;
     
-    CGFloat x0 = a.x;
-    CGFloat x1 = b.x;
-    CGFloat x2 = c.x;
-    CGFloat x3 = d.x;
-    CGFloat y0 = a.y;
-    CGFloat y1 = b.y;
-    CGFloat y2 = c.y;
-    CGFloat y3 = d.y;
+    CGFloat x3 = c.x, y3 = c.y, x4 = d.x, y4 = d.y;
+    CGFloat x = ((x1 - x2) * (x3 * y4 - x4 * y3) - (x3 - x4) * (x1 * y2 - x2 * y1))
+    / ((x3 - x4) * (y1 - y2) - (x1 - x2) * (y3 - y4));
     
-   CGFloat  y = ( (y0-y1)*(y3-y2)*x0 + (y3-y2)*(x1-x0)*y0 + (y1-y0)*(y3-y2)*x2 + (x2-x3)*(y1-y0)*y2 ) / ( (x1-x0)*(y3-y2) + (y0-y1)*(x3-x2) );
-    
-    
-    
-   CGFloat x = x2 + (x3-x2)*(y-y2) / (y3-y2);
-    
-    NSLog(@"交点 (x, y) is (%f, %f)", x, y);
+    CGFloat y = ((y1 - y2) * (x3 * y4 - x4 * y3) - (x1 * y2 - x2 * y1) * (y3 - y4))
+    / ((y1 - y2) * (x3 - x4) - (x1 - x2) * (y3 - y4));
     
     return P_M(x, y);
 }
@@ -540,7 +626,7 @@
         for (NSInteger i = 0; i<_xLineDataArr.count;i++ ) {
             CGPoint p = P_M(i*xPace+self.chartOrigin.x, self.chartOrigin.y);
             CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_xLineDataArr[i]].width;
-            [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x, p.y-3) andIsDottedLine:NO andColor:[UIColor blackColor]];
+//            [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x, p.y-3) andIsDottedLine:NO andColor:[Theme colorGray]];
             
             
             UIColor *xTextColor = self.xTextColor?self.xTextColor:UIColorFromRGB(0xc5cae9);
@@ -561,13 +647,16 @@
             CGFloat len = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_yLineDataArr[i]].width;
             CGFloat hei = [self sizeOfStringWithMaxSize:CGSizeMake(CGFLOAT_MAX, 30) textFont:10 aimString:_yLineDataArr[i]].height;
            
+            
+            UIColor *yLineColor = self.yLineColor?self.yLineColor:UIColorFromRGB(0x313d80);
             if (_showYLevelLine) {
-                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(self.contentInsets.left+_xLength, p.y) andIsDottedLine:NO andColor:UIColorFromRGB(0x313d80)];
+                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(self.contentInsets.left+_xLength, p.y) andIsDottedLine:NO andColor:yLineColor];
             
                 
             }else{
-                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x+3, p.y) andIsDottedLine:NO andColor:[UIColor blueColor]];
+                [self drawLineWithContext:context andStarPoint:p andEndPoint:P_M(p.x+3, p.y) andIsDottedLine:NO andColor:yLineColor];
             }
+            
             
             UIColor *yTextColor = self.yTextColor?self.yTextColor:UIColorFromRGB(0xc5cae9);
             [self drawText:[NSString stringWithFormat:@"%@",_yLineDataArr[i]] andContext:context atPoint:P_M(p.x-len-3, p.y-hei / 2) WithColor:yTextColor andFontSize:10];
@@ -642,74 +731,6 @@
     
     CGContextDrawPath(context, kCGPathFill);
     
-}
-
-//- (void)creatLittleCircleView:(CGRect)frame {
-//
-//    
-//
-//    return;
-//    
-//    
-//    //创建CGContextRef
-//    UIGraphicsBeginImageContext(self.bounds.size);
-//    CGContextRef gc = UIGraphicsGetCurrentContext();
-//    
-//    //创建CGMutablePathRef
-//    CGMutablePathRef path = CGPathCreateMutable();
-//    
-//    //绘制Path
-//    CGRect rect = frame;
-//    
-//    CGPathAddEllipseInRect(path, nil, rect);
-//    CGPathCloseSubpath(path);
-//    
-//
-//    //绘制渐变
-//    [self drawRadialGradient:gc path:path startColor:[UIColor colorWithRed:0 green:255 blue:254 alpha:1].CGColor endColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.1].CGColor];
-//    
-//    //注意释放CGMutablePathRef
-//    CGPathRelease(path);
-//    
-//
-//    //从Context中获取图像，并显示在界面上
-//    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    
-//    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-//  
-//    [self addSubview:imgView];
-//
-//}
-//
- //绘制渐变
-- (void)drawRadialGradient:(CGContextRef)context
-                      path:(CGPathRef)path
-                startColor:(CGColorRef)startColor
-                  endColor:(CGColorRef)endColor
-{
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat locations[] = { 0.1, 1.0 };
-    
-    NSArray *colors = @[(__bridge id) startColor, (__bridge id) endColor];
-    
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
-    
-    
-    CGRect pathRect = CGPathGetBoundingBox(path);
-    CGPoint center = CGPointMake(CGRectGetMidX(pathRect), CGRectGetMidY(pathRect));
-    CGFloat radius = MAX(pathRect.size.width / 2.0, pathRect.size.height / 2.0) * sqrt(2);
-    
-    CGContextSaveGState(context);
-    CGContextAddPath(context, path);
-    CGContextEOClip(context);
-    
-    CGContextDrawRadialGradient(context, gradient, center, 0, center, radius, 0);
-    
-    CGContextRestoreGState(context);
-    
-    CGGradientRelease(gradient);
-    CGColorSpaceRelease(colorSpace);
 }
 
 @end

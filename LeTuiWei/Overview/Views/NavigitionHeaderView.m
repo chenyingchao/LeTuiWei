@@ -43,8 +43,8 @@
         
         NSString *title = self.calendarTitle;
         [self.calendarButton setTitle:title forState:UIControlStateNormal];
-        [self.calendarButton setImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
-        [self.calendarButton setImage:[UIImage imageNamed:@"up"] forState:UIControlStateSelected];
+        [self.calendarButton setImage:[UIImage imageNamed:@"overview_down"] forState:UIControlStateNormal];
+        [self.calendarButton setImage:[UIImage imageNamed:@"overview_up"] forState:UIControlStateSelected];
         [self addSubview: self.calendarButton];
         [self.calendarButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(weakSelf);

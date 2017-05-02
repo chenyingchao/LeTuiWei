@@ -126,9 +126,11 @@
 
     lineChart.showYLine = NO;
     lineChart.showYLevelLine = YES;
-
+    lineChart.isDataChartView = YES;
     lineChart.xTextColor = [Theme colorGray];
     lineChart.yTextColor = [Theme colorGray];
+    lineChart.yLineColor = [Theme colorForSeparatorLine];
+    lineChart.gradientColor = UIColorFromRGB(0xe3eaf9);
     [lineChart showAnimation];
     [self.contentView addSubview:lineChart];
     [lineChart mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -327,7 +329,7 @@
         }
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        titleLabel.font = [Theme fontWithSize20];
+        titleLabel.font = [Theme fontWithSize24];
         titleLabel.textColor = [Theme colorGray];
         titleLabel.text = @"安达市大所发";
         titleLabel.numberOfLines = 0;
