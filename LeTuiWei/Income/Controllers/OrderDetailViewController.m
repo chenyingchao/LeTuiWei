@@ -19,6 +19,7 @@
 - (void)loadView {
     [super loadView];
     [self creatTableView];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 
 }
 

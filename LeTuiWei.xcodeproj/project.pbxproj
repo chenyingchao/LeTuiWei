@@ -420,13 +420,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		73060F561E8DEE380087A9B5 /* Resources */ = {
+		73060F561E8DEE380087A9B5 /* ResourcesData */ = {
 			isa = PBXGroup;
 			children = (
 				73060F681E8E023A0087A9B5 /* sheng.json */,
 				73060F691E8E023A0087A9B5 /* shi.json */,
 				73060F6A1E8E023A0087A9B5 /* xian.json */,
 			);
+			name = ResourcesData;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -580,7 +581,7 @@
 				733376E61E960DB6002F3DCD /* Payment */,
 				73FC94981E8A501E0006722E /* Common */,
 				733B61931E9B78B800BB2636 /* SDK */,
-				73060F561E8DEE380087A9B5 /* Resources */,
+				73060F561E8DEE380087A9B5 /* ResourcesData */,
 				73FC94991E8A50570006722E /* Macro */,
 				73FC94971E8A4FB20006722E /* Helper */,
 				73FC94531E8A4B9D0006722E /* AppDelegate.h */,
@@ -1412,7 +1413,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1461,7 +1463,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1487,7 +1490,7 @@
 			baseConfigurationReference = 94EDEA90A98E55F0D4973C27 /* Pods-LeTuiWei.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = S3RRTLGH34;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1500,8 +1503,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f82576d-60d2-49cb-b670-2f8de472d159";
-				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_P_1;
+				PROVISIONING_PROFILE = "672aad12-1052-4cd1-ada8-743c14610c94";
+				PROVISIONING_PROFILE_SPECIFIER = production_production;
 			};
 			name = Debug;
 		};
@@ -1510,7 +1513,7 @@
 			baseConfigurationReference = 68CC2A218F4F63B52A0B14AC /* Pods-LeTuiWei.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = S3RRTLGH34;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1523,8 +1526,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.younle.LeTuiWei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f82576d-60d2-49cb-b670-2f8de472d159";
-				PROVISIONING_PROFILE_SPECIFIER = LeTuiWei_P_1;
+				PROVISIONING_PROFILE = "672aad12-1052-4cd1-ada8-743c14610c94";
+				PROVISIONING_PROFILE_SPECIFIER = production_production;
 			};
 			name = Release;
 		};
