@@ -53,7 +53,6 @@
 		733B618B1E9B763800BB2636 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618A1E9B763800BB2636 /* SystemConfiguration.framework */; };
 		733B618D1E9B764300BB2636 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618C1E9B764300BB2636 /* QuartzCore.framework */; };
 		733B618F1E9B765100BB2636 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B618E1E9B765100BB2636 /* CoreLocation.framework */; };
-		733B61961E9B78D100BB2636 /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B61951E9B78D100BB2636 /* QMapKit.framework */; };
 		733EC35C1EADE1E600AD4E29 /* SiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 733EC35B1EADE1E600AD4E29 /* SiftView.m */; };
 		733EC35F1EAE00F100AD4E29 /* SiftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 733EC35E1EAE00F100AD4E29 /* SiftViewCell.m */; };
 		73457B2D1EAEFBC800542421 /* AllIncomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73457B2C1EAEFBC800542421 /* AllIncomeView.m */; };
@@ -83,6 +82,9 @@
 		736B9D911EA0BE7E0053DDB0 /* NSDateFormatter+AT.m in Sources */ = {isa = PBXBuildFile; fileRef = 736B9D901EA0BE7E0053DDB0 /* NSDateFormatter+AT.m */; };
 		73859EF91E9493390045C283 /* SelectAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73859EF81E9493390045C283 /* SelectAccountViewController.m */; };
 		73859F021E94CC830045C283 /* UnfoldTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73859F011E94CC830045C283 /* UnfoldTabView.m */; };
+		738A226A1EB86F0D00946DAC /* QMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 738A22691EB86F0D00946DAC /* QMapKit.bundle */; };
+		738A226E1EB8787D00946DAC /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 738A226D1EB8787D00946DAC /* QMapKit.framework */; };
+		738A22701EB878C400946DAC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 738A226F1EB878C400946DAC /* libsqlite3.tbd */; };
 		73B1DD261EA6FE6A001A6052 /* AddStoreMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B1DD251EA6FE6A001A6052 /* AddStoreMaskView.m */; };
 		73C030341EA0909500EAAC66 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C030331EA0909500EAAC66 /* UIView+Extension.m */; };
 		73E2E10A1EA4657000BF5CB7 /* CalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E2E1091EA4657000BF5CB7 /* CalendarView.m */; };
@@ -286,6 +288,9 @@
 		73859EF81E9493390045C283 /* SelectAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectAccountViewController.m; sourceTree = "<group>"; };
 		73859F001E94CC830045C283 /* UnfoldTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTabView.h; sourceTree = "<group>"; };
 		73859F011E94CC830045C283 /* UnfoldTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTabView.m; sourceTree = "<group>"; };
+		738A22691EB86F0D00946DAC /* QMapKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QMapKit.bundle; sourceTree = "<group>"; };
+		738A226D1EB8787D00946DAC /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = ../../Downloads/TencentMapSDK_iOS_2D_v1_2_7/QQMapsdk/QMapKit.framework; sourceTree = "<group>"; };
+		738A226F1EB878C400946DAC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		73B1DD241EA6FE6A001A6052 /* AddStoreMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStoreMaskView.h; sourceTree = "<group>"; };
 		73B1DD251EA6FE6A001A6052 /* AddStoreMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStoreMaskView.m; sourceTree = "<group>"; };
 		73C030321EA0909500EAAC66 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -369,7 +374,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				733B61961E9B78D100BB2636 /* QMapKit.framework in Frameworks */,
+				738A22701EB878C400946DAC /* libsqlite3.tbd in Frameworks */,
+				738A226E1EB8787D00946DAC /* QMapKit.framework in Frameworks */,
 				733B618F1E9B765100BB2636 /* CoreLocation.framework in Frameworks */,
 				733B618D1E9B764300BB2636 /* QuartzCore.framework in Frameworks */,
 				733B618B1E9B763800BB2636 /* SystemConfiguration.framework in Frameworks */,
@@ -400,6 +406,8 @@
 		0673D5BD0BA0DED780C47705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				738A226F1EB878C400946DAC /* libsqlite3.tbd */,
+				738A226D1EB8787D00946DAC /* QMapKit.framework */,
 				733B618E1E9B765100BB2636 /* CoreLocation.framework */,
 				733B618C1E9B764300BB2636 /* QuartzCore.framework */,
 				733B618A1E9B763800BB2636 /* SystemConfiguration.framework */,
@@ -502,6 +510,7 @@
 		733B61941E9B78D100BB2636 /* QQMapsdk */ = {
 			isa = PBXGroup;
 			children = (
+				738A22691EB86F0D00946DAC /* QMapKit.bundle */,
 				733B61951E9B78D100BB2636 /* QMapKit.framework */,
 			);
 			path = QQMapsdk;
@@ -1067,6 +1076,7 @@
 				73060F6D1E8E023A0087A9B5 /* xian.json in Resources */,
 				73FC945D1E8A4B9D0006722E /* Assets.xcassets in Resources */,
 				73060F6C1E8E023A0087A9B5 /* shi.json in Resources */,
+				738A226A1EB86F0D00946DAC /* QMapKit.bundle in Resources */,
 				73FC945B1E8A4B9D0006722E /* Main.storyboard in Resources */,
 				7331D4421E8B4DD300FF1156 /* SVProgressHUD.bundle in Resources */,
 			);

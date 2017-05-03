@@ -55,6 +55,31 @@
     titleNameLabel.text = @"趋势图";
     [self.contentView addSubview:titleNameLabel];
     
+    NSArray *array = [NSArray arrayWithObjects:@"按金额",@"按订单数", nil];
+    
+    UISegmentedControl *segment = [[UISegmentedControl alloc]initWithItems:array];
+    segment.backgroundColor = [Theme colorWhite];
+    segment.apportionsSegmentWidthsByContent = YES;
+    segment.layer.masksToBounds = YES;
+    segment.layer.borderWidth = CGFLOAT_MIN;
+    segment.layer.cornerRadius = 5;
+    segment.tintColor = UIColorFromRGB(0xdfdfdf);
+    segment.selectedSegmentIndex = 0;
+    [segment setTitleTextAttributes:@{NSForegroundColorAttributeName :[Theme colorDarkGray]} forState:UIControlStateSelected];
+    [segment setTitleTextAttributes:@{NSForegroundColorAttributeName : [Theme colorGray]} forState:UIControlStateNormal];
+    [segment addTarget:self action:@selector(segmentSelected:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.contentView addSubview:segment];
+    [segment mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerY.equalTo(titleNameLabel);
+        make.right.equalTo(weakSelf.contentView).offset(-[Theme paddingWithSize32]);
+        
+        make.height.equalTo(@([Theme paddingWithSize:50]));
+        
+    }];
+    
+    
     [titleNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.equalTo(weakSelf.contentView).offset([Theme paddingWithSize32]);
@@ -96,6 +121,24 @@
         make.top.equalTo(lineView.mas_bottom).offset([Theme paddingWithSize32]);
         make.left.equalTo(weakSelf.contentView.mas_centerX).offset([Theme paddingWithSize40]);
     }];
+    
+    NSString *moneyStr = @"9999999";
+    
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"金额%@元",moneyStr]];
+    
+    [attrStr addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, moneyStr.length + 1)];
+    
+    moneyLabel.attributedText = attrStr;
+    
+    NSString *dateStr = @"12:00";
+    
+    NSMutableAttributedString *attrStr1 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"时间%@",dateStr]];
+    
+    [attrStr1 addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xf9d542) range:NSMakeRange(2, dateStr.length)];
+    
+    timeLabel.attributedText = attrStr1;
+    
+    
     
     
     LineChartView *lineChart = [[LineChartView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [Theme paddingWithSize:270])];

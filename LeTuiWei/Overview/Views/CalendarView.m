@@ -106,6 +106,13 @@
 
 - (void)calendar:(FSCalendar *)calendar willSelectDate:(NSDate *)date {
     
+    NSComparisonResult result = [ [NSDate at_dateFromString:[[NSDate new] stringForFormat:kDateFormatYYMMDD]] compare: [NSDate at_dateFromString:[date stringForFormat:kDateFormatYYMMDD]]];
+    if (result==NSOrderedSame || result==NSOrderedAscending) {
+        
+        [MBProgressHUD showError:@"所选时间段不能超过今天"];
+        return ;
+    }
+    
     if (calendar.checkInDate) {
         if (calendar.checkOutDate) {
             calendar.checkInDate = date;
@@ -115,8 +122,8 @@
             
             NSInteger days = [calendar.checkInDate daysBetween:date];
             if (days > 31) {
-                 [MBProgressHUD showError:@"所选时间段不能超过31天"];
-                NSLog(@"所选时间段不能超过31天");
+                [MBProgressHUD showError:@"所选时间段不能超过31天"];
+            
                 return ;
                 
             }
